@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('publics.index');
+    return view('publics.parts.index');
 });
