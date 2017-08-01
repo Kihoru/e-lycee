@@ -12,5 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('publics.parts.index');
+    return view('school.index');
+});
+
+/* API URL */
+//something
+/////////////
+
+Route::any('/platform', function(){
+    return view('platform.index');
+});
+
+Route::any('/platform/{path?}', function(){
+    return view('platform.index');
+});
+
+Route::any('/{path?}', function() {
+    return view('school.error');
 });

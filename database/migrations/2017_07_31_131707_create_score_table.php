@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsTable extends Migration
+class CreateScoreTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,19 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('scores', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('title');
-            $table->string('abstract');
-            $table->longText('content');
-            $table->string('url_thumbnail');
-            $table->enum('status', ['published', 'unpublished']);
+            $table->integer('qcm_id')->unsigned();
+            $table->enum('status', ['todo', 'done']);
+            $table->integer('note');
             $table->timestamps();
-            $table->foreign('user_id')
-                  ->references('id')->on('users')
+            $table->foreign('qcm_id')
+                  ->references('id')->on('qcms')
                   ->onDelete('cascade');
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 

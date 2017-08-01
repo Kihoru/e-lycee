@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommentTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,10 +15,14 @@ class CreateCommentTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('post_id')->unsigned();
             $table->string('title');
             $table->longText('content');
             $table->enum('status', ['published', 'unpublished']);
             $table->timestamps();
+            $table->foreign('post_id')
+                  ->references('id')->on('posts')
+                  ->onDelete('cascade');
         });
     }
 

@@ -1,0 +1,76 @@
+{
+    "users": [
+        {
+            "username": "Alexandre",
+            "role" : "teacher"
+        },
+        {
+            "username": "Abel",
+            "role" : "first_class"
+        },
+        {
+            "username": "Al",
+            "role" : "first_class"
+        },
+        {
+            "username": "Alan",
+            "role" : "first_class"
+        },
+        {
+            "username": "Arthur",
+            "role" : "first_class"
+        },
+        {
+            "username": "Carl",
+            "role" : "first_class"
+        },
+        {
+            "username": "Blaise",
+            "role" : "first_class"
+        },
+        {
+            "username": "Isaac",
+            "role" : "first_class"
+        },
+        {
+            "username": "Steve",
+            "role" : "first_class"
+        },
+        {
+            "username": "Alfred",
+            "role" : "final_class"
+        },
+        {
+            "username": "Brendan",
+            "role" : "final_class"
+        },
+        {
+            "username": "David",
+            "role" : "final_class"
+        },
+        {
+            "username": "George",
+            "role" : "final_class"
+        },
+        {
+            "username": "Jim",
+            "role" : "final_class"
+        },
+        {
+            "username": "Leslie",
+            "role" : "final_class"
+        },
+        {
+            "username": "Maria",
+            "role" : "final_class"
+        },
+        {
+            "username": "Rasmus",
+            "role" : "final_class"
+        },
+        {
+            "username": "Tim",
+            "role" : "final_class"
+        }
+    ]
+}

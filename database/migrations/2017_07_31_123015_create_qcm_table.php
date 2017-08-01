@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuestionsTable extends Migration
+class CreateQcmTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('qcms', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->string('title');
-            $table->string('content');
             $table->enum('class_level', ['terminale', 'premiere']);
-            $table->enum('status', ['published', 'unpublished']);
             $table->timestamps();
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 
