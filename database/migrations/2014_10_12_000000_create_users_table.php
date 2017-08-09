@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('password');
             $table->enum('role', ['teacher', 'first_class', 'final_class']);
-            $table->rememberToken();
+            $table->double('moyenne', 4, 2)->default(0);
             $table->timestamps();
         });
     }

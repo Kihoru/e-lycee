@@ -1,6 +1,5 @@
 app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoadProvider) {
-    $authProvider.loginUrl = location.origin+'/authenticate';
-    $authProvider.signupUrl = location.origin+'/signup';
+    $authProvider.loginUrl = location.origin+'/platform/login';
     $authProvider.loginOnSignup = false;
     $authProvider.baseUrl = '/platform/';
 
@@ -8,28 +7,54 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
     $ocLazyLoadProvider.config({
             loadedModules: ['elycee'], modules: [
                 {
-                    name: 'test',
-                    files: ['../public/js/controllers/testController.js']
+                    name: 'auth',
+                    files: ['../public/js/controllers/authController.js']
+                },
+                {
+                    name: 'home',
+                    files: ['../public/js/controllers/homeController.js']
+                },
+                {
+                    name: 'addQcm',
+                    files: ['../public/js/controllers/addQcmController.js']
                 }
             ]
     });
 
     $routeProvider
         .when('/', {
-            templateUrl: '../public/js/views/test.html',
-            controller: 'testController',
-            controllerAs: 'test',
+            templateUrl: '../public/js/views/auth.html',
+            controller: 'authController',
+            controllerAs: 'auth',
             resolve: {
                 loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load('test');
+                    return $ocLazyLoad.load('auth');
+                }]
+            }
+        })
+        .when('/home', {
+            templateUrl: '../public/js/views/home.html',
+            controller: 'homeController',
+            controllerAs: 'home',
+            resolve: {
+                loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('home');
+                }]
+            }
+        })
+        .when('/addQcm', {
+            templateUrl: '../public/js/views/addQcm.html',
+            controller: 'addQcmController',
+            controllerAs: 'addQcm',
+            resolve: {
+                loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('addQcm');
                 }]
             }
         })
         .otherwise({
             redirectTo: '/'
         });
-
-    console.log("ROUTE INI");
 
     $locationProvider.html5Mode(true);
 });

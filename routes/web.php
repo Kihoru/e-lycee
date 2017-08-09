@@ -16,7 +16,9 @@ Route::get('/', function () {
 });
 
 /* API URL */
-//something
+Route::post('/platform/login', 'AuthController@login');
+
+Route::post('/platform/qcm/create', 'qcmController@create');
 /////////////
 
 Route::any('/platform', function(){

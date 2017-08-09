@@ -1,0 +1,18 @@
+<h2>login</h2>
+<form method="post">
+    <div ng-show="isAlertLogin" class="alert alert-danger" role="alert">
+        [{alertLogin}]
+    </div>
+    <div class="form-group">
+        <label for="name">Username : </label>
+        <input type="text" class="form-control" id="name" placeholder="Username..." ng-model="auth.username">
+    </div>
+    <div class="form-group">
+        <label for="password">Mot de passe :</label>
+        <input type="password" class="form-control" id="password" placeholder="Password" ng-model="auth.password">
+    </div>
+    <button type="submit" class="btn btn-primary" ng-click="auth.login()">Envoyer</button>
+</form>
+
+
+<a href="/">Revenir au site</a>

@@ -17,7 +17,6 @@ class CreateQuestionTable extends Migration
             $table->increments('id');
             $table->integer('qcm_id')->unsigned();
             $table->string('question');
-            $table->string('answer');
             $table->timestamps();
             $table->foreign('qcm_id')
                   ->references('id')->on('qcms')

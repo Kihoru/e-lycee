@@ -18,5 +18,7 @@
         <script src="{{url('js/app.js')}}"></script>
         <!---------------------------------------- ROUTES APP ------------>
         <script src="{{url('js/routing.js')}}"></script>
+        <script src="{{url('js/directives.js')}}"></script>
+        <script src="{{url('js/controllers/navController.js')}}"></script>
     </body>
 </html>

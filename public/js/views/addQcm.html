@@ -1,0 +1,37 @@
+<my-nav></my-nav>
+<h2>Ajout de Qcm</h2>
+
+<h3>Questions : </h3>
+
+<form class="form" ng-submit="addQcm.create();">
+
+    <label for="title">Titre du QCM</label>
+    <input id="title" type="text" ng-model="addQcm.qcmTitle">
+    <br/><br/><br/><br/>
+    <ul class="question" ng-repeat="question in addQcm.data.questions">
+        <li>
+            <p>[{question.title}]</p>
+            <ul>
+                <li ng-repeat="choice in question.choices">[{choice}]</li>
+            </ul>
+        </li>
+    </ul>
+    <div class="addQuestion">
+        <p class='error' ng-show="addQcm.questionError">[{addQcm.questionErrorMsg}]</p>
+        <label for="question">Intitulé de la question</label>
+        <input type="text" ng-model="addQcm.questionTitle" id="question">
+        <div class="choice">
+            <ul>
+                <li ng-repeat="choice in addQcm.newQuestion.choices">[{choice}]<button ng-click="addQcm.deleteChoice(choice)">X</button></li>
+            </ul>
+            <label for="choice">Ajouter un choix</label>
+            <input type="text" ng-model="addQcm.newChoice">
+            <label for="gAnswer">Cocher si c'est la bonne réponse</label>
+            <input type="checkbox" ng-model="addQcm.gAnswer" id="gAnswer" value="false">
+            <button type="button" ng-click="addQcm.addChoice()">Ajouter le choix</button>
+        </div>
+        <button type="button" ng-click="addQcm.addQuestion()">Ajouter la question</button>
+    </div>
+
+    <button type="submit">Enregistré et publié le QCM</button>
+</form>

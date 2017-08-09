@@ -1,0 +1,8 @@
+<ul ng-controller="navController as nav" ng-show="nav.logged">
+    <li>Bienvenue [{nav.logged.username}] ([{nav.logged.role}])</li>
+    <li><a href="/platform/home">Home</a></li>
+    <li ng-show="nav.isTeacher"><a href="/platform/addQcm">Ajout de Qcm</a></li>
+    <li>page 3</li>
+    <li><button type="button" ng-click="nav.logout();" name="button">Log out</button></li>
+</ul>
+<!-- ng-click="nav.redirect('addQcm');" -->
