@@ -1,0 +1,10 @@
+{
+    "/js/utils/jquery.min.js": "/js/utils/jquery.min.js",
+    "/js/utils/materialize.min.js": "/js/utils/materialize.min.js",
+    "/css/utils/materialize.min.css": "/css/utils/materialize.min.css",
+    "/js/utils/satellizer.min.js": "/js/utils/satellizer.min.js",
+    "/js/utils/angular.min.js": "/js/utils/angular.min.js",
+    "/js/utils/angular-resource.min.js": "/js/utils/angular-resource.min.js",
+    "/js/utils/angular-route.min.js": "/js/utils/angular-route.min.js",
+    "/js/utils/ocLazyLoad.min.js": "/js/utils/ocLazyLoad.min.js"
+}

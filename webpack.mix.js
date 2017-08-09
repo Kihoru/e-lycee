@@ -11,5 +11,11 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/js/utils/jquery.min.js')
+   .copy('node_modules/materialize-css/dist/js/materialize.min.js', 'public/js/utils/materialize.min.js')
+   .copy('node_modules/materialize-css/dist/css/materialize.min.css', 'public/css/utils/materialize.min.css')
+   .copy('node_modules/satellizer/dist/satellizer.min.js', 'public/js/utils/satellizer.min.js')
+   .copy('node_modules/angular/angular.min.js', 'public/js/utils/angular.min.js')
+   .copy('node_modules/angular-resource/angular-resource.min.js', 'public/js/utils/angular-resource.min.js')
+   .copy('node_modules/angular-route/angular-route.min.js', 'public/js/utils/angular-route.min.js')
+   .copy('node_modules/oclazyload/dist/ocLazyLoad.min.js', 'public/js/utils/ocLazyLoad.min.js');
