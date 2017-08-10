@@ -29,6 +29,10 @@ Route::any('/platform/{path?}', function(){
     return view('platform.index');
 });
 
+Route::any('/platform/{path?}/{act?}', function(){
+    return view('platform.index');
+});
+
 Route::any('/{path?}', function() {
     return view('school.error');
 });

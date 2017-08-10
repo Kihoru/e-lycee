@@ -6,6 +6,11 @@ angular.module('elycee').controller('navController', navController);
 
 function navController($auth, $http, $scope, $location, $route, $routeParams) {
 
+    this.getClass = function(url) {
+        let pathFromUrl = $location.path().substr(0, url.length);
+        return pathFromUrl === url ? 'activate' : '';
+    }
+
     this.logout = function() {
         $auth.logout()
             .then(function(){

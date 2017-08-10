@@ -11,9 +11,29 @@
             <p class="nav-title">Menu</p>
         </div>
     </div>
-    <li class="activate"><a class="whi-yel-text" href="/platform/home"><i class="whi-yel-text tiny material-icons">home</i>Dashboard</a></li>
-    <li ng-show="nav.isTeacher"><a class="whi-yel-text" href="student.html"><i class="whi-yel-text tiny material-icons">person</i>Elèves</a></li>
-    <li><a class="whi-yel-text" href="listQcm.html"><i class="whi-yel-text tiny material-icons">list</i>Fiches</a></li>
-    <li ng-show="nav.isTeacher"><a class="whi-yel-text" href="posts.html"><i class="whi-yel-text tiny material-icons">insert_photo</i>Actualités</a></li>
+    <li ng-class="nav.getClass('/home')" >
+        <a class="whi-yel-text" href="/platform/home">
+            <i class="whi-yel-text tiny material-icons">home</i>
+            Dashboard
+        </a>
+    </li>
+    <li ng-show="nav.isTeacher" ng-class="nav.getClass('/users')">
+        <a class="whi-yel-text" href="student.html">
+            <i class="whi-yel-text tiny material-icons">person</i>
+            Elèves
+        </a>
+    </li>
+    <li ng-class="nav.getClass('/qcm')">
+        <a class="whi-yel-text" href="/platform/qcm/all">
+            <i class="whi-yel-text tiny material-icons">list</i>
+            Fiches
+        </a>
+    </li>
+    <li ng-class="nav.getClass('/posts')" ng-show="nav.isTeacher">
+        <a class="whi-yel-text" href="posts.html">
+            <i class="whi-yel-text tiny material-icons">insert_photo</i>
+            Actualités
+        </a>
+    </li>
     <li><a class="myblue-text" ng-click="nav.logout();"><i class="myblue-text tiny material-icons">power_settings_new</i>Log Out</a></li>
 </ul>

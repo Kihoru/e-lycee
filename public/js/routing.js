@@ -17,6 +17,10 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
                 {
                     name: 'addQcm',
                     files: ['../public/js/controllers/addQcmController.js']
+                },
+                {
+                    name: 'qcmall',
+                    files: ['../public/js/controllers/qcmAllController.js']
                 }
             ]
     });
@@ -39,6 +43,16 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
             resolve: {
                 loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load('home');
+                }]
+            }
+        })
+        .when('/qcm/all', {
+            templateUrl: '../public/js/views/fiches/all.html',
+            controller: 'qcmAllController',
+            controllerAs: 'qcmAll',
+            resolve: {
+                loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('qcmall');
                 }]
             }
         })
