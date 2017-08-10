@@ -1,7 +1,19 @@
-<ul ng-controller="navController as nav" ng-show="nav.logged">
-    <li>Bienvenue [{nav.logged.username}] ([{nav.logged.role}])</li>
-    <li><a href="/platform/home">Home</a></li>
-    <li ng-show="nav.isTeacher"><a href="/platform/addQcm">Ajout de Qcm</a></li>
-    <li>page 3</li>
-    <li><button type="button" ng-click="nav.logout();" name="button">Log out</button></li>
+<ul id="slide-out" class="side-nav fixed blue-grey darken-3 whi-yel-text" ng-controller="navController as nav" ng-show="nav.logged">
+    <div class="row borderCenter">
+        <div class="col s10 offset-s1 mgt50">
+            <h4>E-Lycee</h4>
+            <p class="bold">Bienvenue <strong class="user-bold">[{nav.logged.username}]</strong></p>
+            <p class="myblue-text">Role :<strong class="user-bold"> [{nav.logged.role}]</strong></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s10 offset-s1">
+            <p class="nav-title">Menu</p>
+        </div>
+    </div>
+    <li class="activate"><a class="whi-yel-text" href="/platform/home"><i class="whi-yel-text tiny material-icons">home</i>Dashboard</a></li>
+    <li ng-show="nav.isTeacher"><a class="whi-yel-text" href="student.html"><i class="whi-yel-text tiny material-icons">person</i>Elèves</a></li>
+    <li><a class="whi-yel-text" href="listQcm.html"><i class="whi-yel-text tiny material-icons">list</i>Fiches</a></li>
+    <li ng-show="nav.isTeacher"><a class="whi-yel-text" href="posts.html"><i class="whi-yel-text tiny material-icons">insert_photo</i>Actualités</a></li>
+    <li><a class="myblue-text" ng-click="nav.logout();"><i class="myblue-text tiny material-icons">power_settings_new</i>Log Out</a></li>
 </ul>

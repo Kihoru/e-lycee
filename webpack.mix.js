@@ -14,6 +14,7 @@ let mix = require('laravel-mix');
 mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/js/utils/jquery.min.js')
    .copy('node_modules/materialize-css/dist/js/materialize.min.js', 'public/js/utils/materialize.min.js')
    .copy('node_modules/materialize-css/dist/css/materialize.min.css', 'public/css/utils/materialize.min.css')
+   .copy('node_modules/materialize-css/dist/fonts', 'public/css/fonts')
    .copy('node_modules/satellizer/dist/satellizer.min.js', 'public/js/utils/satellizer.min.js')
    .copy('node_modules/angular/angular.min.js', 'public/js/utils/angular.min.js')
    .copy('node_modules/angular-resource/angular-resource.min.js', 'public/js/utils/angular-resource.min.js')
