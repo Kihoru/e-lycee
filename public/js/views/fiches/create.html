@@ -1,0 +1,74 @@
+<my-nav></my-nav>
+<section id="addQcm">
+    <div class="container">
+        <div class="row">
+            <div class="col s11 offset-s1">
+                <h2 class="blue-grey-text darken-3">Ajout de QCM</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s4 offset-s1">
+                <a class="blue-grey-text darken-3" href="/platform/qcm/all">Retourner à la liste des fiches</a>
+            </div>
+        </div>
+    </div>
+    <div class="container mgt50">
+        <form>
+            <div class="row">
+                <div class="col s9 offset-s1">
+                    <h4 class="myblue-text flow-text">Créer un Qcm</h4>
+                    <p class='red-text'>Mon erreur d'ajout</p>
+                    <div class="input-field">
+                        <input placeholder="Intitulé" id="qcm_title" type="text" class="validate">
+                        <label for="qcm_title">Titre du QCM</label>
+                    </div>
+                    <div class="input-field">
+                        <select>
+                            <option value="" disabled selected>Choisissez la classe</option>
+                            <option value="first_class">Première</option>
+                            <option value="final_class">Terminale</option>
+                        </select>
+                        <label>Attribué à </label>
+                    </div>
+                </div>
+                <div class="col s9 offset-s1">
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header blue-grey-text darken-3"><i class="tiny material-icons">reorder</i>Question #1</div>
+                            <div class="collapsible-body">
+                                <div class="input-field">
+                                    <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                                    <label for="first_name">Intitulé de la question</label>
+                                </div>
+                                <ul class="collapsible popout" data-collapsible="accordion">
+                                    <li>
+                                        <div class="collapsible-header blue-grey-text darken-3"><i class="tiny material-icons">reorder</i>Choix #1</div>
+                                        <div class="collapsible-body">
+                                            <div class="input-field col s6">
+                                                <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                                                <label for="first_name">Choix</label>
+                                            </div>
+                                            <p>
+                                                <input type="checkbox" id="test5" />
+                                                <label for="test5">Réponse valide</label>
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <p><a class="right btn-floating btn-large waves-effect waves-light blue-grey darken-3"><i class="material-icons">add</i></a></p>
+                            </div>
+                        </li>
+                    </ul>
+                    <p><a class="right btn-floating btn-large waves-effect waves-light blue-grey darken-3"><i class="material-icons">add</i></a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s4 offset-s1">
+                    <button class="blue-grey darken-3 btn waves-effect waves-light" type="submit" name="action">Sauvegarder
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

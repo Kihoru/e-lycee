@@ -6,6 +6,7 @@ angular.module('elycee').controller('qcmAllController', qcmAllController);
 
 function qcmAllController($auth, $http, $scope, $location, $route, $routeParams) {
 
-    
+    $('.modal').modal();
+
 
 }

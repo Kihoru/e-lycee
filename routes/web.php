@@ -33,6 +33,10 @@ Route::any('/platform/{path?}/{act?}', function(){
     return view('platform.index');
 });
 
+Route::any('/platform/{path?}/{act?}/{id?}', function(){
+    return view('platform.index');
+});
+
 Route::any('/{path?}', function() {
     return view('school.error');
 });

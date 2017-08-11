@@ -19,7 +19,6 @@
         <script src="{{url('js/utils/angular-route.min.js')}}"></script>
         <script src="{{url('js/utils/ocLazyLoad.min.js')}}"></script>
         <script src="{{url('js/utils/satellizer.min.js')}}"></script>
-        <script src="{{url('js/init.materialize.js')}}"></script>
         <!-- MAIN APP ------------>
         <script src="{{url('js/app.js')}}"></script>
         <!-- ROUTES & DIRECTIVES APP & NAVCONTROLLER ------------>
