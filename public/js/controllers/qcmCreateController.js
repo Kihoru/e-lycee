@@ -6,66 +6,72 @@ angular.module('elycee').controller('qcmCreateController', qcmCreateController);
 
 function qcmCreateController($auth, $http, $scope, $location, $route, $routeParams) {
 
+    function runMaterials() {
+        $('select').material_select();
+        $('.collapsible').collapsible();
+        $('.tooltipped').tooltip({delay: 50});
+    }
 
-    $('select').material_select();
-    $('.collapsible').collapsible();
-    
-    // this.data = {
-    //     "title" : "",
-    //     "questions": []
-    // };
-    // this.newQuestion = {
-    //     "title" : "",
-    //     "choices" : [],
-    //     "goodAnswer" : ""
-    // };
-    //
-    // this.qcmTitle = "";
-    //
-    // this.create = function() {
-    //
-    //     if(!this.qcmTitle.length || !this.data.questions.length) {
-    //         console.log("Error");
-    //     }else{
-    //
-    //         this.data.title = this.qcmTitle;
-    //
-    //         $http.post('/platform/qcm/create', this.data)
-    //             .then(function(response) {
-    //                 console.log(response);
-    //             });
-    //     }
-    // }
-    //
-    // this.addQuestion = function() {
-    //     if(!this.newQuestion.goodAnswer.length) {
-    //         console.log("Error");
-    //     }else{
-    //         this.newQuestion.title = this.questionTitle;
-    //         this.data.questions.push(this.newQuestion);
-    //
-    //         this.newQuestion = {
-    //             "title" : "",
-    //             "choices" : [],
-    //             "goodAnswer" : ""
-    //         };
-    //
-    //         this.questionTitle = '';
-    //     }
-    // }
-    //
-    // this.addChoice = function() {
-    //     if(this.gAnswer && this.newQuestion.goodAnswer.length == 0) {
-    //         this.newQuestion.goodAnswer = this.newChoice;
-    //     }
-    //     this.newQuestion.choices.push(this.newChoice);
-    //
-    //     this.newChoice = "";
-    //     this.gAnswer = false;
-    // }
-    //
-    // this.deleteChoice = function(choice) {
-    //     let i = this.newQuestion.choices.indexOf(choice);
-    //     if(i > -1) this.newQuestion.choices.splice(i, 1);
-    // }
+    setTimeout(function() {
+        runMaterials();
+    }, 0);
+
+    this.level = '';
+
+    this.selectOptions = [
+        {'value': 'first_class', 'name': 'Première'},
+        {'value': 'final_class', 'name': 'Terminale'}
+    ];
+
+    this.qcm = {
+        title: '',
+        class_level: '',
+        questions: [
+            {
+                question_title: '',
+                choices: [
+                    {
+                        content: '',
+                        valid: 0
+                    }
+                ]
+            }
+        ]
+    };
+
+    this.addQuestion = function() {
+        this.qcm.questions.push({
+            question_title: '',
+            choices: [
+                {
+                    content: '',
+                    valid: 0
+                }
+            ]
+        });
+
+        setTimeout(function() {
+            runMaterials();
+        }, 0);
+    }
+
+    this.addChoice = function(index) {
+        this.qcm.questions[index].choices.push({
+            content: '',
+            valid: 0
+        });
+
+        setTimeout(function() {
+            runMaterials();
+        }, 0);
+    }
+
+    this.create = function() {
+        console.log(this.qcm);
+        $http.post('/qcm', {'datas' : this.qcm})
+            .then(function(res) {
+                console.log(res);
+            });
+    }
+
 }

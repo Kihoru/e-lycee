@@ -38,22 +38,22 @@
                         </div>
                     </div>
                     <tbody>
-                        <tr>
-                            <td>Ma fiche #1</td>
-                            <td>12</td>
-                            <td>Terminale</td>
+                        <tr ng-repeat="qcm in qcmAll.datas.qcms">
+                            <td>[{qcm.title}]</td>
+                            <td>[{qcm.nbQuestion}]</td>
+                            <td>[{qcm.class_level == 'first_class' ? 'Première' : 'Terminale'}]</td>
                             <td>
-                                <div class="switch myswitch">
+                                <div ng-show="qcmAll.isTeacher" class="switch myswitch">
                                     <label>
                                         Publish
                                         <input type="checkbox">
                                         <span class="lever"></span>
                                     </label>
                                 </div>
-                                <a data-position="top" data-delay="50" data-tooltip="Edit" class="btn-floating yellow darken-2 tooltipped" href="/platform/qcm/update/1"><i class="material-icons">edit</i></a>
-                                <a data-position="top" data-delay="50" data-tooltip="Delete" class="btn-floating red delete-btn tooltipped modal-trigger" href="#modal1"><i class="material-icons">delete</i></a>
-                                <a data-position="top" data-delay="50" data-tooltip="Remplir le QCM" class="btn-floating green tooltipped" href="previewOrDoQcm.html"><i class="material-icons">subject</i></a>
-                                <a data-position="top" data-delay="50" data-tooltip="Preview" class="btn-floating blue tooltipped" href="previewOrDoQcm.html"><i class="material-icons">remove_red_eye</i></a>
+                                <a ng-show="qcmAll.isTeacher" data-position="top" data-delay="50" data-tooltip="Edit" class="btn-floating yellow darken-2 tooltipped" href="/platform/qcm/update/1"><i class="material-icons">edit</i></a>
+                                <a ng-show="qcmAll.isTeacher" data-position="top" data-delay="50" data-tooltip="Delete" class="btn-floating red delete-btn tooltipped modal-trigger" href="#modal1"><i class="material-icons">delete</i></a>
+                                <a ng-hide="qcmAll.isTeacher" data-position="top" data-delay="50" data-tooltip="Remplir le QCM" class="btn-floating green tooltipped" href="previewOrDoQcm.html"><i class="material-icons">subject</i></a>
+                                <a ng-show="qcmAll.isTeacher" data-position="top" data-delay="50" data-tooltip="Preview" class="btn-floating blue tooltipped" href="previewOrDoQcm.html"><i class="material-icons">remove_red_eye</i></a>
                             </td>
                         </tr>
                     </tbody>

@@ -15,13 +15,9 @@ class CreateQcmTable extends Migration
     {
         Schema::create('qcms', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->enum('class_level', ['terminale', 'premiere']);
             $table->timestamps();
-            $table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onDelete('cascade');
         });
     }
 

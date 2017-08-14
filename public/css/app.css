@@ -21,7 +21,6 @@ li:hover{background-color: rgba(0, 0, 0, 0.1) !important}
 .mgl20{margin-left: 20px !important}
 .myswitch{display: inline-block}
 .nohover:hover{background: #fff !important}
-
 .borderCenter:after{
     width: 80%;
     margin: 0 auto;
