@@ -23,7 +23,8 @@
                         <tr>
                             <th>Titre de la fiche</th>
                             <th>Nombre de questions</th>
-                            <th>Attribution</th>
+                            <th ng-if="qcmAll.isTeacher">Attribution</th>
+                            <th ng-if="!qcmAll.isTeacher">Note</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -38,23 +39,28 @@
                         </div>
                     </div>
                     <tbody>
-                        <tr ng-repeat="qcm in qcmAll.datas.qcms">
+                        <tr ng-repeat="(index, qcm) in qcmAll.datas" ng-if="qcm.isOkforStudent || qcmAll.isTeacher">
                             <td>[{qcm.title}]</td>
                             <td>[{qcm.nbQuestion}]</td>
-                            <td>[{qcm.class_level == 'first_class' ? 'Première' : 'Terminale'}]</td>
+                            <td ng-if="qcmAll.isTeacher">[{qcm.class_level == 'first_class' ? 'Première' : 'Terminale'}]</td>
+                            <td ng-if="!qcmAll.isTeacher">[{qcm.score.note}]</td>
                             <td>
                                 <div ng-show="qcmAll.isTeacher" class="switch myswitch">
                                     <label>
                                         Publish
-                                        <input type="checkbox">
+                                        <input type="checkbox" ng-checked="qcm.published" ng-click="qcmAll.changeStatus(index)">
                                         <span class="lever"></span>
                                     </label>
                                 </div>
+                                <a ng-hide="qcmAll.isTeacher" ng-class="{disabled: qcm.disabled}" data-position="top" data-delay="50" data-tooltip="Remplir le QCM" class="btn-floating green tooltipped" href="previewOrDoQcm.html"><i class="material-icons">subject</i></a>
+                                <a ng-show="qcmAll.isTeacher" data-position="top" data-delay="50" data-tooltip="Preview" class="btn-floating blue tooltipped" href="previewOrDoQcm.html"><i class="material-icons">remove_red_eye</i></a>
                                 <a ng-show="qcmAll.isTeacher" data-position="top" data-delay="50" data-tooltip="Edit" class="btn-floating yellow darken-2 tooltipped" href="/platform/qcm/update/1"><i class="material-icons">edit</i></a>
                                 <a ng-show="qcmAll.isTeacher" data-position="top" data-delay="50" data-tooltip="Delete" class="btn-floating red delete-btn tooltipped modal-trigger" href="#modal1"><i class="material-icons">delete</i></a>
-                                <a ng-hide="qcmAll.isTeacher" data-position="top" data-delay="50" data-tooltip="Remplir le QCM" class="btn-floating green tooltipped" href="previewOrDoQcm.html"><i class="material-icons">subject</i></a>
-                                <a ng-show="qcmAll.isTeacher" data-position="top" data-delay="50" data-tooltip="Preview" class="btn-floating blue tooltipped" href="previewOrDoQcm.html"><i class="material-icons">remove_red_eye</i></a>
                             </td>
+                        </tr>
+                        <tr ng-if="qcmAll.loadError">
+                            <td></td>
+                            <td>[{qcmAll.loadError}]</td>
                         </tr>
                     </tbody>
                 </table>

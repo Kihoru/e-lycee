@@ -9,5 +9,11 @@ function qcmUpdateController($auth, $http, $scope, $location, $route, $routePara
 
     $('select').material_select();
 
+    let update = this;
+
+    update.datas = {
+        id: $routeParams.id;
+    }
+
 
 }

@@ -6,5 +6,7 @@
     "/js/utils/angular.min.js": "/js/utils/angular.min.js",
     "/js/utils/angular-resource.min.js": "/js/utils/angular-resource.min.js",
     "/js/utils/angular-route.min.js": "/js/utils/angular-route.min.js",
-    "/js/utils/ocLazyLoad.min.js": "/js/utils/ocLazyLoad.min.js"
+    "/js/utils/ocLazyLoad.min.js": "/js/utils/ocLazyLoad.min.js",
+    "/js/utils/toastr.min.js": "/js/utils/toastr.min.js",
+    "/css/utils/toastr.min.css": "/css/utils/toastr.min.css"
 }

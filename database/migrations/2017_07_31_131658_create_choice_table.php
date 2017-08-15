@@ -18,6 +18,7 @@ class CreateChoiceTable extends Migration
             $table->integer('question_id')->unsigned();
             $table->string('content');
             $table->boolean("valid");
+            $table->timestamps();
             $table->foreign('question_id')
                   ->references('id')->on('questions')
                   ->onDelete('cascade');

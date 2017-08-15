@@ -22,15 +22,14 @@
                         <input placeholder="Intitulé" id="qcm_title" type="text" class="validate" ng-model="qcmCreate.qcm.title">
                         <label for="qcm_title">Titre du QCM</label>
                     </div>
-                    <div class="input-field">
-                        <select ng-model="qcmCreate.qcm.class_level" name="class_level">
-                            <option value="" disabled selected>Choisissez la classe</option>
-                            <option value="first_class">Première</option>
-                            <option value="final_class">Terminale</option>
-                            <!-- ng-options="option.value as option.name for option in qcmCreate.selectOptions" -->
-                        </select>
-                        <label>Attribué à </label>
-                    </div>
+                    <select
+                        name="class_level"  id="class_level"
+                        ng-model="qcmCreate.qcm.class_level">
+                        <option value="">Choisir une classe</option>
+                        <option value="first_class">Première</option>
+                        <option value="final_class">Terminale</option>
+                    </select>
+                    <label for="mySelect">Attribué à </label>
                 </div>
                 <div class="col s9 offset-s1">
                     <ul class="collapsible" data-collapsible="accordion" ng-repeat="(index, question) in qcmCreate.qcm.questions">

@@ -11,32 +11,26 @@
 |
 */
 
+/** ROUTE LARAVEL BASE **/
 Route::get('/', function () {
     return view('school.index');
 });
+///////////////////////////////
 
 /* API URL */
+Route::resource('/qcm', 'QcmController', ['except' => ["create"]]);
 Route::post('/platform/login', 'AuthController@login');
 Route::get('/platform/getHomeDatas', 'PlatformFrontController@home');
-Route::resource('/qcm', 'QcmController', ['except' => ["create", "edit"]]);
+Route::get('/getScoreFromQcm', 'PlatformFrontController@scoreFromIds');
 /////////////
 
-Route::any('/platform', function(){
-    return view('platform.index');
-});
-
-Route::any('/platform/{path?}', function(){
-    return view('platform.index');
-});
-
-Route::any('/platform/{path?}/{act?}', function(){
-    return view('platform.index');
-});
-
+/** ROUTE TO ANGULAR **/
 Route::any('/platform/{path?}/{act?}/{id?}', function(){
     return view('platform.index');
 });
+///////////////////////////
 
+//ERREUR 404
 Route::any('/{path?}', function() {
     return view('school.error');
 });

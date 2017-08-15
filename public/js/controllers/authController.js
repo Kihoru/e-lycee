@@ -44,9 +44,6 @@ function authController($auth, $http, $scope, $location, $route, $routeParams) {
                     localStorage.setItem('satellizer_token', response.data.token);
                     localStorage.setItem('user_logged', JSON.stringify(response.data.logInUser));
 
-                    console.log(localStorage.getItem('satellizer_token'));
-                    console.log(localStorage.getItem('user_logged'));
-
                     $location.path('/home');
                 }
             });

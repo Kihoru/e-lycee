@@ -16,13 +16,6 @@ function qcmCreateController($auth, $http, $scope, $location, $route, $routePara
         runMaterials();
     }, 0);
 
-    this.level = '';
-
-    this.selectOptions = [
-        {'value': 'first_class', 'name': 'Première'},
-        {'value': 'final_class', 'name': 'Terminale'}
-    ];
-
     this.qcm = {
         title: '',
         class_level: '',
@@ -67,7 +60,7 @@ function qcmCreateController($auth, $http, $scope, $location, $route, $routePara
     }
 
     this.create = function() {
-        console.log(this.qcm);
+
         $http.post('/qcm', {'datas' : this.qcm})
             .then(function(res) {
                 console.log(res);

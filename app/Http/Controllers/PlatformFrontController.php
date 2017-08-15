@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Qcm;
 use App\Comment;
 use App\User;
+use App\Score;
 use Illuminate\Http\Request;
 
 class PlatformFrontController extends Controller
@@ -18,6 +19,22 @@ class PlatformFrontController extends Controller
         // $studentNb = User::countStudent();
 
         return response()->json(['nbUser' => $userNb, 'nbComment' => $commentNb, 'nbQcm' => $qcmNb]);
+
+    }
+
+    public function scoreFromIds(Request $request) {
+
+        $user_id = $request->user_id;
+        $qcm_id = $request->qcm_id;
+
+        $score = Score::where('user_id', $user_id)->where('qcm_id', $qcm_id)->first();
+
+
+        if(!count($score)) {
+            return response()->json(['todo' => 'todo']);
+        }else if($score->status == 'done'){
+            return response()->json(['already' => 'already', 'score' => $score]);
+        }
 
     }
 }

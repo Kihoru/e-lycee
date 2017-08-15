@@ -16,7 +16,8 @@ class CreateQcmTable extends Migration
         Schema::create('qcms', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->enum('class_level', ['terminale', 'premiere']);
+            $table->enum('class_level', ['first_class', 'final_class']);
+            $table->boolean("published");
             $table->timestamps();
         });
     }
