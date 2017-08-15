@@ -92,9 +92,17 @@ class QcmController extends Controller
      */
     public function edit($id)
     {
-        $qcm = Qcm::find($id);
+        $qcm = Qcm::find($id)->first()->question();
+        // $qcm->questions = Question::where('qcm_id', $id);
+        //
+        // foreach($qcm->questions as &$question) {
+        //     $question->choices = Choice::where('question_id', $question->id);
+        // }
 
-        
+        echo "<pre>";
+        var_dump($qcm);
+        echo "</pre>";
+        die();
     }
 
     /**

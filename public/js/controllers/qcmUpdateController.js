@@ -12,8 +12,11 @@ function qcmUpdateController($auth, $http, $scope, $location, $route, $routePara
     let update = this;
 
     update.datas = {
-        id: $routeParams.id;
+        id: $routeParams.id
     }
 
-
+    $http.get('/qcm/' + update.datas.id + '/edit')
+        .then(function(res) {
+            console.log(res);
+        });
 }
