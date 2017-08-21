@@ -35,7 +35,7 @@
                     <ul class="collapsible" data-collapsible="accordion" ng-repeat="(index, question) in qcmCreate.qcm.questions">
                         <li>
                             <div class="collapsible-header blue-grey-text darken-3">
-                                <a href="#" data-position="top" data-delay="50" data-tooltip="Supprimer" class="red-text darken-5 tooltipped">
+                                <a href="#" ng-click="qcmCreate.deleteItem(index);" class="red-text darken-5">
                                     <i class="tiny material-icons">delete</i>
                                 </a>
                                 <i class="tiny material-icons">reorder</i>
@@ -50,7 +50,7 @@
                                 <ul class="collapsible" data-collapsible="accordion" ng-repeat="(choiceIndex, choice) in question.choices">
                                     <li>
                                         <div class="collapsible-header blue-grey-text darken-3">
-                                            <a href="#" data-position="top" data-delay="50" data-tooltip="Supprimer" class="red-text darken-5 tooltipped">
+                                            <a href="#" ng-click="qcmCreate.deleteItem(index, choiceIndex);" class="red-text darken-5">
                                                 <i class="tiny material-icons">delete</i>
                                             </a>
                                             <i class="tiny material-icons">reorder</i>

@@ -1,5 +1,5 @@
 <my-nav></my-nav>
-<section id="listQcm">
+<section id="updateQcm">
     <div class="container">
         <div class="row">
             <div class="col s11 offset-s1">
@@ -17,58 +17,60 @@
             <div class="col s11 offset-s1">
                 <form>
                     <div class="input-field col s6">
-                        <input placeholder="Placeholder" id="first_name" type="text" class="validate" value="Titre de la fiche">
-                        <label for="first_name">Titre de la fiche</label>
+                        <input id="qcm_title" type="text" class="validate" ng-model="qcmUpdate.datas.qcm.title">
+                        <label for="qcm_title" class="active">Titre de la fiche</label>
                     </div>
                     <div class="input-field col s6">
-                        <select>
-                            <option value="1" selected>first_class</option>
-                            <option value="2">final_class</option>
+                        <select ng-model="qcmUpdate.datas.qcm.class_level">
+                            <option value="first_class">Première</option>
+                            <option value="final_class">Terminale</option>
                         </select>
                         <label>Attribué à </label>
                     </div>
                     <div class="col s12">
                         <h4 class="blue-grey-text darken-3">Questions :</h4>
-                        <div class="col s7">
-                            <ul class="mgt50">
-                                <li class="nohover">
-                                    <div class="input-field">
-                                        <input placeholder="Placeholder" id="first_name" type="text" class="validate" value="Titre de la fiche">
-                                        <label for="first_name">Intitulé de la question</label>
+                        <div class="col s9 offset-s1">
+                            <ul class="collapsible" data-collapsible="accordion" ng-repeat="(index, question) in qcmUpdate.datas.qcm.questions">
+                                <li>
+                                    <div class="collapsible-header blue-grey-text darken-3">
+                                        <a href="#" ng-click="qcmUpdate.deleteItem(index);" class="red-text darken-5">
+                                            <i class="tiny material-icons">delete</i>
+                                        </a>
+                                        <i class="tiny material-icons">reorder</i>
+                                            Question #[{index + 1}]
+
                                     </div>
-                                    <p class="blue-grey-text darken-3">Choix :</p>
-                                    <div class="input-field">
-                                        <p class="inline-block">
-                                            <input name="group1" type="radio" id="test1" />
-                                            <label for="test1">Red</label>
-                                        </p>
-                                        <p class="inline-block mgl20">
-                                            <input type="checkbox" id="test5" />
-                                            <label for="test5">Réponse valide ?</label>
-                                        </p>
-                                    </div>
-                                    <div class="input-field">
-                                        <p class="inline-block">
-                                            <input name="group1" type="radio" id="test2" />
-                                            <label for="test2">Red</label>
-                                        </p>
-                                        <p class="inline-block mgl20">
-                                            <input type="checkbox" id="test5" />
-                                            <label for="test5">Réponse valide ?</label>
-                                        </p>
-                                    </div>
-                                    <div class="input-field">
-                                        <p class="inline-block">
-                                            <input name="group1" type="radio" id="test3" />
-                                            <label for="test3">Red</label>
-                                        </p>
-                                        <p class="inline-block mgl20">
-                                            <input type="checkbox" id="test5" />
-                                            <label for="test5">Réponse valide ?</label>
-                                        </p>
+                                    <div class="collapsible-body">
+                                        <div class="input-field">
+                                            <input placeholder="Placeholder" id="question_[{index}]" type="text" class="validate" ng-model="question.question">
+                                            <label for="question_[{index}]" class="active">Intitulé de la question</label>
+                                        </div>
+                                        <ul class="collapsible" data-collapsible="accordion" ng-repeat="(choiceIndex, choice) in question.choices">
+                                            <li>
+                                                <div class="collapsible-header blue-grey-text darken-3">
+                                                    <a href="#" ng-click="qcmUpdate.deleteItem(index, choiceIndex);" class="red-text darken-5">
+                                                        <i class="tiny material-icons">delete</i>
+                                                    </a>
+                                                    <i class="tiny material-icons">reorder</i>
+                                                        Choix #[{choiceIndex + 1}]
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <div class="input-field col s6">
+                                                        <input placeholder="Placeholder" id="choice_content[{choiceIndex + '_' + index}]" type="text" class="validate" ng-model="choice.content">
+                                                        <label for="choice_content[{choiceIndex + '_' + index}]" class="active">Choix</label>
+                                                    </div>
+                                                    <p>
+                                                        <input type="checkbox" id="valid[{choiceIndex + '_' + index}]" ng-model="choice.valid"/>
+                                                        <label for="valid[{choiceIndex + '_' + index}]">Réponse valide</label>
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <p><a class="right btn-floating btn-large waves-effect waves-light blue-grey darken-3" ng-click="qcmUpdate.addChoice(index);"><i class="material-icons">add</i></a></p>
                                     </div>
                                 </li>
                             </ul>
+                            <p><a class="right btn-floating btn-large waves-effect waves-light blue-grey darken-3" ng-click="qcmUpdate.addQuestion();"><i class="material-icons">add</i></a></p>
                         </div>
                     </div>
                     <div class="row">

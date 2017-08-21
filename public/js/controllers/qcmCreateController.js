@@ -63,8 +63,23 @@ function qcmCreateController($auth, $http, $scope, $location, $route, $routePara
 
         $http.post('/qcm', {'datas' : this.qcm})
             .then(function(res) {
-                console.log(res);
+                if(res.data.hasOwnProperty('Success')) {
+                    toastr.options.progressBar = true;
+                    toastr.success('', res.data.Success);
+                    $location.path('/qcm/all');
+                }else if(res.data.hasOwnProperty('Error')) {
+                    toastr.options.progressBar = true;
+                    toastr.error('', res.data.Error);
+                }
             });
+    }
+
+    this.deleteItem = function(index, choiceIndex = false) {
+        if(choiceIndex !== false) {
+            this.qcm.questions[index].choices.splice(choiceIndex, 1);
+        }else{
+            this.qcm.questions.splice(index, 1);
+        }
     }
 
 }

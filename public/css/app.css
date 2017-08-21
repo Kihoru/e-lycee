@@ -13,7 +13,7 @@ li:hover{background-color: rgba(0, 0, 0, 0.1) !important}
 .mygreen-text{color: #bdc4a7}
 .mygreen:hover{background: #acb398}
 .myNavDropDown{padding: 0 32px !important}
-#addQcm .collapsible:hover .collapsible-body{background: #fff !important}
+#addQcm .collapsible:hover .collapsible-body, #updateQcm .collapsible:hover .collapsible-body{background: #fff !important}
 .user-bold{color: #92b4a7; font-size: 18px}
 .collapsible-body{overflow: auto}
 .bold{font-weight: bolder}

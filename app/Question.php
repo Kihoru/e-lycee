@@ -10,7 +10,7 @@ class Question extends Model
         'question'
     ];
 
-    public function choice()
+    public function choices()
     {
         return $this->hasMany('App\Choice');
     }

@@ -34,7 +34,7 @@
                             <p>Souhaitez-vous vraiment supprimé cette fiche ? Cette action sera irréversible.</p>
                         </div>
                         <div class="modal-footer red darken-4">
-                            <a href="#!" class="whi-yel-text modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                            <a href="#!" ng-click="qcmAll.delete();" class="whi-yel-text modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
                             <a href="#!" class="whi-yel-text modal-action modal-close waves-effect waves-green btn-flat">Disagree</a>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                                 <a ng-hide="qcmAll.isTeacher" ng-class="{disabled: qcm.disabled}" data-position="top" data-delay="50" data-tooltip="Remplir le QCM" class="btn-floating green tooltipped" href="previewOrDoQcm.html"><i class="material-icons">subject</i></a>
                                 <a ng-show="qcmAll.isTeacher" data-position="top" data-delay="50" data-tooltip="Preview" class="btn-floating blue tooltipped" href="previewOrDoQcm.html"><i class="material-icons">remove_red_eye</i></a>
                                 <a ng-show="qcmAll.isTeacher" data-position="top" data-delay="50" data-tooltip="Edit" class="btn-floating yellow darken-2 tooltipped" href="/platform/qcm/update/1"><i class="material-icons">edit</i></a>
-                                <a ng-show="qcmAll.isTeacher" data-position="top" data-delay="50" data-tooltip="Delete" class="btn-floating red delete-btn tooltipped modal-trigger" href="#modal1"><i class="material-icons">delete</i></a>
+                                <a ng-show="qcmAll.isTeacher" data-position="top" data-delay="50" data-tooltip="Delete" class="btn-floating red delete-btn tooltipped" ng-click="qcmAll.deleteQcm(index)"><i class="material-icons">delete</i></a>
                             </td>
                         </tr>
                         <tr ng-if="qcmAll.loadError">
