@@ -15,8 +15,13 @@ class Qcm extends Model
         'title', 'class_level'
     ];
 
-    public function question()
+    public function questions()
     {
         return $this->hasMany('App\Question');
+    }
+
+    public function allQcm()
+    {
+        return $this->with('questions.choices')->get();
     }
 }

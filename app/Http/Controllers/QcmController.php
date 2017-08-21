@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Qcm;
-use App\Question;
-use App\Choice;
+use App\Repositeries\QcmRepositery;
 
 class QcmController extends Controller
 {
+
+    public function __construct(QcmRepositery $qcmRepositery)
+    {
+        $this->qcmRepositery = $qcmRepositery;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,13 +19,7 @@ class QcmController extends Controller
      */
     public function index()
     {
-        $all = Qcm::with('question.choice')->get();
-
-        if(count($all)) {
-            return response()->json(['qcms' => $all]);
-        }else{
-            return response()->json(['error' => 'No datas available']);
-        }
+        return $this->qcmRepositery->getAll();
     }
 
     /**
@@ -33,44 +30,7 @@ class QcmController extends Controller
      */
     public function store(Request $request)
     {
-
-        $qcm = new Qcm();
-
-        $datas = $request->datas;
-
-        $qcm->title = $datas["title"];
-        $qcm->class_level = $datas["class_level"];
-        $qcm->published = 0;
-
-        if(!$qcm->save()) {
-            return response()->json(['Error' => "Le qcm n'a pas été sauvegardé."]);
-        }
-
-        foreach($datas["questions"] as $question) {
-
-            $newQuest = new Question();
-
-            $newQuest->question = $question["question_title"];
-
-            if(!$qcm->question()->save($newQuest)) {
-                return response()->json(['Error' => "Le qcm n'a pas été sauvegardé."]);
-            }
-
-            foreach($question["choices"] as $choice) {
-
-                $newChoice = new Choice();
-
-                $newChoice->content = $choice["content"];
-                $newChoice->valid = $choice["valid"] === true ? 1 : 0;
-
-                if(!$newQuest->choice()->save($newChoice)) {
-                    return response()->json(['Error' => "Le qcm n'a pas été sauvegardé."]);
-                }
-            }
-
-        }
-
-        return response()->json(['Success' => 'Le qcm à bien été enregistré.']);
+        return $this->qcmRepositery->create($request);
     }
 
     /**
@@ -92,17 +52,7 @@ class QcmController extends Controller
      */
     public function edit($id)
     {
-        $qcm = Qcm::find($id)->first()->question();
-        // $qcm->questions = Question::where('qcm_id', $id);
-        //
-        // foreach($qcm->questions as &$question) {
-        //     $question->choices = Choice::where('question_id', $question->id);
-        // }
-
-        echo "<pre>";
-        var_dump($qcm);
-        echo "</pre>";
-        die();
+        return $this->qcmRepositery->edit($id);
     }
 
     /**
@@ -114,48 +64,7 @@ class QcmController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $toUpdate = $request->all();
-        $data = $toUpdate["datas"];
-        $publish = $toUpdate["changePublished"];
-
-        $qcm = Qcm::find($id);
-
-        $qcm->title = $data["title"];
-        $qcm->class_level = $data["class_level"];
-        if($publish == true) {
-            $qcm->published = $data["published"] == 0 ? 1 : 0;
-        }else{
-            $qcm->published = $data["published"];
-        }
-
-        if(!$qcm->save()) {
-            return response()->json(['Error' => "Le qcm n'a pas été sauvegardé."]);
-        }
-
-        foreach($data["question"] as $question) {
-
-            $quest = Question::find($question["id"]);
-
-            $quest->question = $question["question"];
-
-            if(!$quest->save()) {
-                return response()->json(['Error' => "Le qcm n'a pas été sauvegardé."]);
-            }
-
-            foreach($question["choice"] as $choice) {
-
-                $oldChoice = Choice::find($choice["id"]);
-
-                $oldChoice->content = $choice["content"];
-                $oldChoice->valid = $choice["valid"];
-
-                if(!$oldChoice->save()) {
-                    return response()->json(['Error' => "Le qcm n'a pas été sauvegardé."]);
-                }
-            }
-        }
-
-        return response()->json(['Success' => "Le qcm à bien été modifié."]);
+        return $this->qcmRepositery->update($request->all(), $id);
     }
 
     /**
