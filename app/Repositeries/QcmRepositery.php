@@ -6,7 +6,7 @@ use App\Qcm;
 use App\Question;
 use App\Choice;
 
-class QcmRepositery
+class QcmRepository
 {
     public function __construct(Qcm $qcm)
     {
