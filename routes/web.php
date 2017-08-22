@@ -23,6 +23,7 @@ Route::post('/qcm/addScore', 'QcmController@addScore');
 Route::resource('/post', 'PostController', ['except' => ["create"]]);
 Route::post('/platform/login', 'AuthController@login');
 Route::get('/platform/getHomeDatas', 'PlatformFrontController@home');
+Route::post('/platform/getStudentHomeDatas', 'PlatformFrontController@homeStudent');
 Route::post('/getScoreFromQcm', 'PlatformFrontController@scoreFromIds');
 /////////////
 

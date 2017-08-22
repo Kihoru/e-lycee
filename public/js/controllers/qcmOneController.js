@@ -13,7 +13,8 @@ function qcmOneController($auth, $http, $scope, $location, $route, $routeParams)
     one.isTeacher = one.currentUser.role === "teacher";
 
     $http.get('/qcm/'+$routeParams.id).then(function(res) {
-        one.datas = res.data.qcm[0];
+
+        one.datas = res.data.qcm;
 
         for(let i = 0; i < one.datas.questions.length; i++) {
             one.datas.questions[i].myanswer = false;

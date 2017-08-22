@@ -28,9 +28,6 @@ function qcmAllController($auth, $http, $scope, $location, $route, $routeParams)
                 if(!all.isTeacher) {
 
                     $http.post('/getScoreFromQcm', {user_id: all.logged.id, qcm_id: all.datas[i].id}).then(function(res) {
-                        console.log(all.logged.id);
-                        console.log(all.datas[i].id);
-                        console.log(res);
                         if(res.data.todo) {
                             all.datas[i].disabled = false;
                         }else if(res.data.already) {
@@ -45,7 +42,6 @@ function qcmAllController($auth, $http, $scope, $location, $route, $routeParams)
             all.loadError = res.data.error;
         }
     }).catch(function(err) {
-        console.log(err);
     });
 
     all.changeStatus = function(index) {

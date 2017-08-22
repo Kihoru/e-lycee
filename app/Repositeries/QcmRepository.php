@@ -11,6 +11,8 @@ class QcmRepository
 {
     public function __construct(Qcm $qcm)
     {
+        $this->saved = 'Le qcm à bien été enregistré.';
+        $this->notSaved = "Le qcm n'a pas été sauvegardé.";
         $this->qcm = $qcm;
     }
 
@@ -18,7 +20,7 @@ class QcmRepository
     {
         $all = $this->qcm->allQcm();
 
-        $response = count($all) ? ['qcms' => $all] : ['error' => 'No datas available'];
+        $response = count($all) ? ['qcms' => $all] : ['Error' => 'No datas available'];
 
         return response()->json($response);
     }
@@ -33,7 +35,7 @@ class QcmRepository
         $this->qcm->published = 0;
 
         if(!$this->qcm->save()) {
-            $response = ['Error' => "Le qcm n'a pas été sauvegardé."];
+            $response = ['Error' => $this->notSaved];
         }
 
         foreach($datas["questions"] as $question) {
@@ -43,7 +45,7 @@ class QcmRepository
             $newQuest->question = $question["question_title"];
 
             if(!$this->qcm->questions()->save($newQuest)) {
-                $response = ['Error' => "Le qcm n'a pas été sauvegardé."];
+                $response = ['Error' => $this->notSaved];
             }
 
             foreach($question["choices"] as $choice) {
@@ -54,32 +56,14 @@ class QcmRepository
                 $newChoice->valid = $choice["valid"] === true ? 1 : 0;
 
                 if(!$newQuest->choices()->save($newChoice)) {
-                    $response = ['Error' => "Le qcm n'a pas été sauvegardé."];
+                    $response = ['Error' => $this->notSaved];
                 }
             }
         }
 
-        if(is_null($response)) $response = ['Success' => 'Le qcm à bien été enregistré.'];
+        if(is_null($response)) $response = ['Success' => $this->saved];
 
         return response()->json($response);
-    }
-
-    public function edit($id)
-    {
-        $qcm = $this->qcm->find($id)->first();
-
-        $qcm->questions = $this->qcm->find($id)->questions()->get();
-
-        foreach($qcm->questions as &$question) {
-            $question->choices = Question::find($question->id)->choices()->get();
-        }
-
-        return response()->json(['qcm' => $qcm]);
-    }
-
-    private function createOrUpdate($update = false, $qcm, $id)
-    {
-
     }
 
     public function update($datas, $id)
@@ -101,7 +85,7 @@ class QcmRepository
         }
 
         if(!$qcm->save()) {
-            $response = ['Error' => "Le qcm n'a pas été sauvegardé."];
+            $response = ['Error' => $this->notSaved];
         }
 
         foreach($data["questions"] as $question) {
@@ -111,7 +95,7 @@ class QcmRepository
             $quest->question = $question["question"];
 
             if(!$quest->save()) {
-                $response = ['Error' => "Le qcm n'a pas été sauvegardé."];
+                $response = ['Error' => $this->notSaved];
             }
 
             foreach($question["choices"] as $choice) {
@@ -122,14 +106,27 @@ class QcmRepository
                 $oldChoice->valid = $choice["valid"];
 
                 if(!$oldChoice->save()) {
-                    $response = ['Error' => "Le qcm n'a pas été sauvegardé."];
+                    $response = ['Error' => $this->notSaved];
                 }
             }
         }
 
-        if(is_null($response)) $response = ['Success' => "Le qcm à bien été modifié."];
+        if(is_null($response)) $response = ['Success' => $this->saved];
 
         return response()->json($response);
+    }
+
+    public function edit($id)
+    {
+        $qcm = $this->qcm->find($id)->first();
+
+        $qcm->questions = $this->qcm->find($id)->questions()->get();
+
+        foreach($qcm->questions as &$question) {
+            $question->choices = Question::find($question->id)->choices()->get();
+        }
+
+        return response()->json(['qcm' => $qcm]);
     }
 
     public function delete($id)
@@ -149,7 +146,7 @@ class QcmRepository
     {
         $qcm = $this->qcm->getOne($id);
 
-        $response = count($qcm) ? ["qcm" => $qcm] : ["Error" => "Aucun qcm trouvé à cette idée"];
+        $response = count($qcm) ? ["qcm" => $qcm] : ["Error" => "Aucun qcm trouvé à cette id"];
 
         return response()->json($response);
     }
