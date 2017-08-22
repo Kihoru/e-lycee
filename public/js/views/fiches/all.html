@@ -52,8 +52,8 @@
                                         <span class="lever"></span>
                                     </label>
                                 </div>
-                                <a ng-hide="qcmAll.isTeacher" ng-class="{disabled: qcm.disabled}" data-position="top" data-delay="50" data-tooltip="Remplir le QCM" class="btn-floating green tooltipped" href="previewOrDoQcm.html"><i class="material-icons">subject</i></a>
-                                <a ng-show="qcmAll.isTeacher" data-position="top" data-delay="50" data-tooltip="Preview" class="btn-floating blue tooltipped" href="previewOrDoQcm.html"><i class="material-icons">remove_red_eye</i></a>
+                                <a ng-hide="qcmAll.isTeacher" ng-class="{disabled: qcm.disabled}" data-position="top" data-delay="50" data-tooltip="Remplir le QCM" class="btn-floating green tooltipped" href="/platform/qcm/one/[{qcm.id}]"><i class="material-icons">subject</i></a>
+                                <a ng-show="qcmAll.isTeacher" data-position="top" data-delay="50" data-tooltip="Preview" class="btn-floating blue tooltipped" href="/platform/qcm/one/[{qcm.id}]"><i class="material-icons">remove_red_eye</i></a>
                                 <a ng-show="qcmAll.isTeacher" data-position="top" data-delay="50" data-tooltip="Edit" class="btn-floating yellow darken-2 tooltipped" href="/platform/qcm/update/[{qcm.id}]"><i class="material-icons">edit</i></a>
                                 <a ng-show="qcmAll.isTeacher" data-position="top" data-delay="50" data-tooltip="Delete" class="btn-floating red delete-btn tooltipped" ng-click="qcmAll.deleteQcm(index)"><i class="material-icons">delete</i></a>
                             </td>

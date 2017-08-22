@@ -15,27 +15,31 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
                     files: ['/js/controllers/homeController.js']
                 },
                 {
-                    name: 'qcmall',
+                    name: 'qcmAll',
                     files: ['/js/controllers/qcmAllController.js']
                 },
                 {
-                    name: 'qcmcreate',
+                    name: 'qcmCreate',
                     files: ['/js/controllers/qcmCreateController.js']
                 },
                 {
-                    name: 'qcmupdate',
+                    name: 'qcmOne',
+                    files: ['/js/controllers/qcmOneController.js']
+                },
+                {
+                    name: 'qcmUpdate',
                     files: ['/js/controllers/qcmUpdateController.js']
                 },
                 {
-                    name: 'postall',
+                    name: 'postAll',
                     files: ['/js/controllers/postAllController.js']
                 },
                 {
-                    name: 'postcreate',
+                    name: 'postCreate',
                     files: ['/js/controllers/postCreateController.js']
                 },
                 {
-                    name: 'postupdate',
+                    name: 'postUpdate',
                     files: ['/js/controllers/postUpdateController.js']
                 }
             ]
@@ -49,7 +53,7 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
         controllerAs: 'qcmAll',
         resolve: {
             loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
-                return $ocLazyLoad.load('qcmall');
+                return $ocLazyLoad.load('qcmAll');
             }]
         }
     })
@@ -59,7 +63,7 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
         controllerAs: 'qcmCreate',
         resolve: {
             loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
-                return $ocLazyLoad.load('qcmcreate');
+                return $ocLazyLoad.load('qcmCreate');
             }]
         }
     })
@@ -69,7 +73,17 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
         controllerAs: 'qcmUpdate',
         resolve: {
             loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
-                return $ocLazyLoad.load('qcmupdate');
+                return $ocLazyLoad.load('qcmUpdate');
+            }]
+        }
+    })
+    .when('/qcm/one/:id', {
+        templateUrl: '/js/views/fiches/one.html',
+        controller: 'qcmOneController',
+        controllerAs: 'qcmOne',
+        resolve: {
+            loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load('qcmOne');
             }]
         }
     })
@@ -85,7 +99,7 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
         controllerAs: 'postAll',
         resolve: {
             loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
-                return $ocLazyLoad.load('postall');
+                return $ocLazyLoad.load('postAll');
             }]
         }
     })
@@ -95,7 +109,7 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
         controllerAs: 'postCreate',
         resolve: {
             loadModule: ['$ocLazyLoad', function($ocLazyLoad) {
-                return $ocLazyLoad.load('postcreate')
+                return $ocLazyLoad.load('postCreate')
             }]
         }
     })
@@ -105,7 +119,7 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
         controllerAs: 'postUpdate',
         resolve: {
             loadModule: ['$ocLazyLoad', function($ocLazyLoad) {
-                return $ocLazyLoad.load('postupdate')
+                return $ocLazyLoad.load('postUpdate')
             }]
         }
     })

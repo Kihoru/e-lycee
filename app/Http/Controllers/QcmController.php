@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositeries\QcmRepositery;
+use App\Repositeries\QcmRepository;
 
 class QcmController extends Controller
 {
 
-    public function __construct(QcmRepositery $qcmRepositery)
+    public function __construct(QcmRepository $qcmRepository)
     {
-        $this->qcmRepositery = $qcmRepositery;
+        $this->qcmRepository = $qcmRepository;
     }
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class QcmController extends Controller
      */
     public function index()
     {
-        return $this->qcmRepositery->getAll();
+        return $this->qcmRepository->getAll();
     }
 
     /**
@@ -30,7 +30,7 @@ class QcmController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->qcmRepositery->create($request);
+        return $this->qcmRepository->create($request);
     }
 
     /**
@@ -41,7 +41,7 @@ class QcmController extends Controller
      */
     public function show($id)
     {
-
+        return $this->qcmRepository->one($id);
     }
 
     /**
@@ -52,7 +52,7 @@ class QcmController extends Controller
      */
     public function edit($id)
     {
-        return $this->qcmRepositery->edit($id);
+        return $this->qcmRepository->edit($id);
     }
 
     /**
@@ -64,7 +64,7 @@ class QcmController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return $this->qcmRepositery->update($request->all(), $id);
+        return $this->qcmRepository->update($request->all(), $id);
     }
 
     /**
@@ -75,6 +75,6 @@ class QcmController extends Controller
      */
     public function destroy($id)
     {
-        return $this->qcmRepositery->delete($id);
+        return $this->qcmRepository->delete($id);
     }
 }

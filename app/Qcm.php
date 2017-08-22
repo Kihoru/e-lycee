@@ -24,4 +24,9 @@ class Qcm extends Model
     {
         return $this->with('questions.choices')->get();
     }
+
+    public function getOne()
+    {
+        
+    }
 }

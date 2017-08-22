@@ -6,7 +6,7 @@ use App\Qcm;
 use App\Question;
 use App\Choice;
 
-class QcmRepositery
+class QcmRepository
 {
     public function __construct(Qcm $qcm)
     {
@@ -76,6 +76,11 @@ class QcmRepositery
         return response()->json(['qcm' => $qcm]);
     }
 
+    private function createOrUpdate($update = false, $qcm, $id)
+    {
+
+    }
+
     public function update($datas, $id)
     {
         $toUpdate = $datas;
@@ -137,5 +142,14 @@ class QcmRepositery
         }
 
         return response()->json($response);
+    }
+
+    public function one($id)
+    {
+        $qcm = $this->qcm->getOne($id);
+
+        $response = count($qcm) ? ["qcm" => $qcm] : ["Error" => "Aucun qcm trouvé à cette idée"];
+
+        return response()-json($response);
     }
 }
