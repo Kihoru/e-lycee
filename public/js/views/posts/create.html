@@ -25,7 +25,7 @@
 					        	<input ng-click="selectFile()" type="file">
 					      	</div>
 					      	<div class="file-path-wrapper">
-					        	<input class="file-path validate" type="text" placeholder="Télécharger une image">
+					        	<input class="file-path validate" type="text" placeholder="Télécharger une image" onchange="angular.element(this).scope().fileNameChanged(this)">
 					      	</div>
 					    </div>
 					</div>
@@ -41,7 +41,7 @@
 			</div>
 			<div class="row">
                 <div class="col s4 offset-s1">
-                    <button class="blue-grey darken-3 btn waves-effect waves-light" type="submit" name="action">Sauvegarder
+                    <button class="blue-grey darken-3 btn waves-effect waves-light" type="submit" ng-click="postCreate.create()" name="action">Sauvegarder
                         <i class="material-icons right">send</i>
                     </button>
                 </div>
