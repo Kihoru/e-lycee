@@ -80,6 +80,9 @@ function qcmCreateController($auth, $http, $scope, $location, $route, $routePara
         }else{
             this.qcm.questions.splice(index, 1);
         }
+        setTimeout(function() {
+            runMaterials();
+        }, 0);
     }
 
 }

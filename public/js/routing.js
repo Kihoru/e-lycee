@@ -29,6 +29,14 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
                 {
                     name: 'postall',
                     files: ['/js/controllers/postAllController.js']
+                },
+                {
+                    name: 'postcreate',
+                    files: ['/js/controllers/postCreateController.js']
+                },
+                {
+                    name: 'postupdate',
+                    files: ['/js/controllers/postUpdateController.js']
                 }
             ]
     });

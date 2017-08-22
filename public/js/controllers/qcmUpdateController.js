@@ -25,7 +25,7 @@ function qcmUpdateController($auth, $http, $scope, $location, $route, $routePara
     $http.get('/qcm/' + update.datas.id + '/edit')
         .then(function(res) {
             update.datas.qcm = res.data.qcm;
-
+            $scope.$apply();
             setTimeout(function() {
                 runMaterials();
             }, 0);

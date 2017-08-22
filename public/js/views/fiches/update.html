@@ -60,7 +60,7 @@
                                                         <label for="choice_content[{choiceIndex + '_' + index}]" class="active">Choix</label>
                                                     </div>
                                                     <p>
-                                                        <input type="checkbox" id="valid[{choiceIndex + '_' + index}]" ng-model="choice.valid"/>
+                                                        <input type="checkbox" id="valid[{choiceIndex + '_' + index}]" ng-model="choice.valid == 1 ? true : false;"/>
                                                         <label for="valid[{choiceIndex + '_' + index}]">Réponse valide</label>
                                                     </p>
                                                 </div>
