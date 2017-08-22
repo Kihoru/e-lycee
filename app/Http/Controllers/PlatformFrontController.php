@@ -24,11 +24,11 @@ class PlatformFrontController extends Controller
 
     public function scoreFromIds(Request $request) {
 
-        $user_id = $request->user_id;
-        $qcm_id = $request->qcm_id;
+        $datas = $request->all();
+        $user_id = $datas['user_id'];
+        $qcm_id = $datas['qcm_id'];
 
         $score = Score::where('user_id', $user_id)->where('qcm_id', $qcm_id)->first();
-
 
         if(!count($score)) {
             return response()->json(['todo' => 'todo']);

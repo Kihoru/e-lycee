@@ -5,6 +5,7 @@ namespace App\Repositeries;
 use App\Qcm;
 use App\Question;
 use App\Choice;
+use App\Score;
 
 class QcmRepository
 {
@@ -150,6 +151,26 @@ class QcmRepository
 
         $response = count($qcm) ? ["qcm" => $qcm] : ["Error" => "Aucun qcm trouvé à cette idée"];
 
-        return response()-json($response);
+        return response()->json($response);
+    }
+
+    public function addScore($request)
+    {
+        $datas = $request->all();
+
+        $score = new Score();
+
+        $score->user_id = $datas['user_id'];
+        $score->qcm_id = $datas['qcm_id'];
+        $score->status = $datas['status'];
+        $score->note = $datas['note'];
+
+        if(!$score->save()) {
+            $response = ['Error' => "Le score n'a pas pu être validé."];
+        }else{
+            $response = ['Success' => "Le qcm a bien été validé."];
+        }
+
+        return response()->json($response);
     }
 }

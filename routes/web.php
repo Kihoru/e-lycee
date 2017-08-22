@@ -19,10 +19,11 @@ Route::get('/', function () {
 
 /* API URL */
 Route::resource('/qcm', 'QcmController', ['except' => ["create"]]);
+Route::post('/qcm/addScore', 'QcmController@addScore');
 Route::resource('/post', 'PostController', ['except' => ["create"]]);
 Route::post('/platform/login', 'AuthController@login');
 Route::get('/platform/getHomeDatas', 'PlatformFrontController@home');
-Route::get('/getScoreFromQcm', 'PlatformFrontController@scoreFromIds');
+Route::post('/getScoreFromQcm', 'PlatformFrontController@scoreFromIds');
 /////////////
 
 /** ROUTE TO ANGULAR **/

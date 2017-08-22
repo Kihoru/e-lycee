@@ -43,7 +43,7 @@
                             <td>[{qcm.title}]</td>
                             <td>[{qcm.nbQuestion}]</td>
                             <td ng-if="qcmAll.isTeacher">[{qcm.class_level == 'first_class' ? 'Première' : 'Terminale'}]</td>
-                            <td ng-if="!qcmAll.isTeacher">[{qcm.score.note}]</td>
+                            <td ng-if="!qcmAll.isTeacher">[{qcm.score.note}]%</td>
                             <td>
                                 <div ng-show="qcmAll.isTeacher" class="switch myswitch">
                                     <label>

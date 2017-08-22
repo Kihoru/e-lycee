@@ -25,8 +25,8 @@ class Qcm extends Model
         return $this->with('questions.choices')->get();
     }
 
-    public function getOne()
+    public function getOne($id)
     {
-        
+        return $this->find($id)->with('questions.choices')->get();
     }
 }

@@ -25,9 +25,12 @@ function qcmAllController($auth, $http, $scope, $location, $route, $routeParams)
                 all.datas[i].nbQuestion = all.datas[i].questions.length;
                 all.datas[i].isOkforStudent = all.datas[i].class_level === all.logged.role && all.datas[i].published === 1;
 
-                if(all.logged.role != 'teacher') {
+                if(!all.isTeacher) {
 
-                    $http.get('/getScoreFromQcm', {user_id: all.logged.id, qcm_id: all.datas[i].id}).then(function(res) {
+                    $http.post('/getScoreFromQcm', {user_id: all.logged.id, qcm_id: all.datas[i].id}).then(function(res) {
+                        console.log(all.logged.id);
+                        console.log(all.datas[i].id);
+                        console.log(res);
                         if(res.data.todo) {
                             all.datas[i].disabled = false;
                         }else if(res.data.already) {

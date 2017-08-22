@@ -77,4 +77,15 @@ class QcmController extends Controller
     {
         return $this->qcmRepository->delete($id);
     }
+    
+    /**
+     * Add a score after validating qcm
+     *
+     * @param  request object from $http call
+     * @return \Illuminate\Http\Response
+     */
+    public function addScore(Request $request)
+    {
+        return $this->qcmRepository->addScore($request);
+    }
 }
