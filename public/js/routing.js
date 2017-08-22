@@ -8,23 +8,27 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
             loadedModules: ['elycee'], modules: [
                 {
                     name: 'auth',
-                    files: ['../public/js/controllers/authController.js']
+                    files: ['/js/controllers/authController.js']
                 },
                 {
                     name: 'home',
-                    files: ['../public/js/controllers/homeController.js']
+                    files: ['/js/controllers/homeController.js']
                 },
                 {
                     name: 'qcmall',
-                    files: ['../public/js/controllers/qcmAllController.js']
+                    files: ['/js/controllers/qcmAllController.js']
                 },
                 {
                     name: 'qcmcreate',
-                    files: ['../public/js/controllers/qcmCreateController.js']
+                    files: ['/js/controllers/qcmCreateController.js']
                 },
                 {
                     name: 'qcmupdate',
-                    files: ['../public/js/controllers/qcmUpdateController.js']
+                    files: ['/js/controllers/qcmUpdateController.js']
+                },
+                {
+                    name: 'postall',
+                    files: ['/js/controllers/postAllController.js']
                 }
             ]
     });
@@ -32,7 +36,7 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
     //routes CRUD QCM /////////////////////////////////////////
     $routeProvider
     .when('/qcm/all', {
-        templateUrl: '../public/js/views/fiches/all.html',
+        templateUrl: '/js/views/fiches/all.html',
         controller: 'qcmAllController',
         controllerAs: 'qcmAll',
         resolve: {
@@ -42,7 +46,7 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
         }
     })
     .when('/qcm/create', {
-        templateUrl: '../public/js/views/fiches/create.html',
+        templateUrl: '/js/views/fiches/create.html',
         controller: 'qcmCreateController',
         controllerAs: 'qcmCreate',
         resolve: {
@@ -52,7 +56,7 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
         }
     })
     .when('/qcm/update/:id', {
-        templateUrl: '../public/js/views/fiches/update.html',
+        templateUrl: '/js/views/fiches/update.html',
         controller: 'qcmUpdateController',
         controllerAs: 'qcmUpdate',
         resolve: {
@@ -65,10 +69,45 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
         redirectTo: '/'
     });
     /////////////////////////////////////////////////////////
-
+    /// CRUD POSTS
+    $routeProvider
+    .when('/post/all', {
+        templateUrl: '/js/views/posts/all.html',
+        controller: 'postAllController',
+        controllerAs: 'postAll',
+        resolve: {
+            loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load('postall');
+            }]
+        }
+    })
+    .when('/post/create',{
+        templateUrl: '/js/views/posts/create.html',
+        controller: 'postCreateController',
+        controllerAs: 'postCreate',
+        resolve: {
+            loadModule: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load('postcreate')
+            }]
+        }
+    })
+    .when('/post/update',{
+        templateUrl: '/js/views/posts/update.html',
+        controller: 'postUpdateController',
+        controllerAs: 'postUpdate',
+        resolve: {
+            loadModule: ['$ocLazyLoad', function($ocLazyLoad) {
+                return $ocLazyLoad.load('postupdate')
+            }]
+        }
+    })
+    .otherwise({
+        redirectTo: '/'
+    });
+    ////////////////////////////////////////////////////////
     $routeProvider
         .when('/', {
-            templateUrl: '../public/js/views/auth.html',
+            templateUrl: '/js/views/auth.html',
             controller: 'authController',
             controllerAs: 'auth',
             resolve: {
@@ -78,7 +117,7 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
             }
         })
         .when('/home', {
-            templateUrl: '../public/js/views/home.html',
+            templateUrl: '/js/views/home.html',
             controller: 'homeController',
             controllerAs: 'home',
             resolve: {

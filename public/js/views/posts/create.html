@@ -1,0 +1,51 @@
+<my-nav></my-nav>
+<section id="addPost">
+	<div class="container">
+		<div class="row">
+			<div class="col s11 offset-s1">
+				<h2 class="blue-grey-text darken-3">Ajout d'un article</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s4 offset-s1">
+				<a class="blue-grey-text darken-3" href="/platform/post/all">Retourner à la liste des actualités</a>
+			</div>
+		</div>
+	</div>
+	<div class="container mgt50">
+		<form>
+			<div class="row">
+				<div class="col s9 offset-s1">
+					<h4 class="myblue-text flow-text">Créer un article</h4>
+					<p class="red-text">Mon erreur d'ajout</p>
+					<div class="input-field">
+						<div class="file-field input-field">
+					    	<div class="btn">
+					        	<span>Image</span>
+					        	<input ng-click="selectFile()" type="file">
+					      	</div>
+					      	<div class="file-path-wrapper">
+					        	<input class="file-path validate" type="text" placeholder="Télécharger une image">
+					      	</div>
+					    </div>
+					</div>
+					<div class="input-field">
+						<input placeholder="Titre" id="post_title" type="text" class="validate" ng-model="create.datas.title">
+						<label for="post_title">Titre de l'article</label>
+					</div>
+					<div class="input-field">
+						<textarea placeholder="Contenu de l'article" id="post_text" class="materialize-textarea" ng-model="create.datas.content"></textarea>
+  						<label for="textarea">Contenu de l'article</label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+                <div class="col s4 offset-s1">
+                    <button class="blue-grey darken-3 btn waves-effect waves-light" type="submit" name="action">Sauvegarder
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+		</form>
+	</div>
+</section>
