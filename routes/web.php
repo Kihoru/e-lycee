@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 /* API URL */
 Route::resource('/qcm', 'QcmController', ['except' => ["create"]]);
+Route::resource('/post', 'PostController', ['except' => ["create"]]);
 Route::post('/platform/login', 'AuthController@login');
 Route::get('/platform/getHomeDatas', 'PlatformFrontController@home');
 Route::get('/getScoreFromQcm', 'PlatformFrontController@scoreFromIds');

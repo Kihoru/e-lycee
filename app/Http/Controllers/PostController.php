@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositeries\PostRepository;
 
 class PostController extends Controller
 {
+
+    public function __construct(PostRepository $postRepository)
+    {
+        $this->postRepository = $postRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,17 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->postRepository->getAll();
     }
 
     /**
@@ -34,7 +30,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo "<pre>";
+        var_dump($request->all());
+        echo "</pre>";
+        die();
+        /*return $this->postRepository->create($request);*/
     }
 
     /**
