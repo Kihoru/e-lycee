@@ -12,25 +12,20 @@ function postCreateController($auth, $http, $scope, $location, $route, $routePar
 
     create.create = function() {
 
-    	console.log('bonjour');
-		let abstract = create.makeAbstract(create.datas.content);
-		let thumbnail = ;
-
-		let datas = {
-			title: create.datas.title,
-			abstract: abstract,
-			content: create.datas.content,
-			thumbnail: thumbnail
+		var fd = new FormData()
+		for (var i in create.datas.thumbnail) {
+		    fd.append("fileToUpload", create.datas.thumbnail[i]);
 		}
-		console.log(thumbnail);
-		/*$http.post('/post', datas).then(function(res){
-			console.log(res);
-		});*/
-	}
 
-    create.makeAbstract = function(str)
-    {
-    	let split = str.split(" ", 60);
-    	return split;
-    }
+		fd.append('title', create.datas.title);
+		fd.append('content', create.datas.content);
+
+		var config = {headers: {'Content-Type': undefined}};
+
+		$http.post('/post', fd, config)
+			.then(function(res) {
+				console.log(res);
+			});
+
+	}
 }

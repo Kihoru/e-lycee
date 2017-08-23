@@ -19,26 +19,16 @@ class PostRepository
 
     public function create($request)
     {
-        $datas = $request->datas;
-        $response = null;
+        $datas = $request->all();
+        dd($datas);
 
-        $this->post->title = $datas["title"];
-        $this->post->abstract = $datas["abstract"];
-        $this->post->content = $datas["content"];
-        $this->post->thumbnail = $datas["thumbnail"];
+        //datas contient :
 
-        foreach($datas['thumbnail'] as $thumbnail) {
-            list($width, $height) = getimagesize($thumbnail);
-
-            return response()->json(['width' => $width, 'height' => $height]);
-
-        }
-        if(!$this->post->save()) {
-            $response = ['Error' => "L'article n'a pas été sauvegardé."];
-        }else {
-            $response = ['Success' => 'L\'article a bien été sauvegardé.'];
-        }
-
-        return response()->json($response);
+        /**
+        * un array avec 3 elements.
+        * un objet php avec les informations de l'image
+        * le titre
+        * le content
+        **/
     }
 }
