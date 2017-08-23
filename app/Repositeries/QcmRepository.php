@@ -6,6 +6,9 @@ use App\Qcm;
 use App\Question;
 use App\Choice;
 use App\Score;
+use DB;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 
 class QcmRepository
 {
@@ -23,6 +26,16 @@ class QcmRepository
         $response = count($all) ? ['qcms' => $all] : ['Error' => 'No datas available'];
 
         return response()->json($response);
+    }
+
+    public function getAllFromStudent($request)
+    {
+        $id = $request->only("user_id");
+        $user_id = $id["user_id"];
+
+        $res = DB::select(DB::raw("SELECT q.*, count(qu.question) as nbQuestion, s.note FROM qcms as q INNER JOIN questions as qu on qu.qcm_id = q.id LEFT JOIN scores as s on s.qcm_id = q.id WHERE (s.user_id = $user_id or s.user_id IS NULL) GROUP BY q.id"));
+
+        return $res;
     }
 
     public function create($request)
@@ -118,8 +131,11 @@ class QcmRepository
 
     public function edit($id)
     {
-        $qcm = $this->qcm->find($id)->first();
-
+        try{
+            $qcm = $this->qcm->findOrFail($id)->first();
+        }catch(ModelNotFoundException $modelNotFoundException) {
+            return response()->json(['Error' => "Id incorrect"]);
+        }
         $qcm->questions = $this->qcm->find($id)->questions()->get();
 
         foreach($qcm->questions as &$question) {

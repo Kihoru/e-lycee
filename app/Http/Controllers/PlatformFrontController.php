@@ -29,20 +29,4 @@ class PlatformFrontController extends Controller
 
         return response()->json(['totalScore' => $totalScore]);
     }
-
-    public function scoreFromIds(Request $request)
-    {
-
-        $datas = $request->all();
-        $user_id = $datas['user_id'];
-        $qcm_id = $datas['qcm_id'];
-
-        $score = Score::where('user_id', $user_id)->where('qcm_id', $qcm_id)->first();
-
-        if(!count($score)) {
-            return response()->json(['todo' => 'todo']);
-        }else if($score->status == 'done'){
-            return response()->json(['already' => 'already', 'score' => $score]);
-        }
-    }
 }

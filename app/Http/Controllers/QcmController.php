@@ -12,6 +12,7 @@ class QcmController extends Controller
     {
         $this->qcmRepository = $qcmRepository;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,6 +21,17 @@ class QcmController extends Controller
     public function index()
     {
         return $this->qcmRepository->getAll();
+    }
+
+    /**
+     * Display a listing of the resource with special user data.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function getAllFromStudent(Request $request)
+    {
+        return $this->qcmRepository->getAllFromStudent($request);
     }
 
     /**
@@ -77,11 +89,11 @@ class QcmController extends Controller
     {
         return $this->qcmRepository->delete($id);
     }
-    
+
     /**
      * Add a score after validating qcm
      *
-     * @param  request object from $http call
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function addScore(Request $request)

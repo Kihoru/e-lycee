@@ -12,23 +12,11 @@ class Score extends Model
 
     static public function getTotalScore($user_id)
     {
-        $scores = self::where('user_id', $user_id)->get();
+        $points = self::where('user_id', $user_id)->sum("note");
+        $nb = self::where('user_id', $user_id)->count();
 
-        $nbScore = count($scores);
+        $total = ($points * 100) / ($nb * 100);
 
-        $total = self::getTotalNote($scores, $nbScore);
-
-        return ['total' => $total, 'nb' => $nbScore];
-    }
-
-    static private function getTotalNote($scores, $nb)
-    {
-        $total = 0;
-
-        foreach($scores as $score) {
-            $total += intval($score["note"]);
-        }
-
-        return ($total * 100) / ($nb * 100);
+        return ['total' => $total, 'nb' => $nb];
     }
 }

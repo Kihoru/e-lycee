@@ -16,33 +16,42 @@ function qcmAllController($auth, $http, $scope, $location, $route, $routeParams)
 
     all.toDeleteId = 0;
 
-    $http.get('/qcm').then(function(res) {
-
-        if(res.data.qcms) {
-            all.datas = res.data.qcms;
-
-            for(let i = 0; i < all.datas.length; i++) {
-                all.datas[i].nbQuestion = all.datas[i].questions.length;
-                all.datas[i].isOkforStudent = all.datas[i].class_level === all.logged.role && all.datas[i].published === 1;
-
-                if(!all.isTeacher) {
-
-                    $http.post('/getScoreFromQcm', {user_id: all.logged.id, qcm_id: all.datas[i].id}).then(function(res) {
-                        if(res.data.todo) {
-                            all.datas[i].disabled = false;
-                        }else if(res.data.already) {
-                            all.datas[i].disabled = true;
-                            all.datas[i].score = res.data.score;
-                        }
-                    });
+    if ( all.isTeacher ) {
+        $http.get('/qcm')
+            .then(function(res) {
+                if(res.data.qcms) {
+                    all.datas = res.data.qcms;
+                    all.parseDatas();
+                }else if(res.data.error) {
+                    all.loadError = res.data.error;
                 }
-            }
+            });
+    } else {
+        $http.post('/qcm/student', {user_id: all.logged.id})
+            .then(function( res ) {
+                console.log(res);
+                if ( res.data ) {
+                    all.datas = res.data;
+                    all.parseDatas();
+                } else if ( res.data.error ) {
+                    all.loadError = res.data.error;
+                }
+            });
+    }
 
-        }else if(res.data.error) {
-            all.loadError = res.data.error;
+    all.parseDatas = function() {
+        for(let i = 0; i < all.datas.length; i++) {
+            if(all.datas[i].hasOwnProperty("questions")) {
+                all.datas[i].nbQuestion = all.datas[i].questions.constructor == Array ? all.datas[i].questions.length : 1;
+            }
+            all.datas[i].isOkforStudent = all.datas[i].class_level === all.logged.role && all.datas[i].published === 1;
+
+            if(all.datas[i].note) {
+                all.datas[i].disabled = true;
+            }
         }
-    }).catch(function(err) {
-    });
+    }
+
 
     all.changeStatus = function(index) {
 
