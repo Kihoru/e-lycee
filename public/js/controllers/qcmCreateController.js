@@ -32,6 +32,43 @@ function qcmCreateController($auth, $http, $scope, $location, $route, $routePara
         ]
     };
 
+    this.validate = function(){
+
+        for(let i = 0; i < this.qcm.questions.length; i++) {
+
+            if(this.qcm.questions[i].question_title == '') {
+                this.addQcmError = "Veuillez choisir un intitulé pour la question #"+(i+1);
+                toastr.options.progressBar = true;
+                toastr.error('', this.addQcmError);
+                return false;
+            }
+
+            let oneIsValid = 0;
+
+            for(let y = 0; y < this.qcm.questions[i].choices.length; y++) {
+
+                if(this.qcm.questions[i].choices[y].content == '') {
+                    this.addQcmError = "Veuillez choisir un intitulé de réponse pour la question #"+(i+1)+" (choix #"+(y+1)+").";
+                    toastr.options.progressBar = true;
+                    toastr.error('', this.addQcmError);
+                    return true;
+                }
+
+                if(this.qcm.questions[i].choices[y].valid) oneIsValid += 1;
+            }
+
+            if(!oneIsValid) {
+                this.addQcmError = "Veuillez choisir une bonne réponse pour chaque question.";
+                toastr.options.progressBar = true;
+                toastr.error('', this.addQcmError);
+                return false;
+            }
+
+        }
+
+        if(!this.addQcmError) return true;
+    }
+
     this.addQuestion = function() {
         this.qcm.questions.push({
             question_title: '',
@@ -61,17 +98,23 @@ function qcmCreateController($auth, $http, $scope, $location, $route, $routePara
 
     this.create = function() {
 
-        $http.post('/qcm', {'datas' : this.qcm})
-            .then(function(res) {
-                if(res.data.hasOwnProperty('Success')) {
-                    toastr.options.progressBar = true;
-                    toastr.success('', res.data.Success);
-                    $location.path('/qcm/all');
-                }else if(res.data.hasOwnProperty('Error')) {
-                    toastr.options.progressBar = true;
-                    toastr.error('', res.data.Error);
-                }
-            });
+        this.addQcmError = '';
+
+        let valid = this.validate();
+
+        if(valid) {
+            $http.post('/qcm', {'datas' : this.qcm})
+                .then(function(res) {
+                    if(res.data.hasOwnProperty('Success')) {
+                        toastr.options.progressBar = true;
+                        toastr.success('', res.data.Success);
+                        $location.path('/qcm/all');
+                    }else if(res.data.hasOwnProperty('Error')) {
+                        toastr.options.progressBar = true;
+                        toastr.error('', res.data.Error);
+                    }
+                });
+        }
     }
 
     this.deleteItem = function(index, choiceIndex = false) {

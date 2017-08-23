@@ -19,10 +19,11 @@
                     <h4 class="myblue-text flow-text">Créer un Qcm</h4>
                     <p class='red-text' ng-show="qcmCreate.addQcmError">[{qcmCreate.addQcmError}]</p>
                     <div class="input-field">
-                        <input placeholder="Intitulé" id="qcm_title" type="text" class="validate" ng-model="qcmCreate.qcm.title">
+                        <input required placeholder="Intitulé" id="qcm_title" type="text" class="validate" ng-model="qcmCreate.qcm.title">
                         <label for="qcm_title">Titre du QCM</label>
                     </div>
                     <select
+                        required
                         name="class_level"  id="class_level"
                         ng-model="qcmCreate.qcm.class_level">
                         <option value="">Choisir une classe</option>
@@ -44,7 +45,7 @@
                             </div>
                             <div class="collapsible-body">
                                 <div class="input-field">
-                                    <input placeholder="Placeholder" id="question" type="text" class="validate" ng-model="question.question_title">
+                                    <input required placeholder="Placeholder" id="question" type="text" class="validate" ng-model="question.question_title">
                                     <label for="question">Intitulé de la question</label>
                                 </div>
                                 <ul class="collapsible" data-collapsible="accordion" ng-repeat="(choiceIndex, choice) in question.choices">
@@ -58,7 +59,7 @@
                                         </div>
                                         <div class="collapsible-body">
                                             <div class="input-field col s6">
-                                                <input placeholder="Placeholder" id="choice_content[{choiceIndex + '_' + index}]" type="text" class="validate" ng-model="choice.content">
+                                                <input required placeholder="Placeholder" id="choice_content[{choiceIndex + '_' + index}]" type="text" class="validate" ng-model="choice.content">
                                                 <label for="choice_content[{choiceIndex + '_' + index}]">Choix</label>
                                             </div>
                                             <p>
