@@ -30,11 +30,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        echo "<pre>";
-        var_dump($request->all());
-        echo "</pre>";
-        die();
-        /*return $this->postRepository->create($request);*/
+        return $this->postRepository->create($request);
     }
 
     /**

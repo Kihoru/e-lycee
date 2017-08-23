@@ -27,6 +27,12 @@ class PostRepository
         $this->post->content = $datas["content"];
         $this->post->thumbnail = $datas["thumbnail"];
 
+        foreach($datas['thumbnail'] as $thumbnail) {
+            list($width, $height) = getimagesize($thumbnail);
+
+            return response()->json(['width' => $width, 'height' => $height]);
+
+        }
         if(!$this->post->save()) {
             $response = ['Error' => "L'article n'a pas été sauvegardé."];
         }else {

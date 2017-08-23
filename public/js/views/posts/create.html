@@ -25,16 +25,16 @@
 					        	<input ng-click="selectFile()" type="file">
 					      	</div>
 					      	<div class="file-path-wrapper">
-					        	<input class="file-path validate" type="text" placeholder="Télécharger une image" onchange="angular.element(this).scope().fileNameChanged(this)">
+					        	<input id="file" class="file-path validate" type="text" placeholder="Télécharger une image" ng-file-select="onFileSelect($files)">
 					      	</div>
 					    </div>
 					</div>
 					<div class="input-field">
-						<input placeholder="Titre" id="post_title" type="text" class="validate" ng-model="create.datas.title">
+						<input placeholder="Titre" id="post_title" type="text" class="validate" ng-model="postCreate.datas.title">
 						<label for="post_title">Titre de l'article</label>
 					</div>
 					<div class="input-field">
-						<textarea placeholder="Contenu de l'article" id="post_text" class="materialize-textarea" ng-model="create.datas.content"></textarea>
+						<textarea placeholder="Contenu de l'article" id="post_text" class="materialize-textarea" ng-model="postCreate.datas.content"></textarea>
   						<label for="textarea">Contenu de l'article</label>
 					</div>
 				</div>

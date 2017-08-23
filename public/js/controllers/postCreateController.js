@@ -12,8 +12,9 @@ function postCreateController($auth, $http, $scope, $location, $route, $routePar
 
     create.create = function() {
 
+    	console.log('bonjour');
 		let abstract = create.makeAbstract(create.datas.content);
-		let thumbnail = $scope.fileNameChanged();
+		let thumbnail = ;
 
 		let datas = {
 			title: create.datas.title,
@@ -21,16 +22,15 @@ function postCreateController($auth, $http, $scope, $location, $route, $routePar
 			content: create.datas.content,
 			thumbnail: thumbnail
 		}
+		console.log(thumbnail);
+		/*$http.post('/post', datas).then(function(res){
+			console.log(res);
+		});*/
 	}
 
     create.makeAbstract = function(str)
     {
-
     	let split = str.split(" ", 60);
     	return split;
     }
-	$scope.fileNameChanged = function()
-	{
-		console.log('Select file');
-	}
 }
