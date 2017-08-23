@@ -18,19 +18,16 @@
 				<div class="col s9 offset-s1">
 					<h4 class="myblue-text flow-text">Créer un article</h4>
 					<p class="red-text">Mon erreur d'ajout</p>
-					<!-- <div class="input-field">
-						<div class="file-field input-field">
-					    	<div class="btn">
-					        	<span>Image</span>
-					        	<input ng-click="selectFile()" type="file">
-					      	</div>
-					      	<div class="file-path-wrapper">
-					        	<input id="file" class="file-path validate" type="text" placeholder="Télécharger une image" ng-file-select="onFileSelect($files)">
-					      	</div>
-					    </div>
-					</div> -->
 					<div class="input-field">
-						<input type="file" input-files="postCreate.datas.thumbnail">
+						<div class="file-field input-field">
+							<div class="btn">
+								<span>Image</span>
+								<input type="file" input-files="postCreate.datas.thumbnail">
+							</div>
+							<div class="file-path-wrapper">
+								<input class="file-path validate" type="text">
+							</div>
+						</div>
 					</div>
 					<div class="input-field">
 						<input placeholder="Titre" id="post_title" type="text" class="validate" ng-model="postCreate.datas.title">
