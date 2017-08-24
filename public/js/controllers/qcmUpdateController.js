@@ -30,6 +30,20 @@ function qcmUpdateController($auth, $http, $scope, $location, $route, $routePara
             }, 0);
         });
 
+    this.update = function() {
+        $http.put('/qcm/'+update.datas.id, {datas: update.datas.qcm})
+            .then(function(res) {
+                if(res.data.hasOwnProperty('Success')) {
+                    toastr.options.progressBar = true;
+                    toastr.success('', res.data.Success);
+                    $location.path('/qcm/all');
+                }else if(res.data.hasOwnProperty('Error')) {
+                    toastr.options.progressBar = true;
+                    toastr.error('', res.data.Error);
+                }
+            });
+    }
+
     this.addQuestion = function() {
         update.datas.qcm.questions.push({
             question_title: '',

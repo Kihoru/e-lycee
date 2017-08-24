@@ -14,8 +14,9 @@ class QcmRepository
 {
     public function __construct(Qcm $qcm)
     {
-        $this->saved = 'Le qcm à bien été enregistré.';
-        $this->notSaved = "Le qcm n'a pas été sauvegardé.";
+        $this->saved = ['Success' => 'Le qcm à bien été enregistré.'];
+        $this->notSaved = ['Error' => "Le qcm n'a pas été sauvegardé."];
+        $this->error = ["Error" => "Veuillez remplir le formulaire correctement"];
         $this->qcm = $qcm;
     }
 
@@ -43,38 +44,52 @@ class QcmRepository
         $datas = $request->datas;
         $response = null;
 
-        $this->qcm->title = $datas["title"];
-        $this->qcm->class_level = $datas["class_level"];
+        if($this->isOk($datas['title']) && $this->isOk($datas['class_level'])) {
+            $this->qcm->title = htmlspecialchars($datas["title"]);
+            $this->qcm->class_level = htmlspecialchars($datas["class_level"]);
+        }else{
+            return response()->json($this->error);
+        }
+
         $this->qcm->published = 0;
 
         if(!$this->qcm->save()) {
-            $response = ['Error' => $this->notSaved];
+            $response = $this->notSaved;
         }
 
         foreach($datas["questions"] as $question) {
 
             $newQuest = new Question();
 
-            $newQuest->question = $question["question_title"];
+            if($this->isOk($question["question_title"])) {
+                $newQuest->question = htmlspecialchars($question["question_title"]);
+            }else{
+                return response()->json($this->error);
+            }
+
 
             if(!$this->qcm->questions()->save($newQuest)) {
-                $response = ['Error' => $this->notSaved];
+                $response = $this->notSaved;
             }
 
             foreach($question["choices"] as $choice) {
 
                 $newChoice = new Choice();
 
-                $newChoice->content = $choice["content"];
-                $newChoice->valid = $choice["valid"] === true ? 1 : 0;
+                if($this->isOk($choice["content"]) && $this->isOk($choice["valid"])) {
+                    $newChoice->content = htmlspecialchars($choice["content"]);
+                    $newChoice->valid = $choice["valid"] === true ? 1 : 0;
+                }else{
+                    return response()->json($this->error);
+                }
 
                 if(!$newQuest->choices()->save($newChoice)) {
-                    $response = ['Error' => $this->notSaved];
+                    $response = $this->notSaved;
                 }
             }
         }
 
-        if(is_null($response)) $response = ['Success' => $this->saved];
+        if(is_null($response)) $response = $this->saved;
 
         return response()->json($response);
     }
@@ -84,13 +99,18 @@ class QcmRepository
         $toUpdate = $datas;
         $data = $toUpdate["datas"];
 
-        $publish = $toUpdate["changePublished"];
+        $publish = isset($toUpdate["changePublished"]) ? $toUpdate["changePublished"] : false;
         $response = null;
 
         $qcm = $this->qcm->find($id);
 
-        $qcm->title = $data["title"];
-        $qcm->class_level = $data["class_level"];
+        if($this->isOk($data['title']) && $this->isOk($data['class_level'])) {
+            $qcm->title = htmlspecialchars($data["title"]);
+            $qcm->class_level = htmlspecialchars($data["class_level"]);
+        }else{
+            return response()->json($this->error);
+        }
+
         if($publish == true) {
             $qcm->published = $data["published"] == 0 ? 1 : 0;
         }else{
@@ -98,33 +118,41 @@ class QcmRepository
         }
 
         if(!$qcm->save()) {
-            $response = ['Error' => $this->notSaved];
+            $response = $this->notSaved;
         }
 
         foreach($data["questions"] as $question) {
 
             $quest = Question::find($question["id"]);
 
-            $quest->question = $question["question"];
+            if($this->isOk($question["question"])) {
+                $quest->question = htmlspecialchars($question["question"]);
+            }else{
+                return response()->json($this->error);
+            }
 
             if(!$quest->save()) {
-                $response = ['Error' => $this->notSaved];
+                $response = $this->notSaved;
             }
 
             foreach($question["choices"] as $choice) {
 
                 $oldChoice = Choice::find($choice["id"]);
 
-                $oldChoice->content = $choice["content"];
+                if($this->isOk($choice["content"])) {
+                    $oldChoice->content = htmlspecialchars($choice["content"]);
+                }else{
+                    return response()->json($this->error);
+                }
                 $oldChoice->valid = $choice["valid"];
 
                 if(!$oldChoice->save()) {
-                    $response = ['Error' => $this->notSaved];
+                    $response = $this->notSaved;
                 }
             }
         }
 
-        if(is_null($response)) $response = ['Success' => $this->saved];
+        if(is_null($response)) $response = $this->saved;
 
         return response()->json($response);
     }
@@ -132,10 +160,11 @@ class QcmRepository
     public function edit($id)
     {
         try{
-            $qcm = $this->qcm->findOrFail($id)->first();
+            $qcm = $this->qcm->findOrFail($id);
         }catch(ModelNotFoundException $modelNotFoundException) {
             return response()->json(['Error' => "Id incorrect"]);
         }
+
         $qcm->questions = $this->qcm->find($id)->questions()->get();
 
         foreach($qcm->questions as &$question) {
@@ -185,5 +214,10 @@ class QcmRepository
         }
 
         return response()->json($response);
+    }
+
+    private function isOk($var)
+    {
+        return isset($var) && !empty($var);
     }
 }
