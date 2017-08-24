@@ -5,6 +5,7 @@ namespace App\Repositeries;
 use App\Post;
 use App\Comment;
 use Intervention\Image\ImageManager;
+use Illuminate\Exception;
 
 class PostRepository
 {
@@ -30,13 +31,12 @@ class PostRepository
         $this->post->content = $datas["content"];
         $this->post->user_id = $datas["user_id"];
 
-        dd($datas['fileToUpload']->size());
-
         $fileName = uniqid().'.'.$datas['fileToUpload']->extension();
 
-        if(! $this->image->make($datas['fileToUpload']->path())->save('../public/upload/posts/'.$fileName)) {
-            var_dump('failure');
-            die();
+        try{
+            $this->image->make($datas['fileToUpload']->path())->save('/public/upload/posts/'.$fileName);
+        }catch(Exception $exception){
+            return response()->json(['Error' => 'Votre image est trop lourde, veuillez en selectionner une de moins de 2MO']);
         }
 
         $this->post->url_thumbnail = $fileName;
