@@ -1,0 +1,35 @@
+'/public/upload/posts/img.jpg'
+{
+	"posts": [
+		{
+			"title": "STAR WARS : UN SPIN-OFF SUR OBI-WAN KENOBI SERAIT EN PRÉPARATION PAR LE RÉALISATEUR DE BILLY ELLIOTT",
+			"abstract": "Le réalisateur Stephen Daldry serait sur le point de signer pour réaliser un nouveau spin-off de la saga Star Wars dédié à Obi-Wan Kenobi !",
+			"content": "Après Rogue One et le film sur la jeunesse de Han Solo, le sujet du troisième spin-off de la saga Star Wars semble se confirmer ! En effet, selon le toujours très bien renseigné The Hollywood Reporter, Stephen Daldry serait actuellement en discussion pour réaliser un film centré sur Obi-Wan Kenobi ! Âgé de 56 ans, Stephen Daldry est un réalisateur britannique qui est notamment connu pour avoir réalisé Billy Elliott, The Hours, ou bien encore The Reader. Plus récemment, l'homme s'est également occupé de réaliser les deux premiers épisodes de la série Netflix The Crown.",
+			"url_thumbnail": "http://static.fanactu.com/img/actualites/cinema/7184/star-wars-spin-off-sur-obi-wan-kenobi-serait-preparation-par-realisateur-billy-elliott_cover.jpg"
+		},
+		{
+			"title": "MARTIN SCORSESE VA PRODUIRE UN FILM SUR LES ORIGINES DU JOKER",
+			"abstract": "Grande nouvelles pour les fans du plus cinglé des criminels. Le Joker, antagoniste favori de l'univers Batman, va avoir droit à son propre film, produit par Martin Scorsese.",
+			"content": "Après le succès à la fois critique et commercial de Wonder Woman, DC et Warner Bros semblent enfin repartis du bon pied. Profitant du succès de leur dernière production, les studios viennent d'annoncer qu'un film consacré au Prince du Crime, le Joker, allait voir le jour. Ce film devrait s'intéresser aux origines du clown, élément peu exploité sur grand écran. En effet l'adaptation de Tim Burton de 1989 est la seule à explorer, à sa manière, les origines de Mr. J dans l'extrait que vous pourrez voir ci-dessous.",
+			"url_thumbnail": "http://static.hitek.fr/img/actualite/2017/08/23/i_gallerychar-1900x900-joker-52ab8edcabce71-28062812.jpg"
+		},
+		{
+			"title": "UNE NOUVELLE BANDE ANNONCE POUR BLADE RUNNER 2049",
+			"abstract": "Le studio Warner Bros. vient de dévoiler une nouvelle bande annonce de Blade Runner 2049, la suite du film SF culte de 1982 !",
+			"content": "35 ans après la sortie du premier opus réalisé par Ridley Scott devenu un monument du cinéma de science-fiction, Harrison Ford sera de retour cet automne dans la peau de l'agent Rick Deckard dans Blade Runner 2049 dont voici la nouvelle bande annonce riche en images inédites ! Fort occupé à redonner vie à la franchise Alien, Ridley Scott a laissé ici le poste de réalisateur au non moins doué Denis Villeneuve à qui l'on doit l'excellent Premier Contact sorti l'année dernière au cinéma. Si Ford sera bien présent au casting, c'est Ryan Gosling qui devrait mener la danse dans cette suite qui se déroulera trente ans après les événements du premier opus !",
+			"url_thumbnail": "http://static.fanactu.com/img/actualites/cinema/7199/une-nouvelle-bande-annonce-pour-blade-runner-2049_cover.jpg"
+		},
+		{
+			"title": "MILLA JOVOVICH REJOINT LE CASTING DU REBOOT CINÉ DE HELLBOY",
+			"abstract": "Après avoir conclu la saga Resident Evil, Milla Jovovich incarnera la Reine de Sang dans le futur reboot ciné de Hellboy !",
+			"content": "Et un nouveau nom au casting du reboot ciné de Hellboy ! Après David Harbour (Stranger Things) qui reprendra le rôle du démon rouge et Ian McShane (American Gods) qui incarnera le Professeur Broom, voilà que Milla Jovovich vient d'être annoncée au casting du film ! L'actrice connue pour son rôle de Leeloo dans Le Cinquième Élément et d'Alice dans la saga ciné Resident Evil, y interprétera le rôle de Vivienne, alias la Reine de Sang. Apparue pour la première fois en 2009 dans La Grande Battue, la Reine de Sang est la plus grand sorcière de Grande Bretagne. Elle sera la principale ennemie d'Hellboy dans le film.",
+			"url_thumbnail": "http://static.fanactu.com/img/actualites/cinema/7163/milla-jovovich-rejoint-casting-reboot-cine-hellboy_cover.jpg"
+		},
+		{
+			"title": "UN PREMIER TEASER POUR PACIFIC RIM UPRISING",
+			"abstract": "Legendary Pictures a profité du Comic-Con de San Diego pour dévoiler les premières images de la suite de Pacific Rim !",
+			"content": "Cinq ans après un premier opus des plus réussis signé Guillermo del Toro, les robots géants se battant contre les gigantesques monstres venus des entrailles de la Terre seront de retour en 2018 au cinéma dans Pacific Rim Uprising dont voici la première vidéo promotionnelle ! La séquence qui ne montre pas encore de véritables images du film, est en fait un faux spot publicitaire ayant pour but de recruter de nouveaux pilotes pour les Jaegers, les fameux robots géants combattant les kaijus. Une vidéo qui est par ailleurs l'occasion de découvrir John Boyega  dans la peau de Stacker Pentecost, le fils du personnage joué par Idris Elba dans le premier opus.",
+			"url_thumbnail": "http://static.fanactu.com/img/actualites/cinema/7097/premier-teaser-pour-pacific-rim-uprising_cover.jpg"
+		}
+	]
+}
