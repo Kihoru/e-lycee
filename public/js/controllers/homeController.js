@@ -14,6 +14,7 @@ function homeController($auth, $http, $scope, $location, $route, $routeParams) {
 
     if(home.isTeacher) {
         $http.get('/platform/getHomeDatas').then(function(res) {
+            console.log(res.data);
             home.datas = res.data;
         });
     }else{

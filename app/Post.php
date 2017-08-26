@@ -24,4 +24,9 @@ class Post extends Model
     {
     	return $this->with('comments')->get();
     }
+
+    public function getLasts($nb)
+    {
+        return $this->orderBy('id', 'desc')->take($nb)->get();
+    }
 }

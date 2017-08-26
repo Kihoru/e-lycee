@@ -11,6 +11,15 @@ use Illuminate\Http\Request;
 
 class PlatformFrontController extends Controller
 {
+
+    public function __construct(Qcm $qcm, User $user, Post $post, Comment $comment)
+    {
+        $this->qcm = $qcm;
+        $this->post = $post;
+        $this->user = $user;
+        $this->comment = $comment;
+    }
+
     public function home()
     {
 
@@ -18,16 +27,17 @@ class PlatformFrontController extends Controller
         $commentNb = Comment::count();
         $qcmNb = Qcm::count();
 
-        $lastQcm = Qcm::getLasts(3);
-        $lastComments = Post::getLasts(3);
-        $bestStudents = DB::select( DB::raw("") );
+        $lastQcm = $this->qcm->getLasts(3);
+        $lastPosts = $this->post->getLasts(3);
+        $bestStudents = [0, 1, 2];//DB::select( DB::raw("") );
 
         return response()->json(
             [
                 'nbUser' => $userNb,
                 'nbComment' => $commentNb,
                 'nbQcm' => $qcmNb,
-                'lastQcm' => $lastComments,
+                'lastQcm' => $lastQcm,
+                'lastPosts' => $lastPosts,
                 'bestStudents' => $bestStudents
             ]
         );

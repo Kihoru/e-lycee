@@ -28,28 +28,12 @@
                     <div class="card-content whi-yel-text">
                         <span class="card-title">Fiches</span>
                         <ul>
-                            <li class="row">
-                                <a href="listQcm.html" class="whi-yel-text"><div class="col s10">
-                                    <p>Titre de la fiche : QMC</p>
+                            <li class="row" ng-repeat="qcm in home.datas.lastQcm">
+                                <a href="/platform/qcm/all" class="whi-yel-text"><div class="col s10">
+                                    <p>[{qcm.title}]</p>
                                 </div></a>
                                 <div class="col s2 right-align">
-                                    <p class="status green"></p>
-                                </div>
-                            </li>
-                            <li class="row">
-                                <a href="listQcm.html" class="whi-yel-text"><div class="col s10">
-                                    <p>Titre de la fiche blablabla</p>
-                                </div></a>
-                                <div class="col s2 right-align">
-                                    <p class="status green"></p>
-                                </div>
-                            </li>
-                            <li class="row">
-                                <a href="listQcm.html" class="whi-yel-text"><div class="col s10">
-                                    <p>Titre de la fiche de terminale</p>
-                                </div></a>
-                                <div class="col s2 right-align">
-                                    <p class="status red"></p>
+                                    <p class="status" ng-class="{green: qcm.published == 1, red: qcm.published == 0}"></p>
                                 </div>
                             </li>
                         </ul>
@@ -64,28 +48,12 @@
                     <div class="card-content whi-yel-text">
                         <span class="card-title">Articles</span>
                         <ul>
-                            <li class="row">
-                                <a href="listQcm.html" class="whi-yel-text"><div class="col s10">
-                                    <p>Lycee portes ouvertes</p>
+                            <li class="row" ng-repeat="post in home.datas.lastPosts">
+                                <a href="/platform/post/all" class="whi-yel-text"><div class="col s10">
+                                    <p>[{post.title}]</p>
                                 </div></a>
                                 <div class="col s2 right-align">
-                                    <p class="status green"></p>
-                                </div>
-                            </li>
-                            <li class="row">
-                                <a href="listQcm.html" class="whi-yel-text"><div class="col s10">
-                                    <p>Interview ancien élève</p>
-                                </div></a>
-                                <div class="col s2 right-align">
-                                    <p class="status red"></p>
-                                </div>
-                            </li>
-                            <li class="row">
-                                <a href="listQcm.html" class="whi-yel-text"><div class="col s10">
-                                    <p>La journée mondiale des étudiants</p>
-                                </div></a>
-                                <div class="col s2 right-align">
-                                    <p class="status red"></p>
+                                    <p class="status" ng-class="{green: post.status === 1, red: post.status === 0}"></p>
                                 </div>
                             </li>
                         </ul>
