@@ -98,6 +98,19 @@ class PostRepository
         return response()->json(["post" => $post]);
     }
 
+    public function delete($id)
+    {
+        $post = $this->post->find($id);
+        $response = null;
+        if(!$post->delete()) {
+            $response = ["Error" => "Le qcm n'a pas pu être supprimé"];
+        }else{
+            $response = ["Success" => "Le Qcm a bien été supprimé"];
+        }
+
+        return response()->json($response);
+    }
+
     private function makeAbstract($content)
     {
         return substr($content, 0, 100)."...";

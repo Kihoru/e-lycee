@@ -75,6 +75,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return $this->postRepository->delete($id);
     }
 }
