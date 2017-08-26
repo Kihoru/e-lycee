@@ -6,6 +6,7 @@ use App\Qcm;
 use App\Comment;
 use App\User;
 use App\Score;
+use App\Post;
 use Illuminate\Http\Request;
 
 class PlatformFrontController extends Controller
@@ -17,7 +18,19 @@ class PlatformFrontController extends Controller
         $commentNb = Comment::count();
         $qcmNb = Qcm::count();
 
-        return response()->json(['nbUser' => $userNb, 'nbComment' => $commentNb, 'nbQcm' => $qcmNb]);
+        $lastQcm = Qcm::getLasts(3);
+        $lastComments = Post::getLasts(3);
+        $bestStudents = DB::select( DB::raw("") );
+
+        return response()->json(
+            [
+                'nbUser' => $userNb,
+                'nbComment' => $commentNb,
+                'nbQcm' => $qcmNb,
+                'lastQcm' => $lastComments,
+                'bestStudents' => $bestStudents
+            ]
+        );
 
     }
 

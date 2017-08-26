@@ -34,7 +34,28 @@ class QcmRepository
         $id = $request->only("user_id");
         $user_id = $id["user_id"];
 
-        $res = DB::select(DB::raw("SELECT q.*, count(qu.question) as nbQuestion, s.note FROM qcms as q INNER JOIN questions as qu on qu.qcm_id = q.id LEFT JOIN scores as s on s.qcm_id = q.id WHERE (s.user_id = $user_id or s.user_id IS NULL) GROUP BY q.id"));
+        $count = Score::where('user_id', $user_id)->count();
+
+        if($count) {
+            $res = DB::select(DB::raw("SELECT q.*, count(qu.question) as nbQuestion, s.note FROM qcms as q INNER JOIN questions as qu on qu.qcm_id = q.id LEFT JOIN scores as s on s.qcm_id = q.id WHERE s.user_id = $user_id GROUP BY q.id"));
+            $ids = array();
+            foreach($res as $r) {
+                array_push($ids, $r->id);
+            }
+
+            $allQcms = $this->qcm->allQcm();
+            $i = 0;
+            foreach($allQcms as $qcm) {
+                if(in_array($qcm->id, $ids)) {
+                    unset($allQcms[$i]);
+                }else{
+                    array_push($res, $allQcms[$i]);
+                }
+                $i++;
+            }
+        }else{
+            $res = $this->qcm->allQcm();
+        }
 
         return $res;
     }
@@ -200,17 +221,23 @@ class QcmRepository
     {
         $datas = $request->all();
 
-        $score = new Score();
+        $isAlreadyScored = Score::where('user_id', $datas['user_id'])->where('qcm_id', $datas['qcm_id'])->count();
 
-        $score->user_id = $datas['user_id'];
-        $score->qcm_id = $datas['qcm_id'];
-        $score->status = $datas['status'];
-        $score->note = $datas['note'];
+        if(!$isAlreadyScored) {
+            $score = new Score();
 
-        if(!$score->save()) {
-            $response = ['Error' => "Le score n'a pas pu être validé."];
+            $score->user_id = $datas['user_id'];
+            $score->qcm_id = $datas['qcm_id'];
+            $score->status = $datas['status'];
+            $score->note = $datas['note'];
+
+            if(!$score->save()) {
+                $response = ['Error' => "Le score n'a pas pu être validé."];
+            }else{
+                $response = ['Success' => "Le qcm a bien été validé."];
+            }
         }else{
-            $response = ['Success' => "Le qcm a bien été validé."];
+            $response = ['Error' => "Vous avez déjà répondu à ce qcm."];
         }
 
         return response()->json($response);

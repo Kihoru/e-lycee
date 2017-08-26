@@ -15,4 +15,9 @@ class Comment extends Model
         protected $fillable = [
             'title', 'content', 'status'
         ];
+
+        public function getLasts($nb)
+        {
+            return $this->orderBy('id', 'desc')->take($nb)->get();
+        }
 }

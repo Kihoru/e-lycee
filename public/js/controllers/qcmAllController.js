@@ -46,7 +46,7 @@ function qcmAllController($auth, $http, $scope, $location, $route, $routeParams)
             }
             all.datas[i].isOkforStudent = all.datas[i].class_level === all.logged.role && all.datas[i].published === 1;
 
-            if(all.datas[i].note) {
+            if(all.datas[i].hasOwnProperty("note")) {
                 all.datas[i].disabled = true;
             }
         }

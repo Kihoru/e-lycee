@@ -15,7 +15,7 @@ class Score extends Model
         $points = self::where('user_id', $user_id)->sum("note");
         $nb = self::where('user_id', $user_id)->count();
 
-        $total = ($points * 100) / ($nb * 100);
+        $total = $nb ? ($points * 100) / ($nb * 100) : 0;
 
         return ['total' => $total, 'nb' => $nb];
     }

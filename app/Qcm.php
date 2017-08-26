@@ -29,4 +29,9 @@ class Qcm extends Model
     {
         return $this->with('questions.choices')->find($id);
     }
+
+    public function getLasts($nb)
+    {
+        return $this->orderBy('id', 'desc')->take($nb)->get();
+    }
 }
