@@ -20,6 +20,10 @@ class PostRepository
     public function getAll()
     {
         $all = $this->post->allPost();
+
+        $response = count($all) ? ['posts' => $all] : ['Error' => 'No datas available'];
+
+        return response()->json($response);
     }
 
     public function create($request)
@@ -49,6 +53,49 @@ class PostRepository
         if(is_null($response)) $response = ['Success' => $this->saved];
 
         return response()->json($response);
+    }
+
+    public function update($request, $id)
+    {
+        $toUpdate = $request->all();
+        $data = $toUpdate["datas"];
+
+        $publish = isset($toUpdate["changePublished"]) ? $toUpdate["changePublished"] : false;
+        $response = null;
+
+        $post = $this->post->find($id);
+
+        if($publish == true) {
+            $post->status = $data["status"] == 0 ? 1 : 0;
+            $post->save();
+
+            return response()->json(["Success" => "Status bien changé."]);
+        }else{
+            $post->status = $data["status"];
+        }
+
+        $post->title = $data["title"];
+        $post->abstract = $data["abstract"];
+        $post->content = $data["content"];
+
+        if(!$post->save()) {
+            $response = ["Error" => "Les modifications n'ont pas été sauvegardées."];
+        }else{
+            $response = ["Success" => "Les modifications ont bien été enregistrées"];
+        }
+
+        return response()->json($response);
+    }
+
+    public function edit($id)
+    {
+        try{
+            $post = $this->post->find($id);
+        }catch(ModelNotFoundException $modelNotFoundException) {
+            return response()->json(['Error' => "Id incorrect"]);
+        }
+
+        return response()->json(["post" => $post]);
     }
 
     private function makeAbstract($content)

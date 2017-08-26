@@ -18,6 +18,10 @@ function qcmUpdateController($auth, $http, $scope, $location, $route, $routePara
 
     let update = this;
 
+    update.currentUser = localStorage.getItem("user_logged") ? JSON.parse(localStorage.getItem("user_logged")) : false;
+
+    if(update.currentUser.role !== 'teacher') $location.path('/');
+
     update.datas = {
         id: $routeParams.id
     }

@@ -97,12 +97,12 @@ class QcmRepository
 
                 $newChoice = new Choice();
 
-                if($this->isOk($choice["content"]) && $this->isOk($choice["valid"])) {
+                if($this->isOk($choice["content"])) {
                     $newChoice->content = htmlspecialchars($choice["content"]);
-                    $newChoice->valid = $choice["valid"] === true ? 1 : 0;
                 }else{
                     return response()->json($this->error);
                 }
+                $newChoice->valid = $choice["valid"] === true ? 1 : 0;
 
                 if(!$newQuest->choices()->save($newChoice)) {
                     $response = $this->notSaved;

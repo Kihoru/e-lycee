@@ -18,11 +18,10 @@
                     <input id="icon_prefix" type="text" class="validate">
                     <label for="icon_prefix">Search...</label>
                 </div>
-                <table class="bordered centered responsive-table">
+                <table class="bordered responsive-table">
                     <thead>
                         <tr>
                             <th>Titre de l'actualité</th>
-                            <th>Status</th>
                             <th>Nombre de commentaire</th>
                             <th>Actions</th>
                         </tr>
@@ -38,123 +37,19 @@
                         </div>
                     </div>
                     <tbody>
-                        <tr>
-                            <td>Mon actu #1</td>
-                            <td>Publiée</td>
-                            <td>2</td>
+                        <tr ng-repeat="(index, post) in postAll.posts">
+                            <td>[{post.title.substr(0, 40) + "..."}]</td>
+                            <td>[{post.comments.length}]</td>
                             <td>
                                 <div class="switch myswitch">
                                     <label>
                                         Publish
-                                        <input type="checkbox">
+                                        <input type="checkbox" ng-checked="post.status" ng-click="postAll.changeStatus(index)">
                                         <span class="lever"></span>
                                     </label>
                                 </div>
-                                <a data-position="top" data-delay="50" data-tooltip="Preview" class="btn-floating blue tooltipped" href="previewOrDoQcm.html"><i class="material-icons">remove_red_eye</i></a>
-                                <a data-position="top" data-delay="50" data-tooltip="Edit" class="btn-floating yellow darken-2 tooltipped" href="editPost.html"><i class="material-icons">edit</i></a>
-                                <a data-position="top" data-delay="50" data-tooltip="Delete" class="btn-floating red delete-btn tooltipped modal-trigger" href="#modal1"><i class="material-icons">delete</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Mon actu #2</td>
-                            <td>Publiée</td>
-                            <td>15</td>
-                            <td>
-                                <div class="switch myswitch">
-                                    <label>
-                                        Publish
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                    </label>
-                                </div>
-                                <a data-position="top" data-delay="50" data-tooltip="Preview" class="btn-floating blue tooltipped" href="previewOrDoQcm.html"><i class="material-icons">remove_red_eye</i></a>
-                                <a data-position="top" data-delay="50" data-tooltip="Edit" class="btn-floating yellow darken-2 tooltipped" href="editPost.html"><i class="material-icons">edit</i></a>
-                                <a data-position="top" data-delay="50" data-tooltip="Delete" class="btn-floating red delete-btn tooltipped modal-trigger" href="#modal1"><i class="material-icons">delete</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Mon actu #3</td>
-                            <td>Non publiée</td>
-                            <td>8</td>
-                            <td>
-                                <div class="switch myswitch">
-                                    <label>
-                                        Publish
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                    </label>
-                                </div>
-                                <a data-position="top" data-delay="50" data-tooltip="Preview" class="btn-floating blue tooltipped" href="previewOrDoQcm.html"><i class="material-icons">remove_red_eye</i></a>
-                                <a data-position="top" data-delay="50" data-tooltip="Edit" class="btn-floating yellow darken-2 tooltipped" href="editPost.html"><i class="material-icons">edit</i></a>
-                                <a data-position="top" data-delay="50" data-tooltip="Delete" class="btn-floating red delete-btn tooltipped modal-trigger" href="#modal1"><i class="material-icons">delete</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Mon actu #4</td>
-                            <td>Publiée</td>
-                            <td>75</td>
-                            <td>
-                                <div class="switch myswitch">
-                                    <label>
-                                        Publish
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                    </label>
-                                </div>
-                                <a data-position="top" data-delay="50" data-tooltip="Preview" class="btn-floating blue tooltipped" href="previewOrDoQcm.html"><i class="material-icons">remove_red_eye</i></a>
-                                <a data-position="top" data-delay="50" data-tooltip="Edit" class="btn-floating yellow darken-2 tooltipped" href="editPost.html"><i class="material-icons">edit</i></a>
-                                <a data-position="top" data-delay="50" data-tooltip="Delete" class="btn-floating red delete-btn tooltipped modal-trigger" href="#modal1"><i class="material-icons">delete</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Mon actu #5</td>
-                            <td>Non publiée</td>
-                            <td>0</td>
-                            <td>
-                                <div class="switch myswitch">
-                                    <label>
-                                        Publish
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                    </label>
-                                </div>
-                                <a data-position="top" data-delay="50" data-tooltip="Preview" class="btn-floating blue tooltipped" href="previewOrDoQcm.html"><i class="material-icons">remove_red_eye</i></a>
-                                <a data-position="top" data-delay="50" data-tooltip="Edit" class="btn-floating yellow darken-2 tooltipped" href="editPost.html"><i class="material-icons">edit</i></a>
-                                <a data-position="top" data-delay="50" data-tooltip="Delete" class="btn-floating red delete-btn tooltipped modal-trigger" href="#modal1"><i class="material-icons">delete</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Mon actu #6</td>
-                            <td>Publiée</td>
-                            <td>3</td>
-                            <td>
-                                <div class="switch myswitch">
-                                    <label>
-                                        Publish
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                    </label>
-                                </div>
-                                <a data-position="top" data-delay="50" data-tooltip="Preview" class="btn-floating blue tooltipped" href="previewOrDoQcm.html"><i class="material-icons">remove_red_eye</i></a>
-                                <a data-position="top" data-delay="50" data-tooltip="Edit" class="btn-floating yellow darken-2 tooltipped" href="editPost.html"><i class="material-icons">edit</i></a>
-                                <a data-position="top" data-delay="50" data-tooltip="Delete" class="btn-floating red delete-btn tooltipped modal-trigger" href="#modal1"><i class="material-icons">delete</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Mon actu #7</td>
-                            <td>Publiée</td>
-                            <td>14</td>
-                            <td>
-                                <div class="switch myswitch">
-                                    <label>
-                                        Publish
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                    </label>
-                                </div>
-                                <a data-position="top" data-delay="50" data-tooltip="Preview" class="btn-floating blue tooltipped" href="previewOrDoQcm.html"><i class="material-icons">remove_red_eye</i></a>
-                                <a data-position="top" data-delay="50" data-tooltip="Edit" class="btn-floating yellow darken-2 tooltipped" href="editPost.html"><i class="material-icons">edit</i></a>
-                                <a data-position="top" data-delay="50" data-tooltip="Delete" class="btn-floating red delete-btn tooltipped modal-trigger" href="#modal1"><i class="material-icons">delete</i></a>
+                                <a data-position="top" data-delay="50" data-tooltip="Edit" class="btn-floating yellow darken-2 tooltipped" href="/platform/post/update/[{post.id}]"><i class="material-icons">edit</i></a>
+                                <a data-position="top" data-delay="50" data-tooltip="Delete" class="btn-floating red delete-btn tooltipped" ng-click="postAll.deletePost(index)"><i class="material-icons">delete</i></a>
                             </td>
                         </tr>
                     </tbody>

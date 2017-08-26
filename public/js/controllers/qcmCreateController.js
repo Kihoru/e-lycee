@@ -12,6 +12,10 @@ function qcmCreateController($auth, $http, $scope, $location, $route, $routePara
         $('.tooltipped').tooltip({delay: 50});
     }
 
+    this.currentUser = localStorage.getItem("user_logged") ? JSON.parse(localStorage.getItem("user_logged")) : false;
+
+    if(this.currentUser.role !== 'teacher') $location.path('/');
+
     setTimeout(function() {
         runMaterials();
     }, 0);

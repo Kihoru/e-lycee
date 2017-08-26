@@ -5,44 +5,44 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
 
 
     $ocLazyLoadProvider.config({
-            loadedModules: ['elycee'], modules: [
-                {
-                    name: 'auth',
-                    files: ['/js/controllers/authController.js']
-                },
-                {
-                    name: 'home',
-                    files: ['/js/controllers/homeController.js']
-                },
-                {
-                    name: 'qcmAll',
-                    files: ['/js/controllers/qcmAllController.js']
-                },
-                {
-                    name: 'qcmCreate',
-                    files: ['/js/controllers/qcmCreateController.js']
-                },
-                {
-                    name: 'qcmOne',
-                    files: ['/js/controllers/qcmOneController.js']
-                },
-                {
-                    name: 'qcmUpdate',
-                    files: ['/js/controllers/qcmUpdateController.js']
-                },
-                {
-                    name: 'postAll',
-                    files: ['/js/controllers/postAllController.js']
-                },
-                {
-                    name: 'postCreate',
-                    files: ['/js/controllers/postCreateController.js']
-                },
-                {
-                    name: 'postUpdate',
-                    files: ['/js/controllers/postUpdateController.js']
-                }
-            ]
+        loadedModules: ['elycee'], modules: [
+            {
+                name: 'auth',
+                files: ['/js/controllers/authController.js']
+            },
+            {
+                name: 'home',
+                files: ['/js/controllers/homeController.js']
+            },
+            {
+                name: 'qcmAll',
+                files: ['/js/controllers/qcmAllController.js']
+            },
+            {
+                name: 'qcmCreate',
+                files: ['/js/controllers/qcmCreateController.js']
+            },
+            {
+                name: 'qcmOne',
+                files: ['/js/controllers/qcmOneController.js']
+            },
+            {
+                name: 'qcmUpdate',
+                files: ['/js/controllers/qcmUpdateController.js']
+            },
+            {
+                name: 'postAll',
+                files: ['/js/controllers/postAllController.js']
+            },
+            {
+                name: 'postCreate',
+                files: ['/js/controllers/postCreateController.js']
+            },
+            {
+                name: 'postUpdate',
+                files: ['/js/controllers/postUpdateController.js']
+            }
+        ]
     });
 
     //routes CRUD QCM /////////////////////////////////////////
@@ -113,7 +113,7 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
             }]
         }
     })
-    .when('/post/update',{
+    .when('/post/update/:id',{
         templateUrl: '/js/views/posts/update.html',
         controller: 'postUpdateController',
         controllerAs: 'postUpdate',

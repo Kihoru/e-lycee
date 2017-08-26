@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('abstract');
             $table->longText('content');
             $table->string('url_thumbnail');
-            $table->enum('status', ['published', 'unpublished']);
+            $table->boolean("status");
             $table->timestamps();
             $table->foreign('user_id')
                   ->references('id')->on('users')

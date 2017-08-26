@@ -10,6 +10,8 @@ function postCreateController($auth, $http, $scope, $location, $route, $routePar
 
 	create.currentUser = localStorage.getItem("user_logged") ? JSON.parse(localStorage.getItem("user_logged")) : false;
 
+    if(create.currentUser.role !== 'teacher') $location.path('/');
+
 	create.datas = {};
 
     create.create = function() {

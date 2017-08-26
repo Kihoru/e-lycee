@@ -52,7 +52,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        return $this->postRepository->edit($id);
     }
 
     /**
@@ -64,7 +64,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->postRepository->update($request, $id);
     }
 
     /**
