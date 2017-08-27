@@ -6,13 +6,15 @@ use App\Post;
 use App\Comment;
 use Intervention\Image\ImageManager;
 use Illuminate\Exception;
+use Validator;
 
 class PostRepository
 {
-    public function __construct(Post $post, ImageManager $image)
+    public function __construct(Post $post, ImageManager $image, Validator $validator)
     {
         $this->post = $post;
         $this->image = $image;
+        $this->validator = $validator;
         $this->saved = "L'article a bien été enregistré.";
         $this->notSaved = "L'article n'a pas été sauvegardé.";
     }
@@ -26,10 +28,20 @@ class PostRepository
         return response()->json($response);
     }
 
+    private function isOk($d)
+    {
+        return isset($d) && !empty($d);
+    }
+
     public function create($request)
     {
         $datas = $request->all();
         $response = null;
+
+        if(!$this->isOk($datas["title"]) && !$this->isOk($datas["content"])) {
+            $response = "Veuillez remplir tous les champs.";
+            return response()->json($response);
+        }
 
         $this->post->title = $datas["title"];
         $this->post->content = $datas["content"];
@@ -38,7 +50,7 @@ class PostRepository
         $fileName = uniqid().'.'.$datas['fileToUpload']->extension();
 
         try{
-            $this->image->make($datas['fileToUpload']->path())->save('/public/upload/posts/'.$fileName);
+            $this->image->make($datas['fileToUpload']->path())->save('../public/upload/posts/'.$fileName);
         }catch(Exception $exception){
             return response()->json(['Error' => 'Votre image est trop lourde, veuillez en selectionner une de moins de 2MO']);
         }

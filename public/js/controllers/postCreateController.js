@@ -16,7 +16,20 @@ function postCreateController($auth, $http, $scope, $location, $route, $routePar
 
     create.create = function() {
 
-		var fd = new FormData()
+		create.datas.addError = "";
+
+		if(create.datas.thumbnail[0].size > 2000000) {
+			toastr.options.progressBar = true;
+			toastr.error('', "Veuillez choisir un fichier de 2Mo ou moins.");
+			create.datas.addError = "Veuillez choisir un fichier de 2Mo ou moins.";
+			return false;
+		}else if( !create.datas.title || !create.datas.content) {;
+			create.datas.addError = "Veuillez remplir tous les champs.";
+			return false;
+		}
+
+		var fd = new FormData();
+
 		for (var i in create.datas.thumbnail) {
 		    fd.append("fileToUpload", create.datas.thumbnail[i]);
 		}
@@ -24,11 +37,17 @@ function postCreateController($auth, $http, $scope, $location, $route, $routePar
 		fd.append('title', create.datas.title);
 		fd.append('content', create.datas.content);
 		fd.append('user_id', create.currentUser.id);
-		var config = {headers: {'Content-Type': undefined}};
 
-		$http.post('/post', fd, config)
+		$http.post('/post', fd, {headers: {'Content-Type': undefined}})
 			.then(function(res) {
-				console.log(res);
+				if(res.data.hasOwnProperty('Success')) {
+					toastr.options.progressBar = true;
+					toastr.success('', res.data.Success);
+					$location.path('/post/all');
+				}else if(res.data.hasOwnProperty('Error')) {
+					toastr.options.progressBar = true;
+					toastr.error('', res.data.Error);
+				}
 			});
 
 	}
