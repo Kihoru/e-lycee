@@ -68,14 +68,8 @@
                     <div class="card-content whi-yel-text">
                         <span class="card-title">Elèves</span>
                         <ul>
-                            <li>
-                                <p>Thomas as done [FICHE_TITLE]</p>
-                            </li>
-                            <li>
-                                <p>Romain as done [FICHE_TITLE]</p>
-                            </li>
-                            <li>
-                                <p>Sarah as done [FICHE_TITLE]</p>
+                            <li ng-repeat="s in home.datas.bestStudents">
+                                <a href="/platform/student/all" class="whi-yel-text"><p>[{s.username}] : [{s.total}]%</p></a>
                             </li>
                         </ul>
                     </div>
