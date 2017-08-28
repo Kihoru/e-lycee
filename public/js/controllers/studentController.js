@@ -8,6 +8,8 @@ function studentController($auth, $http, $scope, $location, $route, $routeParams
 
     let student = this;
 
+    $scope.searchStud   = '';
+
     student.currentUser = localStorage.getItem("user_logged") ? JSON.parse(localStorage.getItem("user_logged")) : false;
 
     if(student.currentUser.role !== 'teacher') $location.path('/');
