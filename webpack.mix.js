@@ -21,4 +21,5 @@ mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/js/utils/jquery.min.j
    .copy('node_modules/angular-route/angular-route.min.js', 'public/js/utils/angular-route.min.js')
    .copy('node_modules/oclazyload/dist/ocLazyLoad.min.js', 'public/js/utils/ocLazyLoad.min.js')
    .copy('node_modules/toastr/build/toastr.min.js', 'public/js/utils/toastr.min.js')
-   .copy('node_modules/toastr/build/toastr.min.css', 'public/css/utils/toastr.min.css');
+   .copy('node_modules/toastr/build/toastr.min.css', 'public/css/utils/toastr.min.css')
+   .less('resources/assets/less/style.less', 'public/css/front.css');

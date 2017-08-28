@@ -1,4 +1,5 @@
 {
+    "/css/front.css": "/css/front.css",
     "/js/utils/jquery.min.js": "/js/utils/jquery.min.js",
     "/js/utils/materialize.min.js": "/js/utils/materialize.min.js",
     "/css/utils/materialize.min.css": "/css/utils/materialize.min.css",

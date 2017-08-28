@@ -12,9 +12,11 @@
 */
 
 /** ROUTE LARAVEL BASE **/
-Route::get('/', function () {
-    return view('school.index');
-});
+Route::get('/', 'FrontController@index');
+Route::get('/contact', 'FrontController@contact');
+Route::get('/lycée', 'FrontController@lycee');
+Route::get('/mention-legales', 'FrontController@mlegales');
+Route::get('/actualités', 'FrontController@actus');
 ///////////////////////////////
 
 /* API URL */
@@ -37,5 +39,5 @@ Route::any('/platform/{path?}/{act?}/{id?}', function(){
 
 //ERREUR 404
 Route::any('/{path?}', function() {
-    return view('school.error');
+    return view('school.parts.error');
 });

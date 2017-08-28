@@ -1,0 +1,720 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul, li{
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* Fonts */
+@font-face {
+    font-family: 'ADAM_CGPRO';
+    src: url('fonts/ADAM_CGPRO.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'BebasNeueRegular';
+    src: url('fonts/BebasNeueRegular.woff2') format('woff2');
+
+}
+
+/* Global CSS */
+@color1: #222831;
+@color2: #393E46;
+@color3: #00ADB5;
+@color4: #eeeeee;
+
+body
+{
+	font-family: arial;
+}
+/* ========== Header ========== */
+.main-header
+{
+	margin-bottom: 60px;
+	.first-nav
+	{
+		box-sizing: border-box;
+		background: @color4;
+		padding: 20px;
+		.social-link
+		{
+			float: right;
+			display: inline-block;
+			vertical-align: bottom;
+			margin-left: 50px;
+			li
+			{
+				display: inline-block;
+				.fa
+				{
+					color: @color2;
+					font-size: 30px;
+					margin: 0 5px;
+				}
+			}
+		}
+		.button-like
+		{
+			vertical-align: middle;
+		}
+		.button-connect
+		{
+			float: right;
+			color: @color2;
+			font-size: 14px;
+			font-family: "ADAM_CGPRO";
+			.fa
+			{
+				font-size: 30px;
+				color: @color2;
+				margin-right: 5px;
+			}
+		}
+	}
+	.banniere
+	{
+		background: url("../images/banniere.jpg") no-repeat 0% 40%;
+		background-size: cover;
+
+		box-sizing: border-box;
+		padding: 80px 0;
+		.site-title
+		{
+			text-align: center;
+			font-family: "BebasNeueRegular";
+			letter-spacing: 2px;
+			font-size: 30px;
+			color: @color4;
+		}
+	}
+	.second-nav
+	{
+		padding: 0 80px;
+		background: @color4;
+		.menu-list
+		{
+			display: inline-block;
+			text-align: center;
+			li
+			{
+				padding: 26px 24px;
+				display: inline-block;
+				a
+				{
+					color: @color2;
+					letter-spacing: 1px;
+					font-size: 14px;
+					font-family: "ADAM_CGPRO";
+				}
+			}
+			li:hover
+			{
+				background: @color2;
+				a
+				{
+					color: @color4;
+				}
+			}
+		}
+		.search-box
+		{
+			float: right;
+			display: inline-block;
+			margin-top: 16px;
+			.fa
+			{
+				font-size: 25px;
+				color: @color2;
+			}
+			input
+			{
+				background: transparent;
+				border: none;
+				border-bottom: 1px solid @color2;
+				outline: none;
+				color: @color2;
+				font-size: 18px;
+				box-sizing: border-box;
+				padding: 5px;
+			}
+			::-webkit-input-placeholder {
+			   color: @color2;
+			}
+
+			:-moz-placeholder { /* Firefox 18- */
+			   color: @color2;
+			}
+
+			::-moz-placeholder {  /* Firefox 19+ */
+			   color: @color2;
+			}
+
+			:-ms-input-placeholder {
+			   color: @color2;
+			}
+		}
+	}
+}
+.main-header:after
+{
+	content: "";
+  	display: table;
+  	clear: both;
+}
+/* ========== Footer ========== */
+.main-footer
+{
+	background: @color4;
+	padding: 15px;
+	ul
+	{
+		text-align: center;
+		li
+		{
+			display: inline-block;
+			margin: 15px 25px;
+		}
+	}
+	p
+	{
+		text-align: center;
+	}
+}
+/* ========== Accueil ========== */
+.main-content-accueil
+{
+	margin: 0 auto;
+	width: 95%;
+	.colonne-centrale
+	{
+		width: 60%;
+		box-sizing: border-box;
+		display: inline-block;
+		vertical-align: top;
+		margin: 0 2% 30px 2%;
+		.actualite
+		{
+			width: 65%;
+			box-sizing: border-box;
+			display: inline-block;
+			vertical-align: top;
+			margin: 0 1%;
+			background: @color4;
+			padding: 15px;
+			border-radius: 2px;
+			h2
+			{
+				font-family: "BebasNeueRegular";
+				font-size: 24px;
+				letter-spacing: 1.5px;
+				margin-bottom: 15px;
+			}
+			.image
+			{
+				width: 100%;
+				margin-bottom: 15px;
+			}
+			.texte
+			{
+				color: @color1;
+				margin-left: 5px;
+				line-height: 18px;
+			}
+			.lien
+			{
+				text-align: right;
+				color: @color3;
+				float: right;
+				margin-right: 5px;
+			}
+			.auteur
+			{
+				margin-top: 30px;
+			}
+		}
+		.fil-actu
+		{
+			width: 29%;
+			box-sizing: border-box;
+			display: inline-block;
+			vertical-align: top;
+			margin: 0 1%;
+			background: @color4;
+			padding: 15px;
+			border-radius: 2px;
+			max-height: 665px;
+			overflow-x: hidden;
+			.actu
+			{
+				margin: 25px;
+				h2
+				{
+					font-family: "BebasNeueRegular";
+					font-size: 24px;
+					letter-spacing: 1.5px;
+					margin-bottom: 15px;
+				}
+				.image
+				{
+					width: 100%;
+					margin-bottom: 15px;
+				}
+				.texte
+				{
+					color: @color1;
+					margin-left: 5px;
+					line-height: 18px;
+					margin-bottom: 10px;
+				}
+				.lien
+				{
+					text-align: right;
+					color: @color3;
+					margin-left: 5px;
+				}
+			}
+
+		}
+	}
+	.sidebar
+	{
+		width: 32%;
+		box-sizing: border-box;
+		display: inline-block;
+		vertical-align: top;
+		margin: 0 0 30px 2%;
+		background: @color4;
+		.fil-twitter
+		{
+			box-sizing: border-box;
+			padding: 25px;
+			max-height: 600px;
+			overflow-x: hidden;
+		}
+		.contenu-supp
+		{
+			padding: 25px;
+			.titre
+			{
+				font-family: "BebasNeueRegular";
+				font-size: 24px;
+				letter-spacing: 1.5px;
+				margin-bottom: 15px;
+			}
+			li > a
+			{
+				font-size: 18px;
+				font-style: italic;
+				color: @color3;
+			}
+		}
+		.twitter
+		{
+			h2
+			{
+				font-family: "BebasNeueRegular";
+				font-size: 24px;
+				letter-spacing: 1.5px;
+				margin-bottom: 15px;
+				text-align: center;
+				.fa-twitter
+				{
+					margin: 0 5px;
+				}
+			}
+		}
+	}
+}
+
+/* ========== Actualités ========== */
+.main-content-actualites
+{
+	margin: 0 auto;
+	width: 100%;
+	.colonne-centrale
+	{
+		width: 60%;
+		box-sizing: border-box;
+		display: inline-block;
+		vertical-align: top;
+		margin: 0 2% 30px 2%;
+		.underline
+		{
+			width: 100px;
+			height: 2px;
+			color: @color3;
+			margin: 0 auto;
+		}
+		.actualite
+		{
+			width: 100%;
+			box-sizing: border-box;
+			display: inline-block;
+			vertical-align: top;
+			margin: 0 1%;
+			background: @color4;
+			padding: 15px;
+			border-radius: 2px;
+			.img
+			{
+				display: inline-block;
+				width: 30%;
+				box-sizing: border-box;
+				.image
+				{
+					width: 100%;
+				}
+			}
+			.desc
+			{
+				display: inline-block;
+				width: 60%;
+				box-sizing: border-box;
+				vertical-align: top;
+				margin: 2.5%;
+				h2
+				{
+					font-family: "BebasNeueRegular";
+					font-size: 24px;
+					letter-spacing: 1.5px;
+					margin-bottom: 15px;
+				}
+				.texte
+				{
+					color: @color1;
+					margin-left: 5px;
+					line-height: 18px;
+				}
+				.lien
+				{
+					text-align: right;
+					color: @color3;
+					float: right;
+					margin-right: 5px;
+				}
+				.auteur
+				{
+					margin-top: 30px;
+				}
+			}
+		}
+	}
+	.sidebar
+	{
+		width: 30%;
+		box-sizing: border-box;
+		display: inline-block;
+		vertical-align: top;
+		margin: 0 0 30px 2%;
+		background: @color4;
+		.fil-twitter
+		{
+			box-sizing: border-box;
+			padding: 25px;
+			max-height: 900px;
+			overflow-x: hidden;
+		}
+	}
+}
+
+/* ========== Actu ========== */
+.main-content-actu
+{
+	.actualite
+	{
+		width: 90%;
+		box-sizing: border-box;
+		padding: 20px 30px;
+		margin: 0 auto;
+		background: @color4;
+		.img
+		{
+			display: inline-block;
+			width: 40%;
+			box-sizing: border-box;
+			padding-right: 1.5%;
+			border-right: 3px dotted @color3;
+			margin-bottom: 30px;
+			.image
+			{
+				width: 100%;
+			}
+		}
+		.desc
+		{
+			width: 55%;
+			box-sizing: border-box;
+			display: inline-block;
+			vertical-align: top;
+			padding-left: 1.25%;
+			margin-bottom: 30px;
+
+			h2
+			{
+				font-family: "BebasNeueRegular";
+				font-size: 24px;
+				letter-spacing: 1.5px;
+				margin-bottom: 15px;
+			}
+			.image
+			{
+				width: 100%;
+				margin-bottom: 15px;
+			}
+			.texte
+			{
+				color: @color1;
+				line-height: 18px;
+				margin-bottom: 15px;
+			}
+			.auteur
+			{
+				margin-bottom: 10px;
+				font-size: 20px;
+				letter-spacing: 1.5px;
+				font-family: "BebasNeueRegular";
+				span
+				{
+					color: @color3;
+					font-weight: bold;
+				}
+			}
+			.date
+			{
+				font-size: 18px;
+			}
+		}
+		.zone-com
+		{
+			width: 80%;
+			box-sizing: border-box;
+			margin: 0 auto;
+			.nb-com
+			{
+				font-size: 20px;
+				margin-bottom: 10px;
+				.fa
+				{
+					font-size: 25px;
+					vertical-align: bottom;
+				}
+			}
+			.commentaires
+			{
+				.com
+				{
+					background: #fff;
+					box-sizing: border-box;
+					padding: 20px 30px;
+					.avatar
+					{
+						display: inline-block;
+						box-sizing: border-box;
+						width: 15%;
+						margin-bottom: 25px;
+						img
+						{
+							width: 100%;
+						}
+					}
+					.content-com
+					{
+						width: 74%;
+						display: inline-block;
+						box-sizing: border-box;
+						vertical-align: top;
+						margin: 0 5% 25px 5%;
+						.auteur
+						{
+							font-size: 18px;
+							font-weight: bold;
+							margin-bottom: 5px;
+							span
+							{
+								color: @color3;
+								font-family: "BebasNeueRegular";
+								font-size: 22px;
+								letter-spacing: 1.5px;
+							}
+						}
+						.heure
+						{
+							font-style: italic;
+							margin-bottom: 15px;
+						}
+						.texte
+						{
+							line-height: 18px;
+							margin-bottom: 20px;
+						}
+						.rep-com
+						{
+							float: right;
+							color: @color3;
+							font-style: italic;
+						}
+					}
+					.post-com
+					{
+
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ========== Mentions Légales ========== */
+.main-mentions
+{
+	margin: 0 auto;
+	padding: 0 80px;
+	margin-bottom: 60px;
+	div
+	{
+		box-sizing: border-box;
+		padding: 15px;
+		background: @color4;
+		h2
+		{
+			font-family: "BebasNeueRegular";
+			font-size: 24px;
+			letter-spacing: 1.5px;
+			margin-bottom: 15px;
+		}
+		h3
+		{
+			font-family: "BebasNeueRegular";
+			font-size: 18px;
+			letter-spacing: 1.5px;
+			margin-bottom: 5px;
+		}
+		p
+		{
+			font-size: 15px;
+			margin-bottom: 30px;
+		}
+	}
+}
+
+/* ========== Lycée ========== */
+.main-lycee
+{
+	margin: 0 auto;
+	margin-bottom: 60px;
+	margin-left: 2%;
+	.content
+	{
+		display: inline-block;
+		width: 60%;
+		box-sizing: border-box;
+		padding: 15px;
+		background: @color4;
+		h2
+		{
+			font-family: "BebasNeueRegular";
+			font-size: 24px;
+			letter-spacing: 1.5px;
+			margin-bottom: 15px;
+		}
+		li
+		{
+			font-size: 14px;
+			line-height: 18px;
+		}
+		.second-list
+		{
+			margin: 10px 0;
+			li
+			{
+				margin-left: 20px;
+			}
+		}
+	}
+	.sidebar
+	{
+		width: 35%;
+		box-sizing: border-box;
+		display: inline-block;
+		vertical-align: top;
+		margin: 0 0 30px 2.5%;
+		background: @color4;
+		.fil-twitter
+		{
+			box-sizing: border-box;
+			padding: 25px;
+			max-height: 600px;
+			overflow-x: hidden;
+		}
+		.contenu-supp
+		{
+			padding: 25px;
+			.titre
+			{
+				font-family: "BebasNeueRegular";
+				font-size: 24px;
+				letter-spacing: 1.5px;
+				margin-bottom: 15px;
+			}
+			li > a
+			{
+				font-size: 18px;
+				font-style: italic;
+				color: @color3;
+			}
+		}
+		.twitter
+		{
+			h2
+			{
+				font-family: "BebasNeueRegular";
+				font-size: 24px;
+				letter-spacing: 1.5px;
+				margin-bottom: 15px;
+				text-align: center;
+				.fa-twitter
+				{
+					margin: 0 5px;
+				}
+			}
+		}
+	}
+}
