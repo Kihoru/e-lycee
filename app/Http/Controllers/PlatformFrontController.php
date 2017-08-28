@@ -91,4 +91,17 @@ class PlatformFrontController extends Controller
 
         return response()->json(['totalScore' => $totalScore]);
     }
+
+    public function students()
+    {
+        $students = DB::select(DB::raw("SELECT u.id, u.username, u.role, count(s.id) as nb, sum(s.note) as score FROM users as u LEFT JOIN scores as s ON s.user_id = u.id WHERE u.role != 'teacher' GROUP BY u.id"));
+
+        if(count($students)) {
+            $response = ["students" => $students];
+        }else{
+            $response = ["Error" => "No datas available."];
+        }
+
+        return response()->json($response);
+    }
 }

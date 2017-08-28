@@ -10,6 +10,8 @@ function postAllController($auth, $http, $scope, $location, $route, $routeParams
 
     let all = this;
 
+    $scope.searchPost   = '';
+
     all.logged = localStorage.getItem("user_logged") ? JSON.parse(localStorage.getItem("user_logged")) : false;
 
     if(all.logged.role !== 'teacher') $location.path('/');

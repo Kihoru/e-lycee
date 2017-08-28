@@ -2,28 +2,28 @@
 <section id="home">
     <div class="container">
         <div class="row">
-            <div class="col xl11 offset-xl1 l12 m12 s12 center-align">
+            <div class="col xl11 offset-xl1 l8 offset-l4 m12 s12 center-align">
                 <h2 class="blue-grey-text darken-3">Dashboard</h2>
             </div>
         </div>
     </div>
     <div class="container mgt50" ng-show="home.isTeacher">
         <div class="row">
-            <div class="col xl3 offset-xl1 l12 m12 s12 center-align blue-grey-text darken-3">
+            <div class="col xl3 offset-xl1 l8 offset-l4 m12 s12 center-align blue-grey-text darken-3">
                 <h1>[{home.datas.nbQcm}]</h1>
                 <h3>Fiches</h3>
             </div>
-            <div class="col xl3 offset-xl1 l12 m12 s12 center-align myblue-text">
+            <div class="col xl3 offset-xl1 l8 offset-l4 m12 s12 center-align myblue-text">
                 <h1>[{home.datas.nbComment}]</h1>
                 <h3>Commentaires</h3>
             </div>
-            <div class="col xl3 offset-xl1 l12 m12 s12 center-align mygreen-text">
+            <div class="col xl3 offset-xl1 l8 offset-l4 m12 s12 center-align mygreen-text">
                 <h1>[{home.datas.nbUser}]</h1>
                 <h3>Elevès</h3>
             </div>
         </div>
         <div class="row" ng-show="home.isTeacher">
-            <div class="col xl3 offset-xl1 l12 m12 s12">
+            <div class="col xl3 offset-xl1 l8 offset-l4 m12 s12">
                 <div class="card blue-grey darken-1">
                     <div class="card-content whi-yel-text">
                         <span class="card-title">Fiches</span>
@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col xl3 offset-xl1 l12 m12 s12">
+            <div class="col xl3 offset-xl1 l8 offset-l4 m12 s12">
                 <div class="card blue-grey darken-1">
                     <div class="card-content whi-yel-text">
                         <span class="card-title">Articles</span>
@@ -63,13 +63,18 @@
                     </div>
                 </div>
             </div>
-            <div class="col xl3 offset-xl1 l12 m12 s12">
+            <div class="col xl3 offset-xl1 l8 offset-l4 m12 s12">
                 <div class="card blue-grey darken-1">
                     <div class="card-content whi-yel-text">
-                        <span class="card-title">Elèves</span>
+                        <span class="card-title">Elèves</span><p>(Meilleurs taux de réponse)</p>
                         <ul>
-                            <li ng-repeat="s in home.datas.bestStudents">
-                                <a href="/platform/student/all" class="whi-yel-text"><p>[{s.username}] : [{s.total}]%</p></a>
+                            <li class="row" ng-repeat="s in home.datas.bestStudents">
+                                <a href="/platform/student/all" class="whi-yel-text"><div class="col s10">
+                                    <p>[{s.username}]</p>
+                                </div></a>
+                                <div class="col s2 right-align">
+                                    <p>[{s.total}]%</p>
+                                </div>
                             </li>
                         </ul>
                     </div>

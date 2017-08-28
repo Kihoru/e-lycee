@@ -8,6 +8,8 @@ function qcmAllController($auth, $http, $scope, $location, $route, $routeParams)
 
     $('.modal').modal();
 
+    $scope.searchQcm = '';
+
     let all = this;
 
     all.logged = localStorage.getItem("user_logged") ? JSON.parse(localStorage.getItem("user_logged")) : false;

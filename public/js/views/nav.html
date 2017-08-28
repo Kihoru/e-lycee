@@ -1,3 +1,4 @@
+<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 <ul id="slide-out" class="side-nav fixed blue-grey darken-3 whi-yel-text" ng-controller="navController as nav" ng-show="nav.logged">
     <div class="row borderCenter">
         <div class="col s10 offset-s1 mgt50">
@@ -17,8 +18,8 @@
             Dashboard
         </a>
     </li>
-    <li ng-show="nav.isTeacher" ng-class="nav.getClass('/users')">
-        <a class="whi-yel-text" href="student.html">
+    <li ng-show="nav.isTeacher" ng-class="nav.getClass('/students')">
+        <a class="whi-yel-text" href="/platform/students">
             <i class="whi-yel-text tiny material-icons">person</i>
             Elèves
         </a>

@@ -25,6 +25,7 @@ Route::post('/qcm/addScore', 'QcmController@addScore');
 Route::post('/platform/login', 'AuthController@login');
 Route::post('/platform/getStudentHomeDatas', 'PlatformFrontController@homeStudent');
 Route::get('/platform/getHomeDatas', 'PlatformFrontController@home');
+Route::get('/students', 'PlatformFrontController@students');
 
 /////////////
 

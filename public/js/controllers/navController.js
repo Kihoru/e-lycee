@@ -11,6 +11,12 @@ function navController($auth, $http, $scope, $location, $route, $routeParams) {
         return pathFromUrl === url ? 'activate' : '';
     }
 
+    // Initialize collapse button
+    $(".button-collapse").sideNav();
+    // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+    //$('.collapsible').collapsible();
+
+
     this.logout = function() {
         $auth.logout()
             .then(function(){

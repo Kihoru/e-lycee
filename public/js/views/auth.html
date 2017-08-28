@@ -1,18 +1,46 @@
-<h2>login</h2>
+<!-- <h2>login</h2>
 <form method="post">
     <div ng-show="isAlertLogin" class="alert alert-danger" role="alert">
         [{alertLogin}]
     </div>
     <div class="form-group">
-        <label for="name">Username : </label>
         <input type="text" class="form-control" id="name" placeholder="Username..." ng-model="auth.username">
+        <label for="name">Username : </label>
     </div>
     <div class="form-group">
-        <label for="password">Mot de passe :</label>
         <input type="password" class="form-control" id="password" placeholder="Password" ng-model="auth.password">
+        <label for="password">Mot de passe :</label>
     </div>
     <button type="submit" class="btn btn-primary" ng-click="auth.login()">Envoyer</button>
-</form>
+</form> -->
 
-
+<div class="container">
+    <div class="row">
+        <div class="col s6 offset-s3 mgt100">
+            <div class="card myblue-grey-opac cardblur">
+                <div class="card-content white-text">
+                    <span class="card-title flow-text">Login</span>
+                    <form method="post">
+                        <div ng-show="isAlertLogin" class="alert alert-danger" role="alert">
+                            [{alertLogin}]
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" placeholder="Username..." ng-model="auth.username">
+                            <label for="name">Username : </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password" placeholder="Password" ng-model="auth.password">
+                            <label for="password">Mot de passe :</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" ng-click="auth.login()">Connexion</button>
+                    </form>
+                </div>
+                <div class="card-action">
+                    <a href="/">Revenir au site</a>
+                </div>
+            </div>
+            <h2></h2>
+        </div>
+    </div>
+</div>
 <a href="/">Revenir au site</a>

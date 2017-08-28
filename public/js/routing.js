@@ -41,6 +41,10 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
             {
                 name: 'postUpdate',
                 files: ['/js/controllers/postUpdateController.js']
+            },
+            {
+                name: 'student',
+                files: ['/js/controllers/studentController.js']
             }
         ]
     });
@@ -145,6 +149,16 @@ app.config(function($routeProvider, $locationProvider, $authProvider, $ocLazyLoa
             resolve: {
                 loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load('home');
+                }]
+            }
+        })
+        .when('/students', {
+            templateUrl: '/js/views/students.html',
+            controller: 'studentController',
+            controllerAs: 'student',
+            resolve: {
+                loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('student');
                 }]
             }
         })

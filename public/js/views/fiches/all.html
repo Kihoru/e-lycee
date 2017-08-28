@@ -15,10 +15,10 @@
                 </div>
                 <div class="input-field col s3 offset-s9">
                     <i class="material-icons prefix grey-text lighten-2">search</i>
-                    <input id="icon_prefix" type="text" class="validate">
+                    <input id="icon_prefix" type="text" class="validate" ng-model="searchQcm">
                     <label for="icon_prefix">Search...</label>
                 </div>
-                <table class="bordered centered responsive-table">
+                <table class="bordered responsive-table">
                     <thead>
                         <tr>
                             <th>Titre de la fiche</th>
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <tbody>
-                        <tr ng-repeat="(index, qcm) in qcmAll.datas" ng-if="qcm.isOkforStudent || qcmAll.isTeacher">
+                        <tr ng-repeat="(index, qcm) in qcmAll.datas | filter:searchQcm" ng-if="qcm.isOkforStudent || qcmAll.isTeacher">
                             <td>[{qcm.title}]</td>
                             <td>[{qcm.nbQuestion}]</td>
                             <td ng-if="qcmAll.isTeacher">[{qcm.class_level == 'first_class' ? 'Première' : 'Terminale'}]</td>
@@ -64,19 +64,6 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s11 offset-s1">
-                <ul class="pagination">
-                    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                    <li class="active blue-grey darken-3"><a href="#!">1</a></li>
-                    <li class="waves-effect"><a href="#!">2</a></li>
-                    <li class="waves-effect"><a href="#!">3</a></li>
-                    <li class="waves-effect"><a href="#!">4</a></li>
-                    <li class="waves-effect"><a href="#!">5</a></li>
-                    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-                </ul>
             </div>
         </div>
     </div>
