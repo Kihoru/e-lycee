@@ -7,15 +7,15 @@ Les élèves peuvent répondre aux qcm et recevoir un score en fonction de leurs
 
 # Technologies
 
-Framework back = Laravel
-Framework front = Angular.js
-Framework intégration = Materialize
-
-Techonologie de versioning = git
-Plateforme de versioning = github
-
-Technologie de dépendance back = composer
-Technologie de dépendance front = npm
+Framework back = Laravel                                                                                                
+Framework front = Angular.js                                                                             
+Framework intégration = Materialize                                                                             
+                                                                             
+Techonologie de versioning = git                                                                             
+Plateforme de versioning = github                                                                             
+                                                                             
+Technologie de dépendance back = composer                                                                             
+Technologie de dépendance front = npm                                                                             
 
 # Installation
 
