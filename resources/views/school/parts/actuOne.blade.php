@@ -44,12 +44,10 @@
                 <div class="com">
                     <form action="{{url('/comment/add/'.$post->id)}}" method="post">
                         {{csrf_field()}}
-                        <label for="comment_user">Pseudo : </label>
-                        <input type="text" value="{{old('username')}}" name="username" id="comment_user">
-                        <label for="comment_content">Commentaire :</label>
-                        <textarea value="{{old('content')}}" name="content" id="comment_content"></textarea>
+                        <input class="input_actu" type="text" value="{{old('username')}}" name="username" id="comment_user" placeholder="Pseudo...">
+                        <textarea class="input_actu" value="{{old('content')}}" name="content" id="comment_content" placeholder="Message..."></textarea>
                         <div class="g-recaptcha" data-sitekey="6LfniS4UAAAAAB7E31ijSwPxGqMV80_jSH_p6Og2"></div>
-                        <button type="submit" name="send">Commentez</button>
+                        <input type="submit" name="send" value="Commentez" class="input_submit">
                     </form>
                 </div>
             </div>
