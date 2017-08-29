@@ -6,7 +6,8 @@
             <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
             <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
         </ul>
-        <a class="button-connect" href="/platform"><i class="fa fa-user" aria-hidden="true"></i>Connectez-vous</a>
+        <a class="button-connect" href="/platform"><i class="fa fa-user" aria-hidden="true"></i>BackOffice</a>
+        <a class="button-connect-responsive" href="/platform"><i class="fa fa-user" aria-hidden="true"></i></a>
     </nav>
 
     <div class="banniere">
@@ -20,8 +21,5 @@
             <li><a href="/lycée">Le lycée</a></li>
             <li><a href="/contact">Contact</a></li>
         </ul>
-        <div class="search-box">
-            <i class="fa fa-search" aria-hidden="true"></i><input type="text" placeholder="Rechercher">
-        </div>
     </nav>
 </header>

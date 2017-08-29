@@ -7,8 +7,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -19,7 +19,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
+article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -52,7 +52,7 @@ table {
 @font-face {
     font-family: 'BebasNeueRegular';
     src: url('fonts/BebasNeueRegular.woff2') format('woff2');
-
+       
 }
 
 /* Global CSS */
@@ -75,7 +75,7 @@ body
 		background: @color4;
 		padding: 20px;
 		.social-link
-		{
+		{	
 			float: right;
 			display: inline-block;
 			vertical-align: bottom;
@@ -91,7 +91,7 @@ body
 				}
 			}
 		}
-		.button-like
+		.button-like 
 		{
 			vertical-align: middle;
 		}
@@ -101,7 +101,18 @@ body
 			color: @color2;
 			font-size: 14px;
 			font-family: "ADAM_CGPRO";
-			.fa
+			.fa 
+			{
+				font-size: 30px;
+				color: @color2;
+				margin-right: 5px;
+			}
+		}
+		.button-connect-responsive
+		{
+			display: none;
+			float: right;
+			.fa 
 			{
 				font-size: 30px;
 				color: @color2;
@@ -110,7 +121,7 @@ body
 		}
 	}
 	.banniere
-	{
+	{	
 		background: url("../images/banniere.jpg") no-repeat 0% 40%;
 		background-size: cover;
 
@@ -135,7 +146,7 @@ body
 			text-align: center;
 			li
 			{
-				padding: 26px 24px;
+				
 				display: inline-block;
 				a
 				{
@@ -143,6 +154,8 @@ body
 					letter-spacing: 1px;
 					font-size: 14px;
 					font-family: "ADAM_CGPRO";
+					display: block;
+					padding: 26px 24px;
 				}
 			}
 			li:hover
@@ -180,20 +193,20 @@ body
 			}
 
 			:-moz-placeholder { /* Firefox 18- */
-			   color: @color2;
+			   color: @color2;  
 			}
 
 			::-moz-placeholder {  /* Firefox 19+ */
-			   color: @color2;
+			   color: @color2;  
 			}
 
-			:-ms-input-placeholder {
-			   color: @color2;
+			:-ms-input-placeholder {  
+			   color: @color2;  
 			}
 		}
 	}
 }
-.main-header:after
+.main-header:after 
 {
 	content: "";
   	display: table;
@@ -218,18 +231,68 @@ body
 		text-align: center;
 	}
 }
+
+/* ========== Sidebar ========== */
+.sidebar
+{
+	width: 32%;
+	box-sizing: border-box;
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 0 30px 0;
+	background: @color4;
+	.fil-twitter
+	{
+		box-sizing: border-box;
+		padding: 25px;
+		max-height: 600px;
+		overflow-x: hidden;
+	}
+	.contenu-supp
+	{	
+		padding: 25px;
+		.titre
+		{
+			font-family: "BebasNeueRegular";
+			font-size: 24px;
+			letter-spacing: 1.5px;
+			margin-bottom: 15px;
+		}
+		li > a
+		{
+			font-size: 18px;
+			font-style: italic;
+			color: @color3;
+		}
+	}
+	.twitter
+	{
+		h2
+		{
+			font-family: "BebasNeueRegular";
+			font-size: 24px;
+			letter-spacing: 1.5px;
+			margin-bottom: 15px;
+			text-align: center;
+			.fa-twitter
+			{
+				margin: 0 5px;
+			}
+		}
+	}
+}
+
 /* ========== Accueil ========== */
 .main-content-accueil
 {
 	margin: 0 auto;
-	width: 95%;
 	.colonne-centrale
 	{
 		width: 60%;
 		box-sizing: border-box;
 		display: inline-block;
 		vertical-align: top;
-		margin: 0 2% 30px 2%;
+		margin: 0 0 30px 3%;
 		.actualite
 		{
 			width: 65%;
@@ -280,7 +343,7 @@ body
 			background: @color4;
 			padding: 15px;
 			border-radius: 2px;
-			max-height: 665px;
+			max-height: 650px;
 			overflow-x: hidden;
 			.actu
 			{
@@ -311,55 +374,7 @@ body
 					margin-left: 5px;
 				}
 			}
-
-		}
-	}
-	.sidebar
-	{
-		width: 32%;
-		box-sizing: border-box;
-		display: inline-block;
-		vertical-align: top;
-		margin: 0 0 30px 2%;
-		background: @color4;
-		.fil-twitter
-		{
-			box-sizing: border-box;
-			padding: 25px;
-			max-height: 600px;
-			overflow-x: hidden;
-		}
-		.contenu-supp
-		{
-			padding: 25px;
-			.titre
-			{
-				font-family: "BebasNeueRegular";
-				font-size: 24px;
-				letter-spacing: 1.5px;
-				margin-bottom: 15px;
-			}
-			li > a
-			{
-				font-size: 18px;
-				font-style: italic;
-				color: @color3;
-			}
-		}
-		.twitter
-		{
-			h2
-			{
-				font-family: "BebasNeueRegular";
-				font-size: 24px;
-				letter-spacing: 1.5px;
-				margin-bottom: 15px;
-				text-align: center;
-				.fa-twitter
-				{
-					margin: 0 5px;
-				}
-			}
+			
 		}
 	}
 }
@@ -436,21 +451,37 @@ body
 				}
 			}
 		}
-	}
-	.sidebar
-	{
-		width: 30%;
-		box-sizing: border-box;
-		display: inline-block;
-		vertical-align: top;
-		margin: 0 0 30px 2%;
-		background: @color4;
-		.fil-twitter
+		.pagination
 		{
-			box-sizing: border-box;
-			padding: 25px;
-			max-height: 900px;
-			overflow-x: hidden;
+			margin: 20px;
+			text-align: center;
+			li 
+			{
+				display: inline-block;
+				.fa
+				{
+					color: @color2;
+				}
+				a,
+				span
+				{
+					padding: 10px 12px;
+					color: @color2;
+					font-size: 18px;
+				}
+			}
+			.active
+			{
+				background-color: @color2;
+				span
+				{
+					box-sizing: border-box;
+					padding: 10px 12px;
+					color: @color3;
+					display: block;
+					font-size: 18px;
+				}
+			}
 		}
 	}
 }
@@ -486,7 +517,7 @@ body
 			vertical-align: top;
 			padding-left: 1.25%;
 			margin-bottom: 30px;
-
+			
 			h2
 			{
 				font-family: "BebasNeueRegular";
@@ -550,7 +581,7 @@ body
 						box-sizing: border-box;
 						width: 15%;
 						margin-bottom: 25px;
-						img
+						img 
 						{
 							width: 100%;
 						}
@@ -567,7 +598,7 @@ body
 							font-size: 18px;
 							font-weight: bold;
 							margin-bottom: 5px;
-							span
+							span 
 							{
 								color: @color3;
 								font-family: "BebasNeueRegular";
@@ -594,7 +625,7 @@ body
 					}
 					.post-com
 					{
-
+						
 					}
 				}
 			}
@@ -604,11 +635,11 @@ body
 
 /* ========== Mentions Légales ========== */
 .main-mentions
-{
+{	
 	margin: 0 auto;
 	padding: 0 80px;
 	margin-bottom: 60px;
-	div
+	.content
 	{
 		box-sizing: border-box;
 		padding: 15px;
@@ -642,7 +673,7 @@ body
 	margin-bottom: 60px;
 	margin-left: 2%;
 	.content
-	{
+	{	
 		display: inline-block;
 		width: 60%;
 		box-sizing: border-box;
@@ -669,52 +700,335 @@ body
 			}
 		}
 	}
-	.sidebar
+}
+
+/* ========== Contact ========== */
+.main-contact
+{
+	margin-bottom: 60px; 
+	.content
 	{
-		width: 35%;
-		box-sizing: border-box;
 		display: inline-block;
-		vertical-align: top;
-		margin: 0 0 30px 2.5%;
+		box-sizing: border-box;
+		width: 60%;
+		padding: 15px;
 		background: @color4;
-		.fil-twitter
+		margin-left: 3%;
+		h2
 		{
-			box-sizing: border-box;
-			padding: 25px;
-			max-height: 600px;
-			overflow-x: hidden;
+			font-family: "BebasNeueRegular";
+			font-size: 24px;
+			letter-spacing: 1.5px;
+			margin-bottom: 15px;
 		}
-		.contenu-supp
+		p
 		{
-			padding: 25px;
-			.titre
+			margin-bottom: 30px;
+		}
+		form
+		{
+			margin: 0 50px;
+			.input-contact,
+			.textarea-contact
 			{
-				font-family: "BebasNeueRegular";
-				font-size: 24px;
-				letter-spacing: 1.5px;
-				margin-bottom: 15px;
-			}
-			li > a
-			{
+				display: block;
+				margin: 15px 0 30px 0;
+				width: 100%;
+				background: inherit;
+				border: none;
+				border-bottom: 1px solid black;
 				font-size: 18px;
-				font-style: italic;
-				color: @color3;
+				padding: 5px;
+				outline: none;
+			}
+			.submit
+			{
+				background: @color2;
+				border: none;
+				font-family: 'ADAM_CGPRO';
+				letter-spacing: 1px;
+				color: @color4;
+				padding: 15px 30px;
 			}
 		}
-		.twitter
+	}
+}
+
+/* =============== RESPONSIVE =============== */
+@media screen and(max-width: 1080px)
+{
+	.main-content-accueil
+	{
+		margin: 0 auto;
+		.colonne-centrale
 		{
-			h2
+			display: block;
+			width: 100%;
+			margin: 0;
+			padding: 20px;
+		}
+		.sidebar
+		{
+			width: 90%;
+			display: block;
+			margin: 0 auto;
+			margin-bottom: 40px;
+		}
+	}
+}
+@media screen and(max-width: 980px)
+{
+	.main-content-actu
+	{
+		.actualite
+		{
+			margin-bottom: 40px;
+			padding: 20px 20px;
+			.img
 			{
-				font-family: "BebasNeueRegular";
-				font-size: 24px;
-				letter-spacing: 1.5px;
-				margin-bottom: 15px;
-				text-align: center;
-				.fa-twitter
+				display: block;
+				width: 90%;
+				margin: 0 auto;
+				padding-right: 0;
+				border-right: none;
+				margin-bottom: 20px;
+				.image
 				{
-					margin: 0 5px;
+					width: 100%;
+				}
+			}
+			.desc
+			{
+				width: 90%;
+				margin: 0 auto;
+				display: block;
+				padding-left: 0;
+				margin-bottom: 30px;
+				h2
+				{
+					font-family: "BebasNeueRegular";
+					font-size: 24px;
+					letter-spacing: 1.5px;
+					margin-bottom: 15px;
+				}
+				.texte
+				{
+					text-align: justify;
+				}
+			}
+			.zone-com
+			{
+				width: 90%;
+				.commentaires
+				{
+					.com
+					{
+						background: #fff;
+						box-sizing: border-box;
+						padding: 20px 30px;
+						.avatar
+						{
+							display: none;
+						}
+						.content-com
+						{
+							width: 100%;
+							margin: 0;
+							.auteur
+							{
+								font-size: 18px;
+								font-weight: bold;
+								margin-bottom: 5px;
+								span 
+								{
+									color: @color3;
+									font-family: "BebasNeueRegular";
+									font-size: 22px;
+									letter-spacing: 1.5px;
+								}
+							}
+							.heure
+							{
+								font-style: italic;
+								margin-bottom: 15px;
+							}
+							.texte
+							{
+								line-height: 18px;
+								margin-bottom: 20px;
+							}
+							.rep-com
+							{
+								float: right;
+								color: @color3;
+								font-style: italic;
+								margin-bottom: 20px;
+							}
+						}
+						.post-com
+						{
+							
+						}
+					}
 				}
 			}
 		}
+	}
+	.main-content-actualites
+	{
+		margin: 0 auto;
+		width: 100%;
+		padding: 20px;
+		box-sizing: border-box;
+		.colonne-centrale
+		{
+			width: 100%;
+			display: block;
+			margin: 0;
+			margin-bottom: 30px;
+			.actualite
+			{
+				margin: 0;
+				
+			}
+		}
+		.sidebar
+		{
+			width: 100%;
+			display: block;
+		}
+	}
+}
+@media screen and(max-width: 800px)
+{
+	.main-contact
+	{
+		padding: 20px;
+		.content
+		{
+			width: 100%;
+			display: block;
+			margin-left: 0;
+			margin-bottom: 30px;
+			form
+			{
+				margin: 0;
+				.input-contact,
+				.textarea-contact
+				{
+					display: block;
+					margin: 15px 0 30px 0;
+					width: 100%;
+					background: inherit;
+					border: none;
+					border-bottom: 1px solid black;
+					font-size: 18px;
+					padding: 5px;
+					outline: none;
+				}
+			}
+		}
+		.sidebar
+		{
+			width: 100%;
+			display: block;
+		}
+	}
+	.main-lycee
+	{
+		margin: 0 auto;
+		margin-bottom: 60px;
+		margin-left: 0;
+		padding: 0 20px;
+		.content
+		{	
+			display: block;
+			width: 100%;
+			margin-bottom: 20px;
+		}
+		.sidebar
+		{
+			width: 100%;
+			display: block;
+		}
+	}
+}
+@media screen and(max-width: 690px)
+{
+	.main-header
+	{
+		.first-nav
+		{	
+			.button-connect
+			{
+				display: none;
+			}
+			.button-connect-responsive
+			{
+				display: block;
+			}
+		}
+		.second-nav
+		{
+			padding: 0;
+			.menu-list
+			{
+				display: inline-block;
+				text-align: center;
+				li
+				{
+					display: inline-block;
+					a
+					{
+						padding: 13px 12px;
+						color: @color2;
+						letter-spacing: 1px;
+						font-size: 12px;
+						font-family: "ADAM_CGPRO";
+					}
+				}
+				li:hover
+				{
+					background: @color2;
+					a
+					{
+						color: @color4;
+					}
+				}
+			}
+		}
+	}
+	.main-content-accueil
+	{
+		margin: 0 auto;
+		.colonne-centrale
+		{
+			display: block;
+			width: 100%;
+			margin: 0;
+			padding: 20px;
+			.actualite
+			{
+				margin: 0;
+				width: 100%;
+				display: block;
+				margin-bottom: 20px;
+			}
+			.fil-actu
+			{
+				margin: 0;
+				width: 100%;
+				display: block;
+			}
+		}
+		.sidebar
+		{
+			width: 80%;
+			display: block;
+		}
+	}
+	.main-mentions
+	{
+		padding: 0 20px;
 	}
 }

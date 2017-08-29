@@ -1,7 +1,10 @@
 /node_modules
 /public/css/fonts
 /public/hot
-/public/upload/posts/
+/public/css/front.css
+/public/js/utils
+/public/css/utils
+/public/upload/posts
 /public/storage
 /storage/*.key
 /vendor

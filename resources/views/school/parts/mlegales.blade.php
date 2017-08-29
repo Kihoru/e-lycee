@@ -3,7 +3,7 @@
 
 @section('content')
 <main class="main-mentions">
-    <div>
+    <div class="content">
         <h2 class="title">Mentions légales du site du E-Lycée</h2>
 
         <h3>Droits d'auteur</h3>
