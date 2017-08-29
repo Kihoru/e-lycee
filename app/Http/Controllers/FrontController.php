@@ -78,7 +78,7 @@ class FrontController extends Controller
 
     public function actus()
     {
-        $posts = $this->post->with('user', 'comments')->orderBy('id', 'desc')->paginate(5);
+        $posts = $this->post->with('user', 'comments')->orderBy('id', 'desc')->where("status", 1)->paginate(5);
         $sidePosts = $this->post->with('user', 'comments')->orderBy('id', 'desc')->skip(5)->take(2)->where("status", 1)->get();
         return view("school.parts.actus", compact('posts', 'sidePosts'));
     }

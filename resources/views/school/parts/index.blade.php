@@ -35,14 +35,18 @@
 
 
     <div class="sidebar">
-        <div class="contenu-supp">
-            <h2 class="titre">A lire aussi</h2>
-            <ul>
-                @foreach($sidePosts as $post)
-                <li><a href="/actuOne/{{$post->id}}">{{$post->title}}</a></li>
-                @endforeach
-            </ul>
-        </div>
+        @if(count($sidePosts) > 0)
+            <div class="contenu-supp">
+                <h2 class="titre">A lire aussi</h2>
+                <ul>
+                    @foreach($sidePosts as $post)
+                    <li><a href="/actuOne/{{$post->id}}">{{$post->title}}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+        @else
+        <div class="contenu-supp"></div>
+        @endif
         <div class="twitter">
             <h2><i class="fa fa-twitter" aria-hidden="true"></i>Les derniers Tweets </h2>
             <div class="fil-twitter">
