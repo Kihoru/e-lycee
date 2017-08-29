@@ -2,12 +2,12 @@
 <section id="addQcm">
     <div class="container">
         <div class="row">
-            <div class="col s11 offset-s1">
+            <div class="col xl11 offset-xl1 l8 offset-l4 m12 s12 center-align">
                 <h2 class="blue-grey-text darken-3">Ajout de QCM</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col s4 offset-s1">
+            <div class="col xl11 offset-xl1 l8 offset-l4 m12 s12 center-align">
                 <a class="blue-grey-text darken-3" href="/platform/qcm/all">Retourner à la liste des fiches</a>
             </div>
         </div>
@@ -15,7 +15,7 @@
     <div class="container mgt50">
         <form>
             <div class="row">
-                <div class="col s9 offset-s1">
+                <div class="col xl8 offset-xl2 l8 offset-l4 m12">
                     <h4 class="myblue-text flow-text">Créer un Qcm</h4>
                     <p class='red-text' ng-show="qcmCreate.addQcmError">[{qcmCreate.addQcmError}]</p>
                     <div class="input-field">
@@ -32,7 +32,7 @@
                     </select>
                     <label for="mySelect">Attribué à </label>
                 </div>
-                <div class="col s9 offset-s1">
+                <div class="col xl8 offset-xl2 l8 offset-l4 m12">
                     <ul class="collapsible" data-collapsible="accordion" ng-repeat="(index, question) in qcmCreate.qcm.questions">
                         <li>
                             <div class="collapsible-header blue-grey-text darken-3">
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col s4 offset-s1">
+                <div class="col xl8 offset-xl2 l8 offset-l4 m12">
                     <button class="blue-grey darken-3 btn waves-effect waves-light" ng-click="qcmCreate.create();" name="action">Sauvegarder
                         <i class="material-icons right">send</i>
                     </button>

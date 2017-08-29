@@ -2,19 +2,19 @@
 <section id="oneQcm">
     <div class="container">
         <div class="row">
-            <div class="col s11 offset-s1">
+            <div class="col xl11 offset-xl1 l8 offset-l4 m12 center-align">
                 <h2 class="blue-grey-text darken-3">[{qcmOne.datas.title}]</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col s4 offset-s1">
+            <div class="col xl11 offset-xl1 l8 offset-l4 m12 center-align">
                 <a class="blue-grey-text darken-3" href="/platform/qcm/all">Retourner à la liste des fiches</a>
             </div>
         </div>
     </div>
     <div class="container mgt50">
         <div class="row" ng-repeat="(index, question) in qcmOne.datas.questions">
-            <div class="col s7 offset-s1">
+            <div class="col xl8 offset-xl2 l8 offset-l4 m12">
                 <p class="flow-text blue-grey-text darken-3">#[{index+1}] [{question.question}]</p>
                 <p ng-repeat="(choiceIndex, choice) in question.choices">
                     <input name="answer_[{index}]" value="[{choiceIndex}]" type="radio" id="choice_[{choiceIndex + '_' + index}]" ng-model="question.myanswer"/>
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="row" >
-            <div class="col s7 offset-s1">
+            <div class="col xl8 offset-xl2 l8 offset-l4 m12">
                 <button class="btn waves-effect waves-light" ng-class="{disabled: qcmOne.isTeacher}" type="submit" ng-click="qcmOne.send();">Valider mes réponses
                     <i class="material-icons right">send</i>
                 </button>

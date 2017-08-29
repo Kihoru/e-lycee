@@ -15,7 +15,9 @@ function navController($auth, $scope, $location) {
     $(".button-collapse").sideNav();
     // Initialize collapsible (uncomment the line below if you use the dropdown variation)
     //$('.collapsible').collapsible();
-
+    $scope.closeSideNav = function() {
+        $('.button-collapse').sideNav('hide');
+    }
 
     this.logout = function() {
         $auth.logout()

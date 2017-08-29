@@ -13,25 +13,25 @@
         </div>
     </div>
     <li ng-class="nav.getClass('/home')" >
-        <a class="whi-yel-text" href="/platform/home">
+        <a class="whi-yel-text" href="/platform/home" ng-click="closeSideNav()">
             <i class="whi-yel-text tiny material-icons">home</i>
             Dashboard
         </a>
     </li>
     <li ng-show="nav.isTeacher" ng-class="nav.getClass('/students')">
-        <a class="whi-yel-text" href="/platform/students">
+        <a class="whi-yel-text" href="/platform/students" ng-click="closeSideNav()">
             <i class="whi-yel-text tiny material-icons">person</i>
             Elèves
         </a>
     </li>
     <li ng-class="nav.getClass('/qcm')">
-        <a class="whi-yel-text" href="/platform/qcm/all">
+        <a class="whi-yel-text" href="/platform/qcm/all" ng-click="closeSideNav()">
             <i class="whi-yel-text tiny material-icons">list</i>
             Fiches
         </a>
     </li>
     <li ng-class="nav.getClass('/post')" ng-show="nav.isTeacher">
-        <a class="whi-yel-text" href="/platform/post/all">
+        <a class="whi-yel-text" href="/platform/post/all" ng-click="closeSideNav()">
             <i class="whi-yel-text tiny material-icons">insert_photo</i>
             Actualités
         </a>
