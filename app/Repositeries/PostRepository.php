@@ -11,6 +11,13 @@ use Carbon\Carbon;
 
 class PostRepository
 {
+    /**
+     * Construct the PostRepository object
+     *
+     * @param  Intervention\Image\ImageManager $image
+     * @param \Validator $validator
+     * @param  App\Post $post
+     */
     public function __construct(Post $post, ImageManager $image, Validator $validator)
     {
         $this->post = $post;
@@ -20,6 +27,11 @@ class PostRepository
         $this->notSaved = "L'article n'a pas été sauvegardé.";
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function getAll()
     {
         $all = $this->post->allPost();
@@ -29,11 +41,23 @@ class PostRepository
         return response()->json($response);
     }
 
+    /**
+     * return a boolean if the var is ok
+     *
+     * @param $d Variable
+     * @return boolean
+     */
     private function isOk($d)
     {
         return isset($d) && !empty($d);
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function create($request)
     {
         $datas = $request->all();
@@ -68,6 +92,13 @@ class PostRepository
         return response()->json($response);
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update($request, $id)
     {
         $toUpdate = $request->all();
@@ -100,6 +131,12 @@ class PostRepository
         return response()->json($response);
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
         try{
@@ -111,6 +148,12 @@ class PostRepository
         return response()->json(["post" => $post]);
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function delete($id)
     {
         $post = $this->post->find($id);
@@ -124,6 +167,12 @@ class PostRepository
         return response()->json($response);
     }
 
+    /**
+     * Create an resume of content.
+     *
+     * @param  $content string
+     * @return $content string
+     */
     private function makeAbstract($content)
     {
         return substr($content, 0, 100)."...";

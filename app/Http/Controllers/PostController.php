@@ -7,7 +7,11 @@ use App\Repositeries\PostRepository;
 
 class PostController extends Controller
 {
-
+    /**
+     * Construct the PostController object
+     *
+     * @param  App\Repositeries\PostRepository  $postRepository
+     */
     public function __construct(PostRepository $postRepository)
     {
         $this->postRepository = $postRepository;
@@ -31,17 +35,6 @@ class PostController extends Controller
     public function store(Request $request)
     {
         return $this->postRepository->create($request);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**

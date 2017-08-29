@@ -1,20 +1,19 @@
 'use strict';
 
-homeController.$inject = ['$auth', '$http', '$scope', '$location', '$route', '$routeParams'];
+homeController.$inject = ['$http'];
 
 angular.module('elycee').controller('homeController', homeController);
 
-function homeController($auth, $http, $scope, $location, $route, $routeParams) {
+function homeController($http) {
 
     let home = this;
 
-    home.currentUser = localStorage.getItem("user_logged") ? JSON.parse(localStorage.getItem("user_logged")) : false;
+    home.currentUser = sessionStorage.getItem("user_logged") ? JSON.parse(sessionStorage.getItem("user_logged")) : false;
 
     home.isTeacher = home.currentUser.role === "teacher";
 
     if(home.isTeacher) {
         $http.get('/platform/getHomeDatas').then(function(res) {
-            console.log(res.data);
             home.datas = res.data;
         });
     }else{

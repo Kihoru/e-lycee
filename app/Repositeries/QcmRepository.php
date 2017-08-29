@@ -12,6 +12,11 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class QcmRepository
 {
+    /**
+     * Construct the PostRepository object
+     *
+     * @param  App\Qcm $qcm
+     */
     public function __construct(Qcm $qcm)
     {
         $this->saved = ['Success' => 'Le qcm à bien été enregistré.'];
@@ -20,6 +25,11 @@ class QcmRepository
         $this->qcm = $qcm;
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function getAll()
     {
         $all = $this->qcm->allQcm();
@@ -29,6 +39,12 @@ class QcmRepository
         return response()->json($response);
     }
 
+    /**
+     * Display a listing of the resource with special user data.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function getAllFromStudent($request)
     {
         $id = $request->only("user_id");
@@ -60,6 +76,12 @@ class QcmRepository
         return $res;
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function create($request)
     {
         $datas = $request->datas;
@@ -115,6 +137,13 @@ class QcmRepository
         return response()->json($response);
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update($datas, $id)
     {
         $toUpdate = $datas;
@@ -178,6 +207,12 @@ class QcmRepository
         return response()->json($response);
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
         try{
@@ -195,6 +230,12 @@ class QcmRepository
         return response()->json(['qcm' => $qcm]);
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function delete($id)
     {
         $qcm = $this->qcm->find($id);
@@ -208,6 +249,12 @@ class QcmRepository
         return response()->json($response);
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function one($id)
     {
         $qcm = $this->qcm->getOne($id);
@@ -217,6 +264,12 @@ class QcmRepository
         return response()->json($response);
     }
 
+    /**
+     * Create new score based on user_id and qcm responses
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function addScore($request)
     {
         $datas = $request->all();

@@ -1,14 +1,14 @@
 'use strict';
 
-qcmOneController.$inject = ['$auth', '$http', '$scope', '$location', '$route', '$routeParams'];
+qcmOneController.$inject = ['$http', '$location', '$routeParams'];
 
 angular.module('elycee').controller('qcmOneController', qcmOneController);
 
-function qcmOneController($auth, $http, $scope, $location, $route, $routeParams) {
+function qcmOneController($http, $location, $routeParams) {
 
     let one = this;
 
-    one.currentUser = localStorage.getItem("user_logged") ? JSON.parse(localStorage.getItem("user_logged")) : false;
+    one.currentUser = sessionStorage.getItem("user_logged") ? JSON.parse(sessionStorage.getItem("user_logged")) : false;
 
     one.isTeacher = one.currentUser.role === "teacher";
 

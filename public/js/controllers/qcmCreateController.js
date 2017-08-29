@@ -1,10 +1,10 @@
 'use strict';
 
-qcmCreateController.$inject = ['$auth', '$http', '$scope', '$location', '$route', '$routeParams'];
+qcmCreateController.$inject = ['$http', '$location'];
 
 angular.module('elycee').controller('qcmCreateController', qcmCreateController);
 
-function qcmCreateController($auth, $http, $scope, $location, $route, $routeParams) {
+function qcmCreateController($http, $location) {
 
     function runMaterials() {
         $('select').material_select();
@@ -12,7 +12,7 @@ function qcmCreateController($auth, $http, $scope, $location, $route, $routePara
         $('.tooltipped').tooltip({delay: 50});
     }
 
-    this.currentUser = localStorage.getItem("user_logged") ? JSON.parse(localStorage.getItem("user_logged")) : false;
+    this.currentUser = sessionStorage.getItem("user_logged") ? JSON.parse(sessionStorage.getItem("user_logged")) : false;
 
     if(this.currentUser.role !== 'teacher') $location.path('/');
 

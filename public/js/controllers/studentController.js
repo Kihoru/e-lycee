@@ -1,16 +1,16 @@
 'use strict';
 
-studentController.$inject = ['$auth', '$http', '$scope', '$location', '$route', '$routeParams'];
+studentController.$inject = ['$http', '$scope', '$location'];
 
 angular.module('elycee').controller('studentController', studentController);
 
-function studentController($auth, $http, $scope, $location, $route, $routeParams) {
+function studentController($http, $scope, $location) {
 
     let student = this;
 
     $scope.searchStud   = '';
 
-    student.currentUser = localStorage.getItem("user_logged") ? JSON.parse(localStorage.getItem("user_logged")) : false;
+    student.currentUser = sessionStorage.getItem("user_logged") ? JSON.parse(sessionStorage.getItem("user_logged")) : false;
 
     if(student.currentUser.role !== 'teacher') $location.path('/');
 

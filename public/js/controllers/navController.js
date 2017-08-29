@@ -1,10 +1,10 @@
 'use strict';
 
-navController.$inject = ['$auth', '$http', '$scope', '$location', '$route', '$routeParams'];
+navController.$inject = ['$auth', '$scope', '$location'];
 
 angular.module('elycee').controller('navController', navController);
 
-function navController($auth, $http, $scope, $location, $route, $routeParams) {
+function navController($auth, $scope, $location) {
 
     this.getClass = function(url) {
         let pathFromUrl = $location.path().substr(0, url.length);
@@ -20,15 +20,15 @@ function navController($auth, $http, $scope, $location, $route, $routeParams) {
     this.logout = function() {
         $auth.logout()
             .then(function(){
-                localStorage.removeItem('satellizer_token');
-                localStorage.removeItem('user_logged');
+                sessionStorage.removeItem('satellizer_token');
+                sessionStorage.removeItem('user_logged');
                 $scope.isLogged = false;
                 $location.path('/');
             });
         this.logged = false;
     }
 
-    this.logged = localStorage.getItem("user_logged") ? JSON.parse(localStorage.getItem("user_logged")) : false;
+    this.logged = sessionStorage.getItem("user_logged") ? JSON.parse(sessionStorage.getItem("user_logged")) : false;
 
     if(!this.logged) {
         $location.path('/');

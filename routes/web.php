@@ -23,7 +23,7 @@ Route::post('/comment/add/{id?}', 'FrontController@addComment');
 ///////////////////////////////
 
 /* API URL */
-Route::resource('/post', 'PostController', ['except' => ["create"]]);
+Route::resource('/post', 'PostController', ['except' => ["create", "show"]]);
 Route::resource('/qcm', 'QcmController', ['except' => ["create"]]);
 Route::post('/qcm/student', 'QcmController@getAllFromStudent');
 Route::post('/qcm/addScore', 'QcmController@addScore');

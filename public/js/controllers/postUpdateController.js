@@ -1,14 +1,14 @@
 'use strict';
 
-postUpdateController.$inject = ['$auth', '$http', '$scope', '$location', '$route', '$routeParams'];
+postUpdateController.$inject = ['$http', '$location', '$routeParams'];
 
 angular.module('elycee').controller('postUpdateController', postUpdateController);
 
-function postUpdateController($auth, $http, $scope, $location, $route, $routeParams) {
+function postUpdateController($http, $location, $routeParams) {
 
     let update = this;
 
-    update.currentUser = localStorage.getItem("user_logged") ? JSON.parse(localStorage.getItem("user_logged")) : false;
+    update.currentUser = sessionStorage.getItem("user_logged") ? JSON.parse(sessionStorage.getItem("user_logged")) : false;
 
     if(update.currentUser.role !== 'teacher') $location.path('/');
 

@@ -1,10 +1,10 @@
 'use strict';
 
-qcmAllController.$inject = ['$auth', '$http', '$scope', '$location', '$route', '$routeParams'];
+qcmAllController.$inject = ['$http', '$scope'];
 
 angular.module('elycee').controller('qcmAllController', qcmAllController);
 
-function qcmAllController($auth, $http, $scope, $location, $route, $routeParams) {
+function qcmAllController($http, $scope) {
 
     $('.modal').modal();
 
@@ -12,7 +12,7 @@ function qcmAllController($auth, $http, $scope, $location, $route, $routeParams)
 
     let all = this;
 
-    all.logged = localStorage.getItem("user_logged") ? JSON.parse(localStorage.getItem("user_logged")) : false;
+    all.logged = sessionStorage.getItem("user_logged") ? JSON.parse(sessionStorage.getItem("user_logged")) : false;
 
     all.isTeacher = this.logged.role === 'teacher';
 
@@ -31,7 +31,6 @@ function qcmAllController($auth, $http, $scope, $location, $route, $routeParams)
     } else {
         $http.post('/qcm/student', {user_id: all.logged.id})
             .then(function( res ) {
-                console.log(res);
                 if ( res.data ) {
                     all.datas = res.data;
                     all.parseDatas();

@@ -7,7 +7,11 @@ use App\Repositeries\QcmRepository;
 
 class QcmController extends Controller
 {
-
+    /**
+     * Construct the QcmController object
+     *
+     * @param  App\Repositeries\QcmRepository  $qcmRepository
+     */
     public function __construct(QcmRepository $qcmRepository)
     {
         $this->qcmRepository = $qcmRepository;

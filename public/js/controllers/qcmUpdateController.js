@@ -1,10 +1,10 @@
 'use strict';
 
-qcmUpdateController.$inject = ['$auth', '$http', '$scope', '$location', '$route', '$routeParams'];
+qcmUpdateController.$inject = ['$http', '$location', '$routeParams'];
 
 angular.module('elycee').controller('qcmUpdateController', qcmUpdateController);
 
-function qcmUpdateController($auth, $http, $scope, $location, $route, $routeParams) {
+function qcmUpdateController($http, $location, $routeParams) {
 
     function runMaterials() {
         $('select').material_select();
@@ -18,7 +18,7 @@ function qcmUpdateController($auth, $http, $scope, $location, $route, $routePara
 
     let update = this;
 
-    update.currentUser = localStorage.getItem("user_logged") ? JSON.parse(localStorage.getItem("user_logged")) : false;
+    update.currentUser = sessionStorage.getItem("user_logged") ? JSON.parse(sessionStorage.getItem("user_logged")) : false;
 
     if(update.currentUser.role !== 'teacher') $location.path('/');
 

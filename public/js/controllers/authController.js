@@ -1,10 +1,10 @@
 'use strict';
 
-authController.$inject = ['$auth', '$http', '$scope', '$location', '$route', '$routeParams'];
+authController.$inject = ['$auth', '$scope', '$location'];
 
 angular.module('elycee').controller('authController', authController);
 
-function authController($auth, $http, $scope, $location, $route, $routeParams) {
+function authController($auth, $scope, $location) {
 
     $scope.logged = localStorage.getItem("user_logged") && localStorage.getItem("satellizer_token");
 
@@ -41,8 +41,8 @@ function authController($auth, $http, $scope, $location, $route, $routeParams) {
                     $scope.alertLogin = response.data.error;
                 }else{
 
-                    localStorage.setItem('satellizer_token', response.data.token);
-                    localStorage.setItem('user_logged', JSON.stringify(response.data.logInUser));
+                    sessionStorage.setItem('satellizer_token', response.data.token);
+                    sessionStorage.setItem('user_logged', JSON.stringify(response.data.logInUser));
 
                     $location.path('/home');
                 }

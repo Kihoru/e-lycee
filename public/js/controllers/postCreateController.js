@@ -1,14 +1,14 @@
 'use strict';
 
-postCreateController.$inject = ['$auth', '$http', '$scope', '$location', '$route', '$routeParams'];
+postCreateController.$inject = ['$http', '$location'];
 
 angular.module('elycee').controller('postCreateController', postCreateController);
 
-function postCreateController($auth, $http, $scope, $location, $route, $routeParams) {
+function postCreateController($http, $location) {
 
 	let create = this;
 
-	create.currentUser = localStorage.getItem("user_logged") ? JSON.parse(localStorage.getItem("user_logged")) : false;
+	create.currentUser = sessionStorage.getItem("user_logged") ? JSON.parse(sessionStorage.getItem("user_logged")) : false;
 
     if(create.currentUser.role !== 'teacher') $location.path('/');
 

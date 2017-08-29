@@ -9,13 +9,23 @@ use Validator;
 
 class FrontController extends Controller
 {
-
+    /**
+     * Construct the FrontController object
+     *
+     * @param  App\Post $post
+     * @param  App\Comment $comment
+     */
     public function __construct(Post $post, Comment $comment)
     {
         $this->post = $post;
         $this->comment = $comment;
     }
 
+    /**
+     * Display a listing of the resource (with somes differences).
+     *
+     * @return \Views with datas
+     */
     public function index()
     {
         $lastPost = $this->post->with('user', 'comments')->orderBy('id', 'desc')->take(1)->where("status", 1)->get();
@@ -24,6 +34,12 @@ class FrontController extends Controller
         return view("school.parts.index", compact("lastPost", "latestPosts", "sidePosts"));
     }
 
+    /**
+     * Display the specified resource
+     *
+     * @param $id int
+     * @return \Views with datas
+     */
     public function oneActu($id)
     {
         $post = $this->post->with('user', 'comments')->findOrFail($id);
@@ -31,6 +47,13 @@ class FrontController extends Controller
         return view("school.parts.actuOne", compact("post"));
     }
 
+    /**
+     * Create a new comment on post id
+     *
+     * @param int $post_id
+     * @param  \Illuminate\Http\Request  $request
+     * @return \View with new datas or Error
+     */
     public function addComment(Request $request, $id)
     {
         $v = Validator::make($request->all(), [
@@ -76,6 +99,11 @@ class FrontController extends Controller
         }
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Views with datas
+     */
     public function actus()
     {
         $posts = $this->post->with('user', 'comments')->orderBy('id', 'desc')->where("status", 1)->paginate(5);
@@ -83,18 +111,33 @@ class FrontController extends Controller
         return view("school.parts.actus", compact('posts', 'sidePosts'));
     }
 
+    /**
+     * Display contact view
+     *
+     * @return \Views with datas
+     */
     public function contact()
     {
         $sidePosts = $this->post->with('user', 'comments')->orderBy('id', 'desc')->skip(5)->take(2)->where("status", 1)->get();
         return view("school.parts.contact", compact('sidePosts'));
     }
 
+    /**
+     * Display lycee view
+     *
+     * @return \Views with datas
+     */
     public function lycee()
     {
         $sidePosts = $this->post->with('user', 'comments')->orderBy('id', 'desc')->skip(5)->take(2)->where("status", 1)->get();
         return view("school.parts.lycee", compact('sidePosts'));
     }
 
+    /**
+     * Display mentions légales view
+     *
+     * @return \Views with datas
+     */
     public function mlegales()
     {
         return view("school.parts.mlegales");

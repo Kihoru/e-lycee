@@ -1,10 +1,10 @@
 'use strict';
 
-postAllController.$inject = ['$auth', '$http', '$scope', '$location', '$route', '$routeParams'];
+postAllController.$inject = ['$http', '$scope', '$location'];
 
 angular.module('elycee').controller('postAllController', postAllController);
 
-function postAllController($auth, $http, $scope, $location, $route, $routeParams) {
+function postAllController($http, $scope, $location) {
 
     $('.modal').modal();
 
@@ -12,7 +12,7 @@ function postAllController($auth, $http, $scope, $location, $route, $routeParams
 
     $scope.searchPost   = '';
 
-    all.logged = localStorage.getItem("user_logged") ? JSON.parse(localStorage.getItem("user_logged")) : false;
+    all.logged = sessionStorage.getItem("user_logged") ? JSON.parse(sessionStorage.getItem("user_logged")) : false;
 
     if(all.logged.role !== 'teacher') $location.path('/');
 
