@@ -38,8 +38,8 @@ Framework front/html.css = Materialize
 Versioning technology = git                                                                         
 Versioning platform = github                                                                                 
                                                                                                           
-dependencies technology back = composer                                                                                          
-dependencies technology front = npm                                                                                                                                 
+back dependencies = composer                                                                                          
+front dependencies = npm                                                                                                                                 
 
 # Set-up
 
