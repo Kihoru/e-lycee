@@ -17,6 +17,9 @@ Route::get('/contact', 'FrontController@contact');
 Route::get('/lycée', 'FrontController@lycee');
 Route::get('/mention-legales', 'FrontController@mlegales');
 Route::get('/actualités', 'FrontController@actus');
+Route::get('/actuOne/{id?}', 'FrontController@oneActu');
+
+Route::post('/comment/add/{id?}', 'FrontController@addComment');
 ///////////////////////////////
 
 /* API URL */

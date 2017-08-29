@@ -19,4 +19,6 @@ class Score extends Model
 
         return ['total' => $total, 'nb' => $nb];
     }
+
+    
 }

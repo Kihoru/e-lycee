@@ -2,64 +2,31 @@
 
 
 @section('content')
+<?php //echo "<pre>";var_dump($lastPost);echo "</pre>";die(); ?>
 <main class="main-content-accueil">
     <div class="colonne-centrale">
         <div class="actualite">
-            <h2 class="titre">Lorem Ipsum</h2>
-            <img class="image" src="{{url('/images/actu-2.jpg')}}">
-            <p class="texte">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium eius doloribus laborum libero odit commodi dolores at. Illo quas sit molestias modi impedit delectus nemo, nesciunt adipisci perspiciatis ut, eos.</p>
+            <h2 class="titre">{{$lastPost[0]->title}}</h2>
+            <img class="image" src="{{url('/upload/posts/'.$lastPost[0]->url_thumbnail)}}">
+            <p class="texte">{{$lastPost[0]->abstract}}</p>
 
-            <a class="lien" href="#">Lire la suite</a>
+            <a class="lien" href="/actuOne/{{$lastPost[0]->id}}">Lire la suite</a>
 
-            <h3 class="auteur">Auteur : <span>Alan</span></h3>
-            <p class="date">Publié le : 31/07/2017</p>
-            <p class="commentaire"><i class="fa fa-comments" aria-hidden="true"></i> 297 commentaire(s) réagissez !</p>
+            <h3 class="auteur">Auteur : <span>{{$lastPost[0]->user->username}}</span></h3>
+            <p class="date">Publié le : {{$lastPost[0]->created_at}}</p>
+            <p class="commentaire"><i class="fa fa-comments" aria-hidden="true"></i> {{count($lastPost[0]->comments)}} commentaire(s) réagissez !</p>
         </div>
         <div class="fil-actu">
+            @foreach($latestPosts as $post)
             <div class="actu">
-                <h2 class="titre">La machine de Turing</h2>
-                <img class="image" src="{{url('/images/actu-1.jpg')}}">
+                <h2 class="titre">{{$post->title}}</h2>
+                <img class="image" src="{{url('/upload/posts/'.$post->url_thumbnail)}}">
 
-                <p class="texte">Alors que, connaissant le caractère lu sur le ruban et l'état courant, une ...</p>
+                <p class="texte">{{$lastPost[0]->abstract}}</p>
 
-                <a class="lien" href="#">Lire la suite ..</a>
+                <a class="lien" href="/actuOne/{{$post->id}}">Lire la suite ..</a>
             </div>
-
-            <div class="actu">
-                <h2 class="titre">La machine de Turing</h2>
-                <img class="image" src="{{url('/images/actu-1.jpg')}}">
-
-                <p class="texte">Alors que, connaissant le caractère lu sur le ruban et l'état courant, une ...</p>
-
-                <a class="lien" href="#">Lire la suite ..</a>
-            </div>
-
-            <div class="actu">
-                <h2 class="titre">La machine de Turing</h2>
-                <img class="image" src="{{url('/images/actu-1.jpg')}}">
-
-                <p class="texte">Alors que, connaissant le caractère lu sur le ruban et l'état courant, une ...</p>
-
-                <a class="lien" href="#">Lire la suite ..</a>
-            </div>
-
-            <div class="actu">
-                <h2 class="titre">La machine de Turing</h2>
-                <img class="image" src="{{url('/images/actu-1.jpg')}}">
-
-                <p class="texte">Alors que, connaissant le caractère lu sur le ruban et l'état courant, une ...</p>
-
-                <a class="lien" href="#">Lire la suite ..</a>
-            </div>
-
-            <div class="actu">
-                <h2 class="titre">La machine de Turing</h2>
-                <img class="image" src="{{url('/images/actu-1.jpg')}}">
-
-                <p class="texte">Alors que, connaissant le caractère lu sur le ruban et l'état courant, une ...</p>
-
-                <a class="lien" href="#">Lire la suite ..</a>
-            </div>
+            @endforeach
         </div>
     </div>
 

@@ -12,7 +12,8 @@
     @yield('content')
 
     @include('school.partial.footer')
-    
+
     <script src="{{url('js/utils/jquery.min.js')}}"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </body>
 </html>

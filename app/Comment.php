@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Comment extends Model
 {
@@ -19,5 +20,15 @@ class Comment extends Model
         public function getLasts($nb)
         {
             return $this->orderBy('id', 'desc')->take($nb)->get();
+        }
+
+        public function getCreatedAtAttribute($date)
+        {
+            return Carbon::parse($date)->format('d/m/Y');
+        }
+
+        public function getUpdatedAtAttribute($date)
+        {
+            return Carbon::parse($date)->format('d/m/Y');
         }
 }

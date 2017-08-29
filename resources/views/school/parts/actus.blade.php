@@ -4,69 +4,25 @@
 @section('content')
 <main class="main-content-actualites">
     <div class="colonne-centrale">
+        @foreach($posts as $post)
         <div class="actualite">
             <div class="img">
-                <img class="image" src="assets/images/actu-2.jpg">
+                <img class="image" src="{{url('/upload/posts/'.$post->url_thumbnail)}}">
             </div>
             <div class="desc">
-                <h2 class="titre">Lorem Ipsum</h2>
-                <p class="texte">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium eius doloribus laborum libero odit commodi dolores at. Illo quas sit molestias modi impedit delectus nemo, nesciunt adipisci perspiciatis ut, eos.</p>
+                <h2 class="titre">{{$post->title}}</h2>
+                <p class="texte">{{$post->abstract}}</p>
 
-                <a class="lien" href="#">Lire la suite</a>
+                <a class="lien" href="/actuOne/{{$post->id}}">Lire la suite</a>
 
-                <h3 class="auteur">Auteur : <span>Alan</span></h3>
-                <p class="date">Publié le : 31/07/2017</p>
-                <p class="commentaire"><i class="fa fa-comments" aria-hidden="true"></i> 297 commentaire(s) réagissez !</p>
+                <h3 class="auteur">Auteur : <span>{{$post->user->username}}</span></h3>
+                <p class="date">Publié le : {{$post->created_at}}</p>
+                <p class="commentaire"><i class="fa fa-comments" aria-hidden="true"></i> {{count($post->comments)}} commentaire(s) réagissez !</p>
             </div>
         </div>
         <div class="underline"></div>
-        <div class="actualite">
-            <div class="img">
-                <img class="image" src="assets/images/actu-2.jpg">
-            </div>
-            <div class="desc">
-                <h2 class="titre">Lorem Ipsum</h2>
-                <p class="texte">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium eius doloribus laborum libero odit commodi dolores at. Illo quas sit molestias modi impedit delectus nemo, nesciunt adipisci perspiciatis ut, eos.</p>
-
-                <a class="lien" href="#">Lire la suite</a>
-
-                <h3 class="auteur">Auteur : <span>Alan</span></h3>
-                <p class="date">Publié le : 31/07/2017</p>
-                <p class="commentaire"><i class="fa fa-comments" aria-hidden="true"></i> 297 commentaire(s) réagissez !</p>
-            </div>
-        </div>
-        <div class="underline"></div>
-        <div class="actualite">
-            <div class="img">
-                <img class="image" src="assets/images/actu-2.jpg">
-            </div>
-            <div class="desc">
-                <h2 class="titre">Lorem Ipsum</h2>
-                <p class="texte">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium eius doloribus laborum libero odit commodi dolores at. Illo quas sit molestias modi impedit delectus nemo, nesciunt adipisci perspiciatis ut, eos.</p>
-
-                <a class="lien" href="#">Lire la suite</a>
-
-                <h3 class="auteur">Auteur : <span>Alan</span></h3>
-                <p class="date">Publié le : 31/07/2017</p>
-                <p class="commentaire"><i class="fa fa-comments" aria-hidden="true"></i> 297 commentaire(s) réagissez !</p>
-            </div>
-        </div>
-        <div class="underline"></div>
-        <div class="actualite">
-            <div class="img">
-                <img class="image" src="assets/images/actu-2.jpg">
-            </div>
-            <div class="desc">
-                <h2 class="titre">Lorem Ipsum</h2>
-                <p class="texte">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium eius doloribus laborum libero odit commodi dolores at. Illo quas sit molestias modi impedit delectus nemo, nesciunt adipisci perspiciatis ut, eos.</p>
-
-                <a class="lien" href="#">Lire la suite</a>
-
-                <h3 class="auteur">Auteur : <span>Alan</span></h3>
-                <p class="date">Publié le : 31/07/2017</p>
-                <p class="commentaire"><i class="fa fa-comments" aria-hidden="true"></i> 297 commentaire(s) réagissez !</p>
-            </div>
-        </div>
+        @endforeach
+        {{$posts->links()}}
     </div>
     <div class="sidebar">
         <div class="contenu-supp">
