@@ -1,5 +1,7 @@
 git clone https://github.com/Kihoru/e-lycee.git
 
+cp .env e-lycee/.env
+
 cd e-lycee/
 
 composer install
@@ -9,7 +11,7 @@ php artisan key:generate
 #!/usr/bin/env bash
 USERNAME='root'
 PASSWORD='root'
-DBNAME='e-lycee'
+DBNAME='elycee'
 HOST='localhost'
 
 USER_USERNAME='root'

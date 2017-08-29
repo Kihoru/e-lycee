@@ -9,5 +9,10 @@
     "/js/utils/angular-route.min.js": "/js/utils/angular-route.min.js",
     "/js/utils/ocLazyLoad.min.js": "/js/utils/ocLazyLoad.min.js",
     "/js/utils/toastr.min.js": "/js/utils/toastr.min.js",
-    "/css/utils/toastr.min.css": "/css/utils/toastr.min.css"
+    "/css/utils/toastr.min.css": "/css/utils/toastr.min.css",
+    "/upload/posts/1.jpg": "/upload/posts/1.jpg",
+    "/upload/posts/2.jpg": "/upload/posts/2.jpg",
+    "/upload/posts/3.jpg": "/upload/posts/3.jpg",
+    "/upload/posts/4.jpg": "/upload/posts/4.jpg",
+    "/upload/posts/5.jpg": "/upload/posts/5.jpg"
 }
