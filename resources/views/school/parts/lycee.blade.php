@@ -43,8 +43,9 @@
         <div class="contenu-supp">
             <h2 class="titre">A lire aussi</h2>
             <ul>
-                <li><a href="#">Philae endormi</a></li>
-                <li><a href="#">Fusée Antares</a></li>
+                @foreach($sidePosts as $post)
+                <li><a href="/actuOne/{{$post->id}}">{{$post->title}}</a></li>
+                @endforeach
             </ul>
         </div>
         <div class="twitter">

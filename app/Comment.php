@@ -24,11 +24,11 @@ class Comment extends Model
 
         public function getCreatedAtAttribute($date)
         {
-            return Carbon::parse($date)->format('d/m/Y');
+            return Carbon::parse($date)->format('d/m/Y H:m:s');
         }
 
         public function getUpdatedAtAttribute($date)
         {
-            return Carbon::parse($date)->format('d/m/Y');
+            return Carbon::parse($date)->format('d/m/Y H:m:s');
         }
 }

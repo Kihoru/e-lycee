@@ -20,7 +20,8 @@ class FrontController extends Controller
     {
         $lastPost = $this->post->with('user', 'comments')->orderBy('id', 'desc')->take(1)->where("status", 1)->get();
         $latestPosts = $this->post->with('user', 'comments')->orderBy('id', 'desc')->skip(1)->take(4)->where("status", 1)->get();
-        return view("school.parts.index", compact("lastPost", "latestPosts"));
+        $sidePosts = $this->post->with('user', 'comments')->orderBy('id', 'desc')->skip(5)->take(2)->where("status", 1)->get();
+        return view("school.parts.index", compact("lastPost", "latestPosts", "sidePosts"));
     }
 
     public function oneActu($id)
@@ -78,18 +79,20 @@ class FrontController extends Controller
     public function actus()
     {
         $posts = $this->post->with('user', 'comments')->orderBy('id', 'desc')->paginate(5);
-
-        return view("school.parts.actus", compact('posts'));
+        $sidePosts = $this->post->with('user', 'comments')->orderBy('id', 'desc')->skip(5)->take(2)->where("status", 1)->get();
+        return view("school.parts.actus", compact('posts', 'sidePosts'));
     }
 
     public function contact()
     {
-        return view("school.parts.contact");
+        $sidePosts = $this->post->with('user', 'comments')->orderBy('id', 'desc')->skip(5)->take(2)->where("status", 1)->get();
+        return view("school.parts.contact", compact('sidePosts'));
     }
 
     public function lycee()
     {
-        return view("school.parts.lycee");
+        $sidePosts = $this->post->with('user', 'comments')->orderBy('id', 'desc')->skip(5)->take(2)->where("status", 1)->get();
+        return view("school.parts.lycee", compact('sidePosts'));
     }
 
     public function mlegales()

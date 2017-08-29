@@ -7,9 +7,9 @@
         <h2 class="title">Contact</h2>
         <p>Le lycée est ouvert de 7h30 à 19h30</p>
         <form method="post">
-            <input type="text" name="nom" class="input-contact" required="" placeholder="Votre nom... *">
-            <input type="text" name="mail" class="input-contact" required="" placeholder="Votre E-mail... *">
-            <input type="text" name="sujet" class="input-contact" required="" placeholder="Sujet...">
+            <input type="text" name="nom" class="input-contact" required placeholder="Votre nom... *">
+            <input type="text" name="mail" class="input-contact" required placeholder="Votre E-mail... *">
+            <input type="text" name="sujet" class="input-contact" placeholder="Sujet...">
 
             <textarea name="message" cols="30" rows="10" class="textarea-contact"></textarea>
         </form>
@@ -19,8 +19,9 @@
         <div class="contenu-supp">
             <h2 class="titre">A lire aussi</h2>
             <ul>
-                <li><a href="#">Philae endormi</a></li>
-                <li><a href="#">Fusée Antares</a></li>
+                @foreach($sidePosts as $post)
+                <li><a href="/actuOne/{{$post->id}}">{{$post->title}}</a></li>
+                @endforeach
             </ul>
         </div>
         <div class="twitter">
